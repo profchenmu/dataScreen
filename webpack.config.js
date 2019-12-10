@@ -9,7 +9,10 @@ const host = process.env.HOST || '0.0.0.0';
 
 module.exports = {
     mode: 'production',
-    entry: './src/index.ts',
+    entry: {
+        index: path.resolve(__dirname, './src/index.ts'),
+        qt: path.resolve(__dirname, "./src/qt/index.ts")
+    },
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].bundle.js',
@@ -66,7 +69,14 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            template: './index.html'
-        })
+            filename: 'index.html',
+            template: './index.html',
+            inject: true,
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'qt.html',
+            template: './qt.html',
+            inject: true,
+        }),
     ]
 };

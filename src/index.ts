@@ -1,7 +1,11 @@
 import axios from 'axios';
 import * as d3 from 'd3';
+import socketIOClient from 'socket.io-client';
+
 const svg = d3.select("#svg2");
 const shanghai = svg.select("#shanghai").attr("r", "5");
+const socket = socketIOClient('http://127.0.0.1:4000');
+socket.on('message', (data: string) => { console.log(data) });
 console.log(shanghai);
 interface dataQt {
     Entity: string,

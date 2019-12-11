@@ -13,24 +13,37 @@ interface dataQt {
 }
 const socket = socketIOClient('http://127.0.0.1:4000');
 socket.on('qtMessage', (data: any) => {
-
     const qtArr: [dataQt] = data.message;
     qtArr.forEach((ele, index) => {
         const qtInfo: dataQt = ele;
         console.log(ele, 'ele');
-        const polygons: any = d3.selectAll(`#qt-${index} polygon`);
-
+        const polygons: any = d3.selectAll(`#qt-${index} #datas polygon`);
+        let shining: number = 0;
         polygons.attr('style', (e: any, i: number) => {
             if (i <= qtInfo.Value) {
-                return 'fill: #42FBFA';
+                const opacity: number = i / qtInfo.Value;
+                return `fill: #42FBFA; opacity: ${opacity}`;
             } else {
-                return 'fill: #0055be';
-            }
-        }).attr('filter', (e: any, i: number) => {
-            if (i <= qtInfo.Value) {
-                return 'url(#filter-blur)'
+                return 'fill: #0055be; opacity: 1';
             }
         })
+            // .attr('style', (e: any, i: number) => {
+            //     if (i <= qtInfo.Value) {
+            //         const opacity: number = i / 100;
+            //         return `opacity: ${opacity}`;
+            //     } else {
+            //         return `opacity: 1`;
+            //     }
+            // })
+            .attr('filter', (e: any, i: number) => {
+                if (i <= parseInt(qtInfo.Value as any)) {
+                    return 'url(#filter-blur)'
+                }
+            }).attr('id', (e: any, i: number) => {
+                if (i === parseInt(qtInfo.Value as any)) {
+                    return 'shining'
+                }
+            });
         d3.select(`#qt-${index} #title`).text('Title');
         d3.select(`#qt-${index} #percent`).text(qtInfo.Value);
     })

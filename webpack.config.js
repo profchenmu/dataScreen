@@ -11,7 +11,8 @@ module.exports = {
     mode: 'production',
     entry: {
         index: path.resolve(__dirname, './src/index.ts'),
-        qt: path.resolve(__dirname, "./src/qt/index.ts")
+        qt: path.resolve(__dirname, "./src/qt/index.ts"),
+        map: path.resolve(__dirname, "./src/map/index.ts"),
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -35,22 +36,40 @@ module.exports = {
         rules: [{
                 test: /\.(css|scss)$/,
                 use: [
-                    // style-loader
+                    require.resolve('style-loader'),
                     {
-                        loader: 'style-loader'
-                    },
-                    // css-loader
-                    {
-                        loader: 'css-loader',
+                        loader: require.resolve('css-loader'),
                         options: {
-                            modules: true
-                        }
+                            importLoaders: 2,
+                            sourceMap: true,
+                        },
                     },
-                    // sass-loader
                     {
-                        loader: 'sass-loader'
+                        loader: require.resolve('postcss-loader'),
+                        options: {
+                            // Necessary for external CSS imports to work
+                            // https://github.com/facebookincubator/create-react-app/issues/2677
+                            ident: 'postcss',
+                            sourceMap: true,
+                            plugins: () => [
+                                require('postcss-flexbugs-fixes'),
+                            ],
+                        },
+                    },
+                    {
+                        loader: require.resolve('sass-loader'),
+                        options: {
+                            sourceMap: true,
+
+                        }
                     }
-                ]
+                ],
+            },
+            {
+                test: /\.(png|jpg|gif)$/i,
+                use: [{
+                    loader: 'url-loader',
+                }]
             },
             {
                 test: /\.ts$/,
@@ -76,6 +95,11 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'qt.html',
             template: './qt.html',
+            inject: true,
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'map.html',
+            template: './map.html',
             inject: true,
         }),
     ]

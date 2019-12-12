@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as d3 from 'd3';
 import socketIOClient from 'socket.io-client';
-
+import './qt.scss';
 const qtSvg = d3.select("#qt");
 // const shanghai = svg.select("#shanghai").attr("r", "5");
 
@@ -26,24 +26,15 @@ socket.on('qtMessage', (data: any) => {
             } else {
                 return 'fill: #0055be; opacity: 1';
             }
-        })
-            // .attr('style', (e: any, i: number) => {
-            //     if (i <= qtInfo.Value) {
-            //         const opacity: number = i / 100;
-            //         return `opacity: ${opacity}`;
-            //     } else {
-            //         return `opacity: 1`;
-            //     }
-            // })
-            .attr('filter', (e: any, i: number) => {
-                if (i <= parseInt(qtInfo.Value as any)) {
-                    return 'url(#filter-blur)'
-                }
-            }).attr('id', (e: any, i: number) => {
-                if (i === parseInt(qtInfo.Value as any)) {
-                    return 'shining'
-                }
-            });
+        }).attr('filter', (e: any, i: number) => {
+            if (i <= parseInt(qtInfo.Value as any)) {
+                return 'url(#filter-blur)'
+            }
+        }).attr('id', (e: any, i: number) => {
+            if (i === parseInt(qtInfo.Value as any)) {
+                return 'shining'
+            }
+        });
         d3.select(`#qt-${index} #title`).text('Title');
         d3.select(`#qt-${index} #percent`).text(qtInfo.Value);
     })

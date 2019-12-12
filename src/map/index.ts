@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as d3 from 'd3';
 import socketIOClient from 'socket.io-client';
-
+// import './map.scss';
 const svg = d3.select("#svg2");
 // const shanghai = svg.select("#shanghai").attr("r", "5");
 const socket = socketIOClient('http://127.0.0.1:4000');
@@ -26,12 +26,6 @@ axios.get('/api/data-screen/property-count').then((res) => {
         const cityInMap = svg.select(cityId);
         const citySize = e.area;
         let sizeDisplay = 0;
-        // if (citySize > 10000000) {
-        //     sizeDisplay = e.area / 1600000;
-        // } else {
-        //     sizeDisplay = e.area / 200000;
-        //     // cityInMap.attr('style', 'fill: #FFA820')
-        // }
         cityInMap.attr('r', '6');
         const cityInMapClone = cityInMap.clone();
 
@@ -49,9 +43,6 @@ axios.get('/api/data-screen/property-count').then((res) => {
                 .on("end", repeat);
         }
         repeat();
-
-        // }, 500)
-        // console.log(city)
     })
     // console.log(e)
 })

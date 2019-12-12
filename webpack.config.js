@@ -10,9 +10,10 @@ const host = process.env.HOST || '0.0.0.0';
 module.exports = {
     mode: 'production',
     entry: {
-        index: path.resolve(__dirname, './src/index.ts'),
-        qt: path.resolve(__dirname, "./src/qt/index.ts"),
-        map: path.resolve(__dirname, "./src/map/index.ts"),
+        // index: path.resolve(__dirname, './src/index.ts'),
+        // qt: path.resolve(__dirname, "./src/qt/index.ts"),
+        // map: path.resolve(__dirname, "./src/map/index.ts"),
+        chart2: path.resolve(__dirname, "./src/chart2/index.ts"),
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -87,19 +88,28 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(),
+        // new HtmlWebpackPlugin({
+        //     filename: 'index.html',
+        //     template: './index.html',
+        //     chunks: ['index'],
+        //     inject: true,
+        // }),
+        // new HtmlWebpackPlugin({
+        //     filename: 'qt.html',
+        //     template: './qt.html',
+        //     chunks: ['qt'],
+        //     inject: true,
+        // }),
+        // new HtmlWebpackPlugin({
+        //     filename: 'map.html',
+        //     template: './map.html',
+        //     chunks: ['map'],
+        //     inject: true,
+        // }),
         new HtmlWebpackPlugin({
-            filename: 'index.html',
-            template: './index.html',
-            inject: true,
-        }),
-        new HtmlWebpackPlugin({
-            filename: 'qt.html',
-            template: './qt.html',
-            inject: true,
-        }),
-        new HtmlWebpackPlugin({
-            filename: 'map.html',
-            template: './map.html',
+            filename: 'chart2.html',
+            template: './chart2.html',
+            chunks: ['chart2'],
             inject: true,
         }),
     ]

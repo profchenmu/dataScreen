@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#qt-body {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-content: center;
+    padding-top: 25px;
+
+    svg {
+        width: 210px;
+        height: 120px;
+    }
+}

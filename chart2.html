@@ -7,11 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        body {
+        body#chart2 {
             height: 350px;
             width: 350px;
             margin: 0;
-            background: darkblue;
+            padding-top: 20px;
+            padding-left: 20px;
+        }
+
+        .container {
+            display: flex;
+            align-content: center;
         }
 
         #main {
@@ -38,19 +44,64 @@
             height: 76px;
             width: 312px;
         }
+
+        .chart-holder {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+        }
+
+        .chart-holder p {
+            font-size: 18px;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: right;
+            width: 150px;
+            padding-top: 37px;
+            margin-bottom: 0;
+            padding-right: 20px;
+        }
+
+        .chart-holder.line-1 {
+            color: #fff;
+        }
+
+        .chart-holder.line-2 {
+            color: #fff;
+        }
+
+        .chart-holder.line-3 {
+            color: #fff;
+        }
+
+        .chart-holder.line-4 {
+            color: #fff;
+        }
     </style>
 </head>
 
-<body>
-    <div>
-        <div>
+<body id="chart2">
+    <div class="container">
+        <div class="left">
             <div id="main"></div>
         </div>
-        <div>
-            <div id="office-line"></div>
-            <div id="industry-line"></div>
-            <div id="industrial-park-line"></div>
-            <div id="retail-line"></div>
+        <div class="right">
+            <div class="chart-holder line-1">
+                <p>Office/Commercial</p>
+                <div id="office-line"></div>
+            </div>
+            <div class="chart-holder line-2">
+                <p>Industry</p>
+                <div id="industry-line"></div>
+            </div>
+            <div class="chart-holder line-3">
+                <p>Industrial Park</p>
+                <div id="industrial-park-line"></div>
+            </div>
+            <div class="chart-holder line-4">
+                <p>Retail</p>
+                <div id="retail-line"></div>
+            </div>
         </div>
     </div>
 </body>

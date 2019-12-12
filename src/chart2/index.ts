@@ -52,7 +52,7 @@ socket.on('pieMessage', (data: any) => {
             {
                 // name: 'title',
                 type: 'pie',
-                radius: ['30%', '70%'],
+                radius: ['50%', '90%'],
                 avoidLabelOverlap: false,
                 label: {
                     normal: {
@@ -87,6 +87,12 @@ socket.on('officeLineMessage', (d: any) => {
         data.push(e.Area)
     })
     const options: any = {
+        grid: {
+            x: 0,
+            y: 0,
+            x2: 0,
+            y2: 0,
+        },
         xAxis: {
             type: 'category',
             boundaryGap: false,
@@ -134,6 +140,12 @@ socket.on('industryLineMessage', (d: any) => {
         data.push(e.Area)
     })
     const options: any = {
+        grid: {
+            x: 0,
+            y: 0,
+            x2: 0,
+            y2: 0,
+        },
         xAxis: {
             type: 'category',
             boundaryGap: false,
@@ -181,6 +193,12 @@ socket.on('industrialParkLineMessage', (d: any) => {
         data.push(e.Area)
     })
     const options: any = {
+        grid: {
+            x: 0,
+            y: 0,
+            x2: 0,
+            y2: 0,
+        },
         xAxis: {
             type: 'category',
             boundaryGap: false,
@@ -228,6 +246,12 @@ socket.on('retailLineMessage', (d: any) => {
         data.push(e.Area)
     })
     const options: any = {
+        grid: {
+            x: 0,
+            y: 0,
+            x2: 0,
+            y2: 0,
+        },
         xAxis: {
             type: 'category',
             boundaryGap: false,

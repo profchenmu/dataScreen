@@ -2,7 +2,10 @@
     margin: 0;
     padding: 0;
 }
-
+html#chart1 {
+    height: 100%;
+    overflow: hidden;
+}
 body#chart1 {
     font-family: Arial, Helvetica, sans-serif;
 
@@ -45,7 +48,9 @@ body#chart1 {
         height: 186px;
         display: flex;
         padding: 10px 30px;
-        transform: scale(.9);
+        padding-left: 0;
+        transform: scale(0.86);
+        margin-right: 36px;
 
         .data-holder {
             margin-left: 25px;

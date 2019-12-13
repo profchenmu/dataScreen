@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body#chart1 {
+    font-family: Arial, Helvetica, sans-serif;
+
+
+
+    .content {
+        display: flex;
+        justify-content: space-around;
+        width: 888px;
+        flex-wrap: wrap;
+    }
+
+    .icon {
+        width: 150px;
+        height: 150px;
+    }
+
+    .office-icon {
+        background: url('../images/office.svg') 100% no-repeat;
+
+    }
+
+    .industry-icon {
+        background: url('../images/industry.svg') 100% no-repeat;
+
+    }
+
+    .park-icon {
+        background: url('../images/park.svg') 100% no-repeat;
+
+    }
+
+    .retail-icon {
+        background: url('../images/retail.svg') 100% no-repeat;
+
+    }
+
+    .chart1-datas-holder {
+        width: 369px;
+        height: 186px;
+        display: flex;
+        padding: 10px 30px;
+        transform: scale(.9);
+
+        .data-holder {
+            margin-left: 25px;
+            white-space: nowrap;
+        }
+    }
+
+    .name {
+        color: #fff;
+        font-size: 46px;
+    }
+
+    .data-count {
+        color: #ffa820;
+        font-size: 60px;
+    }
+
+    .data-area {
+        color: #00e59a;
+        font-size: 38px;
+    }
+}

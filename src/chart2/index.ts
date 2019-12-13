@@ -52,7 +52,7 @@ socket.on('pieMessage', (data: any) => {
             {
                 // name: 'title',
                 type: 'pie',
-                radius: ['50%', '90%'],
+                radius: ['30%', '90%'],
                 avoidLabelOverlap: false,
                 label: {
                     normal: {
@@ -102,11 +102,10 @@ socket.on('officeLineMessage', (d: any) => {
         yAxis: {
             show: false,
             type: 'value',
-            boundaryGap: [0, '100%']
         },
         series: [
             {
-                name: 'Office/Commercial',
+                name: 'Office',
                 type: 'line',
                 smooth: true,
                 symbol: 'none',
@@ -155,7 +154,6 @@ socket.on('industryLineMessage', (d: any) => {
         yAxis: {
             show: false,
             type: 'value',
-            boundaryGap: [0, '100%']
         },
         series: [
             {
@@ -208,7 +206,6 @@ socket.on('industrialParkLineMessage', (d: any) => {
         yAxis: {
             show: false,
             type: 'value',
-            boundaryGap: [0, '100%']
         },
         series: [
             {
@@ -261,7 +258,6 @@ socket.on('retailLineMessage', (d: any) => {
         yAxis: {
             show: false,
             type: 'value',
-            boundaryGap: [0, '100%']
         },
         series: [
             {

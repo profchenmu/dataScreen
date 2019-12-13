@@ -13,6 +13,7 @@ module.exports = {
         index: path.resolve(__dirname, './src/index.ts'),
         qt: path.resolve(__dirname, "./src/qt/index.ts"),
         map: path.resolve(__dirname, "./src/map/index.ts"),
+        chart1: path.resolve(__dirname, "./src/chart1/index.ts"),
         chart2: path.resolve(__dirname, "./src/chart2/index.ts"),
         matrix: path.resolve(__dirname, "./src/matrix/index.ts"),
     },
@@ -68,7 +69,7 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(png|jpg|gif)$/i,
+                test: /\.(png|jpg|gif|svg)$/i,
                 use: [{
                     loader: 'url-loader',
                 }]
@@ -78,10 +79,19 @@ module.exports = {
                 use: 'ts-loader',
                 exclude: /node_modules/,
             },
-            {
-                test: /\.svg$/,
-                loader: 'svg-inline-loader'
-            }
+            // {
+            //     test: /\.svg$/,
+            //     loader: 'svg-inline-loader'
+            // },
+            // {
+            //     test: /\.(html)$/,
+            //     use: {
+            //         loader: 'html-loader',
+            //         options: {
+            //             attrs: [':data-src']
+            //         }
+            //     }
+            // }
         ]
     },
     resolve: {
@@ -105,6 +115,12 @@ module.exports = {
             filename: 'map.html',
             template: './map.html',
             chunks: ['map'],
+            inject: true,
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'chart1.html',
+            template: './chart1.html',
+            chunks: ['chart1'],
             inject: true,
         }),
         new HtmlWebpackPlugin({

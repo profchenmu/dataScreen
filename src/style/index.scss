@@ -44,10 +44,10 @@ iframe {
     }
 
     .map-holder {
-        width: 922px;
+        width: 930px;
         height: 900px;
         left: 1377px;
-        top: 96px;
+        top: 30px;
         position: absolute;
     }
 
@@ -86,7 +86,6 @@ iframe {
 
                 .screen-data-holder-in {
                     position: relative;
-                    padding: 2px;
                     height: 100%;
 
                     iframe {
@@ -112,17 +111,16 @@ iframe {
         }
 
         &.data-small-1 {
-            width: 894px;
-            height: 270px;
             left: 990px;
-            top: 783px;
+            top: 666px;
+            height: auto;
 
             .screen-holder-in {
                 width: 894px;
             }
 
             .screen-data-holder {
-                height: 193px;
+                height: 312px;
                 width: 894px;
             }
         }

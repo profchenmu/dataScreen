@@ -16,6 +16,8 @@ module.exports = {
         chart1: path.resolve(__dirname, "./src/chart1/index.ts"),
         chart2: path.resolve(__dirname, "./src/chart2/index.ts"),
         matrix: path.resolve(__dirname, "./src/matrix/index.ts"),
+        logos: path.resolve(__dirname, "./src/logos/index.ts"),
+        news: path.resolve(__dirname, "./src/news/index.ts"),
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -133,6 +135,18 @@ module.exports = {
             filename: 'matrix.html',
             template: './matrix.html',
             chunks: ['matrix'],
+            inject: true,
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'logos.html',
+            template: './logos.html',
+            chunks: ['logos'],
+            inject: true,
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'news.html',
+            template: './news.html',
+            chunks: ['news'],
             inject: true,
         }),
     ]

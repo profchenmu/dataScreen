@@ -17,10 +17,13 @@ iframe {
 #index-body {
     background-color: rgba(5, 11, 32, 1);
     font-family: Arial, Helvetica, sans-serif;
+    width: 3840px;
+    height: 1080px;
+    overflow: hidden;
 
     .base-holder {
-        width: 3840px;
-        height: 1080px;
+        width: 100%;
+        height: 100%;
         background: radial-gradient(circle, rgba(0, 50, 120, 1) 0%, rgba(5, 11, 32, 1) 100%);
         position: relative;
     }
@@ -133,6 +136,10 @@ iframe {
         &.data-4 {
             left: 2908px;
             top: 564px;
+
+            .screen-data-holder {
+                padding: 30px 10px;
+            }
         }
 
         &.data-small-1 {
@@ -151,18 +158,18 @@ iframe {
         }
 
         &.data-small-2 {
-            width: 498px;
-            height: 278px;
-            left: 2354px;
-            top: 239px;
+            width: 506px;
+            height: 300px;
+            left: 2348px;
+            top: 210px;
 
             .screen-holder-in {
-                width: 498px;
+                width: 506px;
             }
 
             .screen-data-holder {
-                height: 203px;
-                width: 498px;
+                height: 224px;
+                width: 506px;
             }
         }
 

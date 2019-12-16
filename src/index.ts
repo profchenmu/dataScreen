@@ -3,6 +3,15 @@ import * as d3 from 'd3';
 import moment from 'moment';
 import socketIOClient from 'socket.io-client';
 import './style/index.scss';
+window.onload = () => {
+    const wHeight = window.innerHeight;
+    const wWidth = window.innerWidth;
+    const scale = `scale( ${wWidth / 3840}, ${wHeight / 1080})`;
+    const indexHtml = document.getElementById('index-html')
+    indexHtml.style.transform = scale;
+}
+
+
 const socket = socketIOClient('http://127.0.0.1:4000');
 type Tcount = {
     entity: string
@@ -100,6 +109,7 @@ setInterval(() => {
         }
     })
 }, 1000)
+
 
 
 

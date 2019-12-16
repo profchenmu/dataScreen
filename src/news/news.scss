@@ -5,7 +5,8 @@
 
 body#news {
     font-family: Arial, Helvetica, sans-serif;
-
+    height: 100%;
+    overflow: hidden;
     #news-container {
         height: 380px;
         // overflow: hidden;

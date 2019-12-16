@@ -7,7 +7,7 @@ window.onload = () => {
     const wHeight = window.innerHeight;
     const wWidth = window.innerWidth;
     const scale = `scale( ${wWidth / 3840}, ${wHeight / 1080})`;
-    const indexHtml = document.getElementById('index-html')
+    const indexHtml = document.getElementById('index-base')
     indexHtml.style.transform = scale;
 }
 

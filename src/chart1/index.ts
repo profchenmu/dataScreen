@@ -7,7 +7,6 @@ interface Iproperty { property_type: string, Count: number, Area: number }
 
 socket.on('propertyMessage', (data: any) => {
     const propertyData = data.message;
-    console.log(propertyData, 'propertyData')
     propertyData.forEach((e: Iproperty) => {
         switch (e.property_type) {
             case 'Office/Commercial':

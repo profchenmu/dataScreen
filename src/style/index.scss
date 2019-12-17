@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 #index-base-holder {
     position: absolute;
     width: 100%;
@@ -10,6 +11,7 @@
     left: 0;
     top: 0;
 }
+
 #index-html {
     background-color: rgba(5, 11, 32, 1);
 }
@@ -32,6 +34,7 @@ iframe {
         position: relative;
         margin-left: -1920px;
         left: 50%;
+        margin-top: -540px;
     }
 
     .transaction {
@@ -114,13 +117,50 @@ iframe {
                 top: 78px;
                 height: 410px;
                 width: 888px;
-                background: url('../images/dataBorder.png');
+                // background: url('../images/dataBorder.png');
                 background-size: 100% 100%;
                 background-repeat: no-repeat;
+                // border-width: 3px;
+                // border-style: solid;
+                // border-image-source: linear-gradient(180deg, rgba(63, 169, 245, 1) 0%, rgba(63, 169, 245, 1) 7%, rgba(0, 78, 157, 1) 7%, rgba(0, 78, 157, 0) 7%, rgba(63, 169, 245, 1) 50%, rgba(0, 78, 157, 0) 93%, rgba(63, 169, 245, 1) 93%, rgba(63, 169, 245, 1) 100%);
+                // border-image-slice: 1;
+                box-sizing: border-box;
+
+                &::after {
+                    content: '';
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    border-width: 1px;
+                    border-style: solid;
+                    border-image-source: linear-gradient(180deg, rgba(63, 169, 245, 1) 0%, rgba(63, 169, 245, 1) 7%, rgba(0, 78, 157, 1) 7%, rgba(0, 78, 157, 0) 7%, rgba(63, 169, 245, 1) 50%, rgba(0, 78, 157, 0) 93%, rgba(63, 169, 245, 1) 93%, rgba(63, 169, 245, 1) 100%);
+                    border-image-slice: 1;
+                    border-image-slice: 1 100%;
+                    box-sizing: border-box;
+                }
+
+                &::before {
+                    content: '';
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    border-width: 1px;
+                    border-style: solid;
+                    border-image-source: linear-gradient(90deg, rgba(63, 169, 245, 1) 0%, rgba(63, 169, 245, 1) 3%, rgba(0, 78, 157, 1) 3%, rgba(0, 78, 157, 0) 7%, rgba(63, 169, 245, 1) 50%, rgba(0, 78, 157, 0) 97%, rgba(63, 169, 245, 1) 97%, rgba(63, 169, 245, 1) 100%);
+                    border-image-slice: 1;
+                    border-image-slice: 100% 1;
+                    box-sizing: border-box;
+                }
 
                 .screen-data-holder-in {
                     position: relative;
                     height: 100%;
+
+
 
                     iframe {
                         height: 100%;

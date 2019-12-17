@@ -6,9 +6,10 @@ import './style/index.scss';
 window.onload = () => {
     const wHeight = window.innerHeight;
     const wWidth = window.innerWidth;
-    const scale = `scale( ${wWidth / 3840}, ${wHeight / 1080})`;
+    const scale = `scale( ${wWidth / 3840}, ${wHeight / 1080}) translateY(50%)`;
     const indexHtml = document.getElementById('index-base')
     indexHtml.style.transform = scale;
+    (window as any).needFresh = 1;
 }
 
 
@@ -35,6 +36,10 @@ interface ItransactionDataStep {
     value: string
     count: string
 }
+(window as any).needFresh = 0;
+const dataTime = d3.select('#data-time');
+const basicCountDom = d3.select('#data-basic-count');
+const basicAreaDom = d3.select('#data-basic-area');
 socket.on('transactionMessage', (data: any) => {
 
     const transactionData = data.message;
@@ -90,12 +95,16 @@ socket.on('transactionMessage', (data: any) => {
         arr.push(obj)
     }
     console.log('from server', arr)
+    if ((window as any).needFresh) {
+        basicCountDom.text(today)
+        basicAreaDom.text(todayArea.toFixed(1));
+        (window as any).needFresh = 0;
+    }
+
     window.localStorage.setItem('transactionDataStep', JSON.stringify(arr))
 })
 
-const dataTime = d3.select('#data-time');
-const basicCountDom = d3.select('#data-basic-count');
-const basicAreaDom = d3.select('#data-basic-area');
+
 
 setInterval(() => {
     const timeInfo = moment().format('YYYY-MM-DD HH:mm:ss')

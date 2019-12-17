@@ -103,7 +103,7 @@ const sHeight = newsContainer.scrollHeight;
 
 const testAnimation = () => {
     let starttime: any
-
+    const newsContainer: any = document.querySelector('#news-container')
     function moveit(timestamp: number, el: any, dist: number, duration: number) {
         //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date:
         const t = timestamp || new Date().getTime()
@@ -126,6 +126,9 @@ const testAnimation = () => {
         moveit(timestamp, newsContainer, (-sHeight + 180), 100000)
     })
 }
-testAnimation()
+setTimeout(() => {
+    testAnimation()
+}, 1000)
+
 
 

@@ -6,7 +6,7 @@ import config from '../config'
 const svg = d3.select("#svg2");
 // const shanghai = svg.select("#shanghai").attr("r", "5");
 const socket = socketIOClient(config.url);
-socket.on('message', (data: string) => { console.log(data) });
+// socket.on('message', (data: string) => { console.log(data) });
 interface dataQt {
     Entity: string,
     Value: number,

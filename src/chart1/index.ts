@@ -1,12 +1,14 @@
 import './chart1.scss';
 import socketIOClient from 'socket.io-client';
 import config from '../config';
+import axios from 'axios';
 const socket = socketIOClient(config.url);
 
 
 interface Iproperty { property_type: string, Count: number, Area: number }
+axios.get('/api/data-screen/property').then(({ data }) => {
 
-socket.on('propertyMessage', (data: any) => {
+    // socket.on('propertyMessage', (data: any) => {
     const propertyData = data.message;
     propertyData.forEach((e: Iproperty) => {
         switch (e.property_type) {

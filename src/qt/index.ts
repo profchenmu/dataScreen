@@ -13,7 +13,9 @@ interface dataQt {
     Date: Date,
 }
 const socket = socketIOClient(config.url);
-socket.on('qtMessage', (data: any) => {
+axios.get('/api/data-screen/qt').then(({ data }) => {
+
+    // socket.on('qtMessage', (data: any) => {
     const qtArr: [dataQt] = data.message;
     qtArr.forEach((ele, index) => {
         const qtInfo: dataQt = ele;

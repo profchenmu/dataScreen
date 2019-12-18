@@ -2,6 +2,7 @@ import echarts from 'echarts';
 import socketIOClient from 'socket.io-client';
 import moment from 'moment';
 import config from '../config';
+import axios from 'axios';
 // initialize echarts instance with prepared DOM
 const myChart = echarts.init(document.querySelector('#main'));
 const officeLineChart = echarts.init(document.querySelector('#office-line'));
@@ -27,7 +28,9 @@ interface Iline {
     Area: number
     unit: string
 }
-socket.on('pieMessage', (data: any) => {
+axios.get('/api/data-screen/pie').then(({ data }) => {
+
+    // socket.on('pieMessage', (data: any) => {
     const pieData: [Ipie] = data.message;
 
     const names: [string?] = []
@@ -77,9 +80,10 @@ socket.on('pieMessage', (data: any) => {
         ]
     });
 });
+axios.get('/api/data-screen/office-line').then((d) => {
 
-socket.on('officeLineMessage', (d: any) => {
-    const officeLineData: [Iline] = d.message;
+    // socket.on('officeLineMessage', (d: any) => {
+    const officeLineData: [Iline] = d.data.message;
     const date: any = []
     const data: any = []
     officeLineData.forEach((e) => {
@@ -129,9 +133,9 @@ socket.on('officeLineMessage', (d: any) => {
     officeLineChart.setOption(options);
 
 });
-
-socket.on('industryLineMessage', (d: any) => {
-    const industryLineData: [Iline] = d.message;
+axios.get('/api/data-screen/industry-line').then((d) => {
+    // socket.on('industryLineMessage', (d: any) => {
+    const industryLineData: [Iline] = d.data.message;
     const date: any = []
     const data: any = []
     industryLineData.forEach((e) => {
@@ -181,9 +185,10 @@ socket.on('industryLineMessage', (d: any) => {
     industryLineChart.setOption(options);
 
 });
+axios.get('/api/data-screen/industrial-park-line').then((d) => {
 
-socket.on('industrialParkLineMessage', (d: any) => {
-    const industrialParkLineData: [Iline] = d.message;
+    // socket.on('industrialParkLineMessage', (d: any) => {
+    const industrialParkLineData: [Iline] = d.data.message;
     const date: any = []
     const data: any = []
     industrialParkLineData.forEach((e) => {
@@ -233,9 +238,10 @@ socket.on('industrialParkLineMessage', (d: any) => {
     industrialParkLineChart.setOption(options);
 
 });
+axios.get('/api/data-screen/retail-line').then((d) => {
 
-socket.on('retailLineMessage', (d: any) => {
-    const retailLineData: [Iline] = d.message;
+    // socket.on('retailLineMessage', (d: any) => {
+    const retailLineData: [Iline] = d.data.message;
     const date: any = []
     const data: any = []
     retailLineData.forEach((e) => {

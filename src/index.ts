@@ -41,7 +41,8 @@ interface ItransactionDataStep {
 const dataTime = d3.select('#data-time');
 const basicCountDom = d3.select('#data-basic-count');
 const basicAreaDom = d3.select('#data-basic-area');
-socket.on('transactionMessage', (data: any) => {
+axios.get('/api/data-screen/transaction').then(({ data }) => {
+    // socket.on('transactionMessage', (data: any) => {
 
     const transactionData = data.message;
     const dateTodayLocal = window.localStorage.getItem('dateTodayLocal');

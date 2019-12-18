@@ -42,13 +42,12 @@ const dataTime = d3.select('#data-time');
 const basicCountDom = d3.select('#data-basic-count');
 const basicAreaDom = d3.select('#data-basic-area');
 socket.on('transactionMessage', (data: any) => {
-
     const transactionData = data.message;
     const dateTodayLocal = window.localStorage.getItem('dateTodayLocal');
     const basicCountLocal = window.localStorage.getItem('basicCountLocal');
     const basicCount = transactionData.count[0].Count;
     const dateToday = transactionData.count[0].date;
-    if (dateTodayLocal === dateToday && basicCount == basicCountLocal && window.localStorage.getItem('transactionDataStep')) {
+    if (dateTodayLocal === dateToday && basicCount == basicCountLocal && window.localStorage.getItem('transactionDataStep') && !(window as any).needFresh) {
         return;
     }
     window.localStorage.setItem('dateTodayLocal', dateToday);

@@ -1,7 +1,7 @@
 import echarts from 'echarts';
 import socketIOClient from 'socket.io-client';
 import moment from 'moment';
-
+import config from '../config';
 // initialize echarts instance with prepared DOM
 const myChart = echarts.init(document.querySelector('#main'));
 const officeLineChart = echarts.init(document.querySelector('#office-line'));
@@ -11,7 +11,7 @@ const retailLineChart = echarts.init(document.querySelector('#retail-line'));
 // draw chart
 const colorPalette = ['#00DEFF', '#FFA820', '#00E59A', 'yellow', 'red', '#efa18d', '#787464', '#cc7e63', '#724e58', '#4b565b'];
 
-const socket = socketIOClient('http://127.0.0.1:4000');
+const socket = socketIOClient(config.url);
 
 interface Ipie {
     entity: string,

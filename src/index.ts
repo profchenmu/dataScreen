@@ -2,6 +2,7 @@ import axios from 'axios';
 import * as d3 from 'd3';
 import moment from 'moment';
 import socketIOClient from 'socket.io-client';
+import config from './config'
 import './style/index.scss';
 window.onload = () => {
     const wHeight = window.innerHeight;
@@ -13,7 +14,7 @@ window.onload = () => {
 }
 
 
-const socket = socketIOClient('http://127.0.0.1:4000');
+const socket = socketIOClient(config.url);
 type Tcount = {
     entity: string
     date: Date

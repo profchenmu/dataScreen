@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as d3 from 'd3';
 import socketIOClient from 'socket.io-client';
 import './news.scss';
-const socket = socketIOClient('http://127.0.0.1:4000');
+// const socket = socketIOClient('http://127.0.0.1:4000');
 const demo = [
     {
         title: 'Lorem ipsum dolor sit amet 1',

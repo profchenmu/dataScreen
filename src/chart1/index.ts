@@ -1,6 +1,7 @@
 import './chart1.scss';
 import socketIOClient from 'socket.io-client';
-const socket = socketIOClient('http://127.0.0.1:4000');
+import config from '../config';
+const socket = socketIOClient(config.url);
 
 
 interface Iproperty { property_type: string, Count: number, Area: number }

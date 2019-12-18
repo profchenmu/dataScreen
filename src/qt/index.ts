@@ -1,6 +1,7 @@
 import axios from 'axios';
 import * as d3 from 'd3';
 import socketIOClient from 'socket.io-client';
+import config from '../config';
 import './qt.scss';
 const qtSvg = d3.select("#qt");
 // const shanghai = svg.select("#shanghai").attr("r", "5");
@@ -11,7 +12,7 @@ interface dataQt {
     unit: string,
     Date: Date,
 }
-const socket = socketIOClient('http://127.0.0.1:4000');
+const socket = socketIOClient(config.url);
 socket.on('qtMessage', (data: any) => {
     const qtArr: [dataQt] = data.message;
     qtArr.forEach((ele, index) => {

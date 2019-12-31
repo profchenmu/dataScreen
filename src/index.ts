@@ -43,11 +43,18 @@ const basicCountDom = d3.select('#data-basic-count');
 const basicAreaDom = d3.select('#data-basic-area');
 socket.on('transactionMessage', (data: any) => {
     const transactionData = data.message;
+    console.log(data, 'dddddddddd')
     const dateTodayLocal = window.localStorage.getItem('dateTodayLocal');
     const basicCountLocal = window.localStorage.getItem('basicCountLocal');
+    const areaPerSecondLocal = window.localStorage.getItem('areaPerSecondLocal');
     const basicCount = transactionData.count[0].Count;
     const dateToday = transactionData.count[0].date;
-    if (dateTodayLocal === dateToday && basicCount == basicCountLocal && window.localStorage.getItem('transactionDataStep') && !(window as any).needFresh) {
+    
+    if (dateTodayLocal === dateToday && 
+        basicCount == basicCountLocal && 
+        window.localStorage.getItem('transactionDataStep') && 
+        areaPerSecondLocal &&
+        !(window as any).needFresh) {
         return;
     }
     window.localStorage.setItem('dateTodayLocal', dateToday);
@@ -65,6 +72,7 @@ socket.on('transactionMessage', (data: any) => {
     const yesterday = count[usefulIndex].Count;
     const diffInfos = today - yesterday;
     const secondsPerDay = 28800;
+    
     const timeStep = Math.round(secondsPerDay / diffInfos);
     for (let i = 0, t = moment('09:30:00', 'HH:mm:ss'); i < diffInfos; i++) {
         t = t.add(timeStep, 'seconds');
@@ -74,6 +82,9 @@ socket.on('transactionMessage', (data: any) => {
     const todayArea = area[0].Area;
     const yesterdayArea = area[usefulIndex].Area;
     const areaDiffInfos = todayArea - yesterdayArea;
+    const areaPerSecond = (areaDiffInfos / secondsPerDay).toFixed(1);
+    window.localStorage.setItem('areaPerSecondLocal', areaPerSecond);
+    window.localStorage.setItem('areayesterdayLocal', yesterdayArea);
     for (let i = timeArr.length, j = 0, d = areaDiffInfos, y = yesterdayArea, c = yesterday; i > 0; i--) {
         if (i === 1) {
             j = todayArea - y;
@@ -104,19 +115,36 @@ socket.on('transactionMessage', (data: any) => {
     window.localStorage.setItem('transactionDataStep', JSON.stringify(arr))
 })
 
-
+// for (let i = 0, t = moment('09:30:00', 'HH:mm:ss'); i < secondsPerDay; i++) {
+//     const area = (yesterdayArea + areaPerSecond).toFixed(1);
+//     t = t.add(1, 'seconds');
+//     const obj = {
+//         time: `${moment().format('YYYY-MM-DD')} ${t.format('HH:mm:ss')}`,
+//         area
+//     }
+//     areaSteps.push(obj)
+// }
 
 setInterval(() => {
+    const areaPerSecondLocal:number = window.localStorage.getItem('areaPerSecondLocal') as any - 0;
+    const diffSeconds = moment().diff(moment('09:30:00', 'HH:mm:ss'), 'seconds')
+    const areayesterdayLocal:any = window.localStorage.getItem('areayesterdayLocal');
+    if(diffSeconds>0 && diffSeconds<=28800){
+        const displayArea = areayesterdayLocal - 0 + areaPerSecondLocal*diffSeconds;
+        console.log(areayesterdayLocal - 0, areaPerSecondLocal*diffSeconds)
+        basicAreaDom.text(displayArea);
+    }
     const timeInfo = moment().format('YYYY-MM-DD HH:mm:ss')
     dataTime.text(timeInfo)
     const transactionDataStep = JSON.parse(window.localStorage.getItem('transactionDataStep'))
     console.log('from local', transactionDataStep);
     transactionDataStep.forEach((e: ItransactionDataStep) => {
         if (e.time == timeInfo) {
-            basicAreaDom.text(e.value);
+            // basicAreaDom.text(e.value);
             basicCountDom.text(e.count);
         }
     })
+    
 }, 1000)
 
 

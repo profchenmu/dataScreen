@@ -111,7 +111,7 @@ const testAnimation = () => {
         let progress = runtime / duration
         progress = Math.min(progress, 1)
         el.style.transform = `translateY(${dist * progress}px)`
-        console.log(runtime, duration)
+        // console.log(runtime, duration)
         if (runtime < duration) {
             requestAnimationFrame(function (t) {
                 moveit(t, el, dist, duration)

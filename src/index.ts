@@ -2,8 +2,10 @@ import axios from 'axios';
 import * as d3 from 'd3';
 import moment from 'moment';
 import socketIOClient from 'socket.io-client';
-import config from './config'
+import config from './config';
+import numeral from 'numeral';
 import './style/index.scss';
+numeral.defaultFormat('0,0.0');
 window.onload = () => {
     const wHeight = window.innerHeight;
     const wWidth = window.innerWidth;
@@ -130,8 +132,8 @@ setInterval(() => {
     const diffSeconds = moment().diff(moment('09:30:00', 'HH:mm:ss'), 'seconds')
     const areayesterdayLocal:any = window.localStorage.getItem('areayesterdayLocal');
     if(diffSeconds>0 && diffSeconds<=28800){
-        const displayArea = areayesterdayLocal - 0 + areaPerSecondLocal*diffSeconds;
-        console.log(areayesterdayLocal - 0, areaPerSecondLocal*diffSeconds)
+        const area = areayesterdayLocal - 0 + areaPerSecondLocal*diffSeconds;
+        const displayArea = numeral(area).format();
         basicAreaDom.text(displayArea);
     }
     const timeInfo = moment().format('YYYY-MM-DD HH:mm:ss')
@@ -141,7 +143,8 @@ setInterval(() => {
     transactionDataStep.forEach((e: ItransactionDataStep) => {
         if (e.time == timeInfo) {
             // basicAreaDom.text(e.value);
-            basicCountDom.text(e.count);
+            const count:any = e.count;
+            basicCountDom.text(numeral(count-0).format('0,0'));
         }
     })
     

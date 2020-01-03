@@ -111,7 +111,7 @@ iframe {
         font-family: Arial, Helvetica, sans-serif;
         position: absolute;
         left: 1005px;
-        top: 400px;
+        top: 230px;
         z-index: 2;
 
         h3 {
@@ -136,26 +136,27 @@ iframe {
     .logo {
         position: absolute;
         left: 1005px;
-        top: 170px;
-        width: 488px;
-        height: 117px;
-        background: url('../images/logo-05.png') 100% no-repeat;
+        top: 70px;
+        width: 400px;
+        height: 100px;
+        background: url('../images/logo-05.png') no-repeat;
+        background-size: cover;
     }
 
     .time {
         height: 63px;
         position: absolute;
-        left: 2400px;
-        top: 200px;
+        left: 2450px;
+        top: 60px;
         color: #fff;
-        font-size: 50px;
+        font-size: 44px;
     }
 
     .map-holder {
         width: 930px;
         height: 900px;
-        left: 1400px;
-        top: 90px;
+        left: 1470px;
+        top: 10px;
         position: absolute;
 
         iframe {
@@ -267,17 +268,17 @@ iframe {
 
         &.data-small-1 {
             left: 990px;
-            top: 666px;
+            top: 562px;
             height: auto;
             z-index: 2;
 
             .screen-holder-in {
-                width: 894px;
+                width: 870px;
             }
 
             .screen-data-holder {
-                height: 312px;
-                width: 894px;
+                height: 412px;
+                width: 870px;
             }
         }
 
@@ -317,7 +318,7 @@ iframe {
             width: 596px;
             height: 231px;
             left: 2255px;
-            top: 780px;
+            top: 774px;
 
             .screen-holder-in {
                 width: 596px;

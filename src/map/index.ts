@@ -19,9 +19,9 @@ interface dataCity {
     entity: string
     unit: string
 }
-axios.get('/api/data-screen/property-count').then((res) => {
-    const { message } = res.data;
-    console.log(message)
+socket.on('propertyCountMessage', (data: any) => {
+    // propertyCountMessage
+    const { message } = data;
     message.forEach((e: dataCity) => {
         const cityId = '#' + e.city.replace(/[\ |']/g, '').toLowerCase();
         const cityInMap = svg.select(cityId);
@@ -45,5 +45,32 @@ axios.get('/api/data-screen/property-count').then((res) => {
         }
         repeat();
     })
-    // console.log(e)
 })
+
+// axios.get('/api/data-screen/property-count').then((res) => {
+//     const { message } = res.data;
+//     message.forEach((e: dataCity) => {
+//         const cityId = '#' + e.city.replace(/[\ |']/g, '').toLowerCase();
+//         const cityInMap = svg.select(cityId);
+//         const citySize = e.area;
+//         let sizeDisplay = 0;
+//         cityInMap.attr('r', '6');
+//         const cityInMapClone = cityInMap.clone();
+
+//         // setTimeout(() => {
+//         const repeat = () => {
+//             cityInMapClone
+//                 .transition()
+//                 .duration(2000)
+//                 .attr("r", "30")
+//                 .attr('fill-opacity', '0.3')
+//                 .transition()
+//                 .duration(1000)
+//                 .attr("r", "10")
+//                 .attr('fill-opacity', '0')
+//                 .on("end", repeat);
+//         }
+//         repeat();
+//     })
+//     // console.log(e)
+// })

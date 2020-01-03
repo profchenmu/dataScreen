@@ -18,7 +18,7 @@ socket.on('qtMessage', (data: any) => {
     qtArr.forEach((ele, index) => {
         const qtInfo: dataQt = ele;
         console.log(ele, 'ele');
-        const polygons: any = d3.selectAll(`#qt-${index} #datas polygon`);
+        const polygons: any = d3.selectAll(`#${ele.Entity} #datas polygon`);
         let shining: number = 0;
         polygons.attr('style', (e: any, i: number) => {
             if (i <= qtInfo.Value) {
@@ -36,8 +36,8 @@ socket.on('qtMessage', (data: any) => {
                 return 'shining'
             }
         });
-        d3.select(`#qt-${index} #title`).text('Title');
-        d3.select(`#qt-${index} #percent`).text(qtInfo.Value);
+        // d3.select(`#qt-${index} #title`).text('Title');
+        d3.select(`#${ele.Entity} #percent`).text(qtInfo.Value);
     })
 })
 

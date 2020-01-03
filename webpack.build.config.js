@@ -18,7 +18,8 @@ module.exports = {
         chart2: path.resolve(__dirname, "./src/chart2/index.ts"),
         matrix: path.resolve(__dirname, "./src/matrix/index.ts"),
         logos: path.resolve(__dirname, "./src/logos/index.ts"),
-        news: path.resolve(__dirname, "./src/news/index.ts"),
+        incremental: path.resolve(__dirname, "./src/incremental/index.ts"),
+        smallchart1: path.resolve(__dirname, "./src/smallchart1/index.ts"),
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -178,9 +179,23 @@ module.exports = {
             }
         }),
         new HtmlWebpackPlugin({
-            filename: 'news.html',
-            template: './news.html',
-            chunks: ['news'],
+            filename: 'incremental.html',
+            template: './incremental.html',
+            chunks: ['incremental'],
+            inject: true,
+            minify: {
+                collapseWhitespace: true,
+                removeComments: true,
+                removeRedundantAttributes: true,
+                removeScriptTypeAttributes: true,
+                removeStyleLinkTypeAttributes: true,
+                useShortDoctype: true
+            }
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'smallchart1.html',
+            template: './smallchart1.html',
+            chunks: ['smallchart1'],
             inject: true,
             minify: {
                 collapseWhitespace: true,

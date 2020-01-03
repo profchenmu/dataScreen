@@ -1,6 +1,7 @@
 html#matrix {
     overflow: hidden;
 }
+
 table {
     font-family: Arial, Helvetica, sans-serif;
 
@@ -8,7 +9,7 @@ table {
         width: 50px;
         font-size: 12px;
         text-align: center;
-        padding: 2px 5px;
+        padding: 6px 2px;
     }
 
     thead {
@@ -17,7 +18,7 @@ table {
 
     tbody {
         td {
-            padding: 4px 5px;
+            padding: 8px 5px;
         }
     }
 

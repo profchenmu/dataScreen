@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
 const host = process.env.HOST || '0.0.0.0';
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
 // const cssFilename = 'dist/css/[name].[contenthash:8].css';
 
 module.exports = {
@@ -79,7 +80,7 @@ module.exports = {
         extensions: ['.tsx', '.ts', '.js'],
     },
     plugins: [
-        new CleanWebpackPlugin(),
+        // new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: './index.html',
@@ -208,6 +209,10 @@ module.exports = {
         }),
         new ExtractTextPlugin({
             filename: './[name].css'
+        }),
+        new webpack.DllReferencePlugin({
+            context: __dirname,
+            manifest: require('./dist/library/library.json')
         }),
     ]
 };

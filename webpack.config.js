@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const {
     CleanWebpackPlugin
 } = require('clean-webpack-plugin');
@@ -11,14 +12,14 @@ module.exports = {
     mode: 'production',
     entry: {
         index: path.resolve(__dirname, './src/index.ts'),
-        qt: path.resolve(__dirname, "./src/qt/index.ts"),
-        map: path.resolve(__dirname, "./src/map/index.ts"),
-        chart1: path.resolve(__dirname, "./src/chart1/index.ts"),
-        chart2: path.resolve(__dirname, "./src/chart2/index.ts"),
-        matrix: path.resolve(__dirname, "./src/matrix/index.ts"),
-        logos: path.resolve(__dirname, "./src/logos/index.ts"),
-        incremental: path.resolve(__dirname, "./src/incremental/index.ts"),
-        smallchart1: path.resolve(__dirname, "./src/smallchart1/index.ts"),
+        qt: path.resolve(__dirname, './src/qt/index.ts'),
+        map: path.resolve(__dirname, './src/map/index.ts'),
+        chart1: path.resolve(__dirname, './src/chart1/index.ts'),
+        chart2: path.resolve(__dirname, './src/chart2/index.ts'),
+        matrix: path.resolve(__dirname, './src/matrix/index.ts'),
+        logos: path.resolve(__dirname, './src/logos/index.ts'),
+        incremental: path.resolve(__dirname, './src/incremental/index.ts'),
+        smallchart1: path.resolve(__dirname, './src/smallchart1/index.ts'),
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -101,7 +102,7 @@ module.exports = {
         extensions: ['.tsx', '.ts', '.js'],
     },
     plugins: [
-        new CleanWebpackPlugin(),
+        // new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: './index.html',
@@ -156,5 +157,9 @@ module.exports = {
             chunks: ['smallchart1'],
             inject: true,
         }),
+        new webpack.DllReferencePlugin({
+            context: __dirname,
+            manifest: require('./dist/library/library.json')
+        })
     ]
 };

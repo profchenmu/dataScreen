@@ -1,8 +1,6 @@
 import echarts from 'echarts';
 import socketIOClient from 'socket.io-client';
-import moment from 'moment';
 import config from '../config';
-import { style } from 'd3';
 // initialize echarts instance with prepared DOM
 const myChart = echarts.init(document.querySelector('#main'));
 // const officeLineChart = echarts.init(document.querySelector('#office-line'));

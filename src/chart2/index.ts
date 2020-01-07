@@ -96,8 +96,8 @@ socket.on('officeLineMessage', (d: any) => {
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: date,
-            show: false,
+            data: [2018, 2019, 2020],
+            show: true,
         },
         yAxis: {
             show: false,

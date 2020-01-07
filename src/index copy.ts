@@ -41,10 +41,10 @@ window.onload = () => {
     const basicAreaDom = d3.select('#data-basic-area');
     socket.on('transactionMessage', (data: any) => {
         const transactionData = data.message;
-        // const dateTodayLocal = window.localStorage.getItem('dateTodayLocal');
-        // const basicCountLocal = window.localStorage.getItem('basicCountLocal');
-        // const areaPerSecondLocal = window.localStorage.getItem('areaPerSecondLocal');
-        // const countPerSecondLocal = window.localStorage.getItem('countPerSecondLocal');
+        const dateTodayLocal = localStorage.getItem('dateTodayLocal');
+        const basicCountLocal = localStorage.getItem('basicCountLocal');
+        const areaPerSecondLocal = localStorage.getItem('areaPerSecondLocal');
+        const countPerSecondLocal = localStorage.getItem('countPerSecondLocal');
         // const basicCount = transactionData.count[0].Count;
         // const dateToday = transactionData.count[0].date;
         console.log(needFresh)
@@ -83,10 +83,10 @@ window.onload = () => {
         const areaDiffInfos = todayArea - yesterdayArea;
         const areaPerSecond = (areaDiffInfos / secondsPerDay).toFixed(1);
 
-        window.localStorage.setItem('areaPerSecondLocal', areaPerSecond);
-        window.localStorage.setItem('countPerSecondLocal', countPerSecond);
-        window.localStorage.setItem('areayesterdayLocal', yesterdayArea);
-        window.localStorage.setItem('countYesterdayLocal', yesterdayCount);
+        localStorage.setItem('areaPerSecondLocal', areaPerSecond);
+        localStorage.setItem('countPerSecondLocal', countPerSecond);
+        localStorage.setItem('areayesterdayLocal', yesterdayArea);
+        localStorage.setItem('countYesterdayLocal', yesterdayCount);
         // for (let i = timeArr.length, j = 0, d = areaDiffInfos, y = yesterdayArea, c = yesterday; i > 0; i--) {
         //     if (i === 1) {
         //         j = todayArea - y;
@@ -125,29 +125,30 @@ window.onload = () => {
     //     }
     //     areaSteps.push(obj)
     // }
-    // console.log(needFresh)
-    // if (needFresh) {
+    console.log(needFresh)
+    if (needFresh) {
 
-    //     needFresh = false;
+        needFresh = false;
 
-    //     const timeInfoTemp = moment().format('HH')
-    //     const transactionDataStep = JSON.parse(window.localStorage.getItem('transactionDataStep'));
-    //     transactionDataStep.forEach((e: any) => {
-    //         const timeTemp = moment(e.time, 'YYYY-MM-DD HH:mm:ss').format('HH')
-    //         if (timeInfoTemp == timeTemp) {
-    //             const count: any = e.count;
-    //             basicCountDom.text(numeral(count - 0).format('0,0'));
-    //         }
-    //     })
+        const timeInfoTemp = moment().format('HH')
+        const transactionDataStep = JSON.parse(window.localStorage.getItem('transactionDataStep'));
+        transactionDataStep.forEach((e: any) => {
+            const timeTemp = moment(e.time, 'YYYY-MM-DD HH:mm:ss').format('HH')
+            if (timeInfoTemp == timeTemp) {
+                const count: any = e.count;
+                basicCountDom.text(numeral(count - 0).format('0,0'));
+            }
+        })
 
-    // }
+
+
+    }
     setInterval(() => {
         const areaPerSecondLocal: number = window.localStorage.getItem('areaPerSecondLocal') as any - 0;
         const countPerSecondLocal: number = window.localStorage.getItem('countPerSecondLocal') as any - 0;
+        const diffSeconds = moment().diff(moment('09:30:00', 'HH:mm:ss'), 'seconds')
         const areayesterdayLocal: any = window.localStorage.getItem('areayesterdayLocal');
         const countYesterdayLocal: any = window.localStorage.getItem('countYesterdayLocal');
-        const diffSeconds = moment().diff(moment('09:30:00', 'HH:mm:ss'), 'seconds')
-
         if (diffSeconds > 0 && diffSeconds <= 28800) {
             const area = areayesterdayLocal - 0 + areaPerSecondLocal * diffSeconds;
             const count = countYesterdayLocal - 0 + countPerSecondLocal * diffSeconds;
@@ -158,7 +159,7 @@ window.onload = () => {
         }
         const timeInfo = moment().format('YYYY-MM-DD HH:mm:ss')
         dataTime.text(timeInfo)
-        // const transactionDataStep = JSON.parse(window.localStorage.getItem('transactionDataStep'))
+        const transactionDataStep = JSON.parse(window.localStorage.getItem('transactionDataStep'))
 
         // transactionDataStep.forEach((e: ItransactionDataStep) => {
         //     if (e.time == timeInfo) {

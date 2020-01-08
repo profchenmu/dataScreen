@@ -2,10 +2,12 @@
     margin: 0;
     padding: 0;
 }
+
 html#chart1 {
     height: 100%;
     overflow: hidden;
 }
+
 body#chart1 {
     font-family: Arial, Helvetica, sans-serif;
 
@@ -64,12 +66,12 @@ body#chart1 {
     }
 
     .data-count {
-        color: #ffa820;
+        color: #00AED6;
         font-size: 60px;
     }
 
     .data-area {
-        color: #00e59a;
+        color: #00FFFF;
         font-size: 38px;
     }
 }

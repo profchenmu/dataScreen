@@ -15,84 +15,70 @@ const socket = socketIOClient(config.url);
 // var myChart = echarts.init(dom);
 var app = {};
 let option: any = null;
-option = {
-    color: colorPalette,
-    // tooltip: {
-    //     trigger: 'axis',
-    //     axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-    //         type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-    //     }
-    // },
-    grid: {
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: '15px',
-        containLabel: true,
-        show: false
-    },
-    // xAxis: {
-    //     data: ['East', 'South', 'North', 'West', 'Hong Kong'],
-    //     name: 'X Axis',
-    //     axisLine: { onZero: true },
-    //     splitLine: { show: false },
-    //     splitArea: { show: false }
-    // },
-    xAxis: {
-        data: ['East', 'South', 'North', 'West', 'Hong Kong'],
-        axisLabel: {
-            inside: false,
-            textStyle: {
+socket.on('lineDataMessage', (d: any) => {
+    const data = d.message.map((e: any) => {
+        return e.Value;
+    });
+
+    option = {
+        grid: {
+            top: 10,
+            left: 5,
+            right: 5,
+            bottom: 0,
+            containLabel: true,
+            show: false
+        },
+        xAxis: {
+            type: 'category',
+            data: ['18Q3', '', '', '18Q4', '', '', '19Q1', '', '', '19Q2', '', '', '19Q3', '', '', '19Q4'],
+            splitLine: {
+                show: false
+            },
+            axisLabel: {
                 color: '#fff'
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#fff'
+                }
+            },
+            axisTick: {
+                lineStyle: {
+                    color: '#fff'
+                }
             }
         },
-        axisTick: {
-            show: false
+        yAxis: {
+            type: 'value',
+            splitLine: {
+                show: false,
+            },
+            axisLabel: {
+                color: '#fff'
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#fff'
+                }
+            },
+            axisTick: {
+                lineStyle: {
+                    color: '#fff'
+                }
+            },
+
         },
-        axisLine: {
-            show: false
-        },
-        z: 10
-    },
-    yAxis: {
-        show: false,
-        axisLine: {
-            show: false
-        },
-        axisTick: {
-            show: false
-        },
-        axisLabel: {
-            textStyle: {
-                color: '#999'
-            }
-        }
-    },
-    series: [
-        {
-            name: '直接访问',
-            type: 'bar',
-            barWidth: '60%',
-            stack: 'one',
-            data: [62, 5, 5, 1, 5],
-            // itemStyle: {
-            //     color: colorPalette[0]
-            // }
-        },
-        {
-            name: 'bar3',
-            type: 'bar',
-            stack: 'one',
-            barWidth: '60%',
-            // emphasis: emphasisStyle,
-            data: [12, 10, 7, 9, 1],
-            // itemStyle: {
-            //     color: colorPalette[1]
-            // }
-        },
-    ]
-};
-;
-// if (option && typeof option === "object") {
-myChart.setOption(option, true);
-// }
+        series: [{
+            data: data,
+            type: 'line',
+            itemStyle: {
+                color: '#00ffff'
+            },
+        }]
+    };
+    // if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+
+    // }
+})

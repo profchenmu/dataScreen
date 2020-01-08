@@ -13,7 +13,7 @@
 }
 
 #index-html {
-    background-color: rgba(5, 11, 32, 1);
+    background-color: #000;
 }
 
 .data-screen-title {
@@ -27,53 +27,53 @@
 
     #bottom-line {
         position: absolute;
-        height: 1px;
+        height: 2px;
         width: 50%;
         left: 25%;
         bottom: 16px;
         // background: #00d4ff;
-        background: linear-gradient(90deg, rgba(0, 222, 254, 1) 20%, rgba(255, 255, 255, 1) 50%, rgba(0, 222, 254, 1) 80%);
+        background: linear-gradient(90deg, #fff 20%, rgba(255, 255, 255, 1) 50%, #fff 80%);
         // background: linear-gradient(90deg, rgba(0, 222, 254, 1) 20%, rgba(0, 222, 254, 1) 44%, rgba(255, 255, 255, 1) 45%, rgba(255, 255, 255, 1) 55%, rgba(0, 222, 254, 1) 56%, rgba(0, 222, 254, 1) 80%);
     }
 
     #left-middle-line {
         position: absolute;
-        height: 1px;
+        height: 2px;
         width: 4%;
         left: 22%;
         top: 70px;
-        background: #00d4ff;
+        background: #fff;
         transform: rotateZ(60deg);
     }
 
     #right-middle-line {
         position: absolute;
-        height: 1px;
+        height: 2px;
         width: 4%;
         right: 22%;
         top: 70px;
-        background: #00d4ff;
+        background: #fff;
         transform: rotateZ(-60deg);
     }
 
     #left-line {
         position: absolute;
-        height: 1px;
+        height: 2px;
         width: 23%;
         left: 0;
         top: 36px;
         // background: #00d4ff;
-        background: linear-gradient(90deg, rgba(9, 9, 121, 0) 0%, rgba(0, 212, 255, 1) 68%, rgba(0, 212, 255, 1) 100%);
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #fff 68%, #fff 100%);
     }
 
     #right-line {
         position: absolute;
-        height: 1px;
+        height: 2px;
         width: 23%;
         right: 0;
         top: 36px;
         // background: #00d4ff;
-        background: linear-gradient(90deg, rgba(9, 9, 121, 0) 0%, rgba(0, 212, 255, 1) 68%, rgba(0, 212, 255, 1) 100%);
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #fff 68%, #fff 100%);
         transform: rotateZ(180deg);
     }
 
@@ -82,7 +82,7 @@
         color: #00DEFE;
         width: 60%;
         margin-left: 20%;
-        // background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.2) 0%, rgba(9, 9, 121, 0) 60%);
+        // background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 60%);
     }
 }
 
@@ -93,14 +93,14 @@ iframe {
 }
 
 #index-body {
-    background-color: rgba(5, 11, 32, 1);
+    background-color: #000;
     font-family: Arial, Helvetica, sans-serif;
     overflow: hidden;
 
     .base-holder {
         width: 3840px;
         height: 1080px;
-        background: radial-gradient(circle, rgba(0, 50, 120, 1) 0%, rgba(5, 11, 32, 1) 100%);
+        background: radial-gradient(circle, #001323 0%, #000 100%);
         position: relative;
         margin-left: -1920px;
         left: 50%;
@@ -116,7 +116,7 @@ iframe {
 
         h3 {
             color: #fff;
-            font-size: 41px;
+            font-size: 36px;
         }
 
         p {
@@ -127,7 +127,7 @@ iframe {
             }
 
             &.transaction-area-holder {
-                color: #00e59a;
+                color: #00ffff;
             }
         }
 
@@ -155,13 +155,10 @@ iframe {
     .map-holder {
         width: 930px;
         height: 900px;
-        left: 1470px;
-        top: 10px;
+        left: 1300px;
+        top: -40px;
         position: absolute;
-
-        iframe {
-            transform: scale(.8);
-        }
+        transform: scale(0.7);
     }
 
     .screen-holder {
@@ -211,9 +208,9 @@ iframe {
                     position: absolute;
                     top: 0;
                     left: 0;
-                    border-width: 1px;
+                    border-width: 2px;
                     border-style: solid;
-                    border-image-source: linear-gradient(180deg, rgba(63, 169, 245, 1) 0%, rgba(63, 169, 245, 1) 7%, rgba(0, 78, 157, 1) 7%, rgba(0, 78, 157, 0) 7%, rgba(63, 169, 245, 1) 50%, rgba(0, 78, 157, 0) 93%, rgba(63, 169, 245, 1) 93%, rgba(63, 169, 245, 1) 100%);
+                    border-image-source: linear-gradient(180deg, #fff 0%, #fff 7%, #fff 7%, rgba(0, 78, 157, 0) 7%, #fff 50%, rgba(0, 78, 157, 0) 93%, #fff 93%, #fff 100%);
                     border-image-slice: 1;
                     border-image-slice: 1 100%;
                     box-sizing: border-box;
@@ -226,9 +223,9 @@ iframe {
                     position: absolute;
                     top: 0;
                     left: 0;
-                    border-width: 1px;
+                    border-width: 2px;
                     border-style: solid;
-                    border-image-source: linear-gradient(90deg, rgba(63, 169, 245, 1) 0%, rgba(63, 169, 245, 1) 3%, rgba(0, 78, 157, 1) 3%, rgba(0, 78, 157, 0) 7%, rgba(63, 169, 245, 1) 50%, rgba(0, 78, 157, 0) 97%, rgba(63, 169, 245, 1) 97%, rgba(63, 169, 245, 1) 100%);
+                    border-image-source: linear-gradient(90deg, #fff 0%, #fff 3%, #fff 3%, rgba(255, 255, 255, 0) 7%, #fff 50%, rgba(255, 255, 255, 0) 97%, #fff 97%, #fff 100%);
                     border-image-slice: 1;
                     border-image-slice: 100% 1;
                     box-sizing: border-box;
@@ -279,38 +276,39 @@ iframe {
             .screen-data-holder {
                 height: 412px;
                 width: 870px;
+                padding-right: 5px;
             }
         }
 
         &.data-small-2 {
-            width: 506px;
+            width: 750px;
             height: 300px;
-            left: 2348px;
+            left: 2100px;
             top: 210px;
 
             .screen-holder-in {
-                width: 506px;
+                width: 100%;
             }
 
             .screen-data-holder {
                 height: 224px;
-                width: 506px;
+                width: 100%;
             }
         }
 
         &.data-small-3 {
-            width: 596px;
+            width: 922px;
             height: 231px;
-            left: 2255px;
+            left: 1930px;
             top: 567px;
 
             .screen-holder-in {
-                width: 596px;
+                width: 100%;
             }
 
             .screen-data-holder {
                 height: 158px;
-                width: 596px;
+                width: 100%;
             }
         }
 

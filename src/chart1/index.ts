@@ -6,7 +6,7 @@ numeral.defaultFormat('0,0');
 const socket = socketIOClient(config.url);
 
 
-interface Iproperty { property_type: string, Count: number, Area: number }
+interface Iproperty { property_type: string, Count: number, Area: number, Value: number }
 
 socket.on('propertyMessage', (data: any) => {
     const propertyData = data.message;
@@ -17,11 +17,11 @@ socket.on('propertyMessage', (data: any) => {
                 document.querySelector('#chart1-office-data .count').innerHTML = numeral(e.Count).format();
                 document.querySelector('#chart1-office-data .area').innerHTML = numeral(e.Area).format();
                 break;
-            case 'Industry':
+            case 'Industrial':
                 document.querySelector('#chart1-industry-data .count').innerHTML = numeral(e.Count).format();
                 document.querySelector('#chart1-industry-data .area').innerHTML = numeral(e.Area).format();
                 break;
-            case 'Industrial Park':
+            case 'Business Park':
                 document.querySelector('#chart1-park-data .count').innerHTML = numeral(e.Count).format();
                 document.querySelector('#chart1-park-data .area').innerHTML = numeral(e.Area).format();
                 break;

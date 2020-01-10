@@ -3,7 +3,7 @@ import socketIOClient from 'socket.io-client';
 import moment from 'moment';
 import config from '../config';
 // initialize echarts instance with prepared DOM
-const myChart = echarts.init(document.querySelector('#main'));
+// const myChart = echarts.init(document.querySelector('#main'));
 const officeLineChart = echarts.init(document.querySelector('#office-line'));
 const industryLineChart = echarts.init(document.querySelector('#industry-line'));
 const industrialParkLineChart = echarts.init(document.querySelector('#industrial-park-line'));
@@ -63,76 +63,84 @@ socket.on('pieMessage', (data: any) => {
             }
         }
     })
-    myChart.setOption({
-        legend: {
-            show: false,
-            orient: 'vertical',
-            // x: 'left',
-            data: names
-        },
-        series: [
-            {
-                // name: 'title',
-                type: 'pie',
-                radius: ['30%', '90%'],
-                avoidLabelOverlap: false,
-                label: {
-                    normal: {
-                        show: false,
-                        position: 'center'
-                    },
-                    emphasis: {
-                        show: false,
-                        textStyle: {
-                            fontSize: '30',
-                            fontWeight: 'bold'
-                        }
-                    }
-                },
-                labelLine: {
-                    normal: {
-                        show: false
-                    }
-                },
-                data: displayData
-            }
-        ]
-    });
+    // myChart.setOption({
+    //     legend: {
+    //         show: false,
+    //         orient: 'vertical',
+    //         // x: 'left',
+    //         data: names
+    //     },
+    //     series: [
+    //         {
+    //             // name: 'title',
+    //             type: 'pie',
+    //             radius: ['30%', '90%'],
+    //             avoidLabelOverlap: false,
+    //             label: {
+    //                 normal: {
+    //                     show: false,
+    //                     position: 'center'
+    //                 },
+    //                 emphasis: {
+    //                     show: false,
+    //                     textStyle: {
+    //                         fontSize: '30',
+    //                         fontWeight: 'bold'
+    //                     }
+    //                 }
+    //             },
+    //             labelLine: {
+    //                 normal: {
+    //                     show: false
+    //                 }
+    //             },
+    //             data: displayData
+    //         }
+    //     ]
+    // });
 });
 
 socket.on('officeLineMessage', (d: any) => {
     const officeLineData: [Iline] = d.message;
     const date: any = []
     const data: any = []
-    officeLineData.forEach((e) => {
-        date.push(moment(e.date).format('YYYY'));
+    officeLineData.forEach((e: any, i: number) => {
+        date.push(moment(e.Month, 'YYYY-MM').format('YYYY'));
+        // if (i === 0 || i === officeLineData.length - 1) {
+        //     date.push(moment(e.Month, 'YYYY-MM').format('YYYY'));
+        // } else {
+        //     date.push('')
+        // }
+
         data.push(e.Area)
     })
     const mock = [120, 145, 166, 177, 200, 223, 555, 666];
-    const mockDate = mock.map((e, i) => {
-        if (i === 0) {
-            return '2018'
-        } else if (i === mock.length - 1) {
-            return '2020'
-        } else {
-            return ''
-        }
-    })
+    // const mockDate = officeLineData.map((e: any, i: number) => {
+    //     // if (i === 0 || i === data.length - 1) {
+    //     //     return moment(e.Month, 'YYYY-MM').format('YYYY')
+    //     // } else {
+    //     //     return ''
+    //     // }
+    //     return moment(e.Month, 'YYYY-MM').format('YYYY')
+    //     // return e.Month;
+    // })
+    console.log(date, data)
     const options: any = {
         grid: {
             top: 0,
-            // left: 0,
+            left: 0,
             // right: 0,
             bottom: 0,
+            // bottom: '10px',
             containLabel: true,
             show: false
         },
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: mockDate,
+            data: date,
             show: true,
-            splitNumber: 1,
+            // splitNumber: 1,
             axisLine: {
                 show: false,
                 onZero: false,
@@ -149,17 +157,17 @@ socket.on('officeLineMessage', (d: any) => {
         },
         yAxis: {
             show: false,
-            splitNumber: 1,
-            axisLabel: {
-                inside: true,
-            },
-            axisLine: {
-                show: true,
-                onZero: false,
-            },
-            splitLine: {
-                show: false
-            },
+            // splitNumber: 1,
+            // axisLabel: {
+            //     inside: true,
+            // },
+            // axisLine: {
+            //     show: true,
+            //     onZero: false,
+            // },
+            // splitLine: {
+            //     show: false
+            // },
             type: 'value',
         },
         series: [
@@ -188,7 +196,7 @@ socket.on('officeLineMessage', (d: any) => {
                         color: 'rgba(0, 222, 255, 0.7)'
                     }])
                 },
-                data: mock
+                data: data
             }
         ]
     }
@@ -201,24 +209,29 @@ socket.on('industryLineMessage', (d: any) => {
     const industryLineData: [Iline] = d.message;
     const date: any = []
     const data: any = []
-    industryLineData.forEach((e) => {
-        date.push(moment(e.date).format('YYYY/MM/DD'));
-        data.push(e.Value)
+    industryLineData.forEach((e: any, i: number) => {
+        date.push(moment(e.Month, 'YYYY-MM').format('YYYY'));
+        // if (i === 0 || i === industryLineData.length - 1) {
+        //     date.push(moment(e.Month, 'YYYY-MM').format('YYYY'));
+        // } else {
+        //     date.push('')
+        // }
+        data.push(e.Area)
     })
     const mock = [1206, 1457, 1663, 1774, 2005, 2236, 5557, 6666];
-    const mockDate = mock.map((e, i) => {
-        if (i === 0) {
-            return '2018'
-        } else if (i === mock.length - 1) {
-            return '2020'
-        } else {
-            return ''
-        }
-    })
+
+    // const mockDate = industryLineData.map((e: any, i: number) => {
+    //     if (i === 0 || i === industryLineData.length - 2) {
+    //         return moment(e.Month, 'YYYY-MM').format('YYYY')
+    //     } else {
+    //         return ''
+    //     }
+    // })
+    // console.log(data, mockDate, industryLineData)
     const options: any = {
         grid: {
             top: 0,
-            // left: 0,
+            left: 0,
             // right: 0,
             bottom: 0,
             containLabel: true,
@@ -227,9 +240,9 @@ socket.on('industryLineMessage', (d: any) => {
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: mockDate,
+            data: date,
             show: true,
-            splitNumber: 1,
+            // splitNumber: 1,
             axisLine: {
                 show: false,
                 onZero: false,
@@ -246,17 +259,17 @@ socket.on('industryLineMessage', (d: any) => {
         },
         yAxis: {
             show: false,
-            splitNumber: 1,
-            axisLabel: {
-                inside: true,
-            },
-            axisLine: {
-                show: true,
-                onZero: false,
-            },
-            splitLine: {
-                show: false
-            },
+            // splitNumber: 1,
+            // axisLabel: {
+            //     inside: true,
+            // },
+            // axisLine: {
+            //     show: true,
+            //     onZero: false,
+            // },
+            // splitLine: {
+            //     show: false
+            // },
             type: 'value',
         },
         series: [
@@ -285,7 +298,7 @@ socket.on('industryLineMessage', (d: any) => {
                         color: 'rgba(0, 174, 214, 0.7)'
                     }])
                 },
-                data: mock
+                data: data
             }
         ]
     }
@@ -297,35 +310,40 @@ socket.on('industrialParkLineMessage', (d: any) => {
     const industrialParkLineData: [Iline] = d.message;
     const date: any = []
     const data: any = []
-    industrialParkLineData.forEach((e) => {
-        date.push(moment(e.date).format('YYYY/MM/DD'));
-        data.push(e.Value)
+    industrialParkLineData.forEach((e: any, i: number) => {
+        date.push(moment(e.Month, 'YYYY-MM').format('YYYY'));
+        // if (i === 0 || i === industrialParkLineData.length - 1) {
+        //     date.push(moment(e.Month, 'YYYY-MM').format('YYYY'));
+        // } else {
+        //     date.push('')
+        // }
+        data.push(e.Area)
     })
     const mock = [12077, 14577, 16666, 17766, 20066, 22366, 55566, 66666];
-    const mockDate = mock.map((e, i) => {
-        if (i === 0) {
-            return '2018'
-        } else if (i === mock.length - 1) {
-            return '2020'
-        } else {
-            return ''
-        }
-    })
+    // const mockDate = industrialParkLineData.map((e: any, i: number) => {
+    //     if (i === 0 || i === industrialParkLineData.length - 1) {
+    //         return moment(e.Month, 'YYYY-MM').format('YYYY')
+    //     } else {
+    //         return ''
+    //     }
+    // })
+    // console.log(data, mockDate, industrialParkLineData)
     const options: any = {
         grid: {
             top: 0,
-            // left: 0,
+            left: 0,
             // right: 0,
             bottom: 0,
+            // bottom: '10px',
             containLabel: true,
             show: false
         },
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: mockDate,
+            data: date,
             show: true,
-            splitNumber: 1,
+            // splitNumber: 1,
             axisLine: {
                 show: false,
                 onZero: false,
@@ -342,17 +360,17 @@ socket.on('industrialParkLineMessage', (d: any) => {
         },
         yAxis: {
             show: false,
-            splitNumber: 1,
-            axisLabel: {
-                inside: true,
-            },
-            axisLine: {
-                show: true,
-                onZero: false,
-            },
-            splitLine: {
-                show: false
-            },
+            // splitNumber: 1,
+            // axisLabel: {
+            //     inside: true,
+            // },
+            // axisLine: {
+            //     show: true,
+            //     onZero: false,
+            // },
+            // splitLine: {
+            //     show: false
+            // },
             type: 'value',
         },
         series: [
@@ -381,7 +399,7 @@ socket.on('industrialParkLineMessage', (d: any) => {
                         color: 'rgba(0, 121, 175, 0.7)'
                     }])
                 },
-                data: mock
+                data: data
             }
         ]
     }
@@ -393,35 +411,39 @@ socket.on('retailLineMessage', (d: any) => {
     const retailLineData: [Iline] = d.message;
     const date: any = []
     const data: any = []
-    retailLineData.forEach((e) => {
-        date.push(moment(e.date).format('YYYY/MM/DD'));
-        data.push(e.Value)
+    retailLineData.forEach((e: any, i: number) => {
+        date.push(moment(e.Month, 'YYYY-MM').format('YYYY'));
+        // if (i === 0 || i === retailLineData.length - 1) {
+        //     date.push(moment(e.Month, 'YYYY-MM').format('YYYY'));
+        // } else {
+        //     date.push('')
+        // }
+        data.push(e.Area)
     })
     const mock = [120, 145, 166, 177, 200, 223, 555, 666];
-    const mockDate = mock.map((e, i) => {
-        if (i === 0) {
-            return '2018'
-        } else if (i === mock.length - 1) {
-            return '2020'
-        } else {
-            return ''
-        }
-    })
+    // const mockDate = retailLineData.map((e: any, i) => {
+    //     if (i === 0 || i === retailLineData.length - 1) {
+    //         return moment(e.Month, 'YYYY-MM').format('YYYY')
+    //     } else {
+    //         return ''
+    //     }
+    // })
     const options: any = {
         grid: {
             top: 0,
-            // left: 0,
+            left: 0,
             // right: 0,
             bottom: 0,
+            // bottom: '10px',
             containLabel: true,
             show: false
         },
         xAxis: {
             type: 'category',
             boundaryGap: false,
-            data: mockDate,
+            data: date,
             show: true,
-            splitNumber: 1,
+            // splitNumber: 1,
             axisLine: {
                 show: false,
                 onZero: false,
@@ -438,17 +460,17 @@ socket.on('retailLineMessage', (d: any) => {
         },
         yAxis: {
             show: false,
-            splitNumber: 1,
-            axisLabel: {
-                inside: true,
-            },
-            axisLine: {
-                show: true,
-                onZero: false,
-            },
-            splitLine: {
-                show: false
-            },
+            // splitNumber: 1,
+            // axisLabel: {
+            //     inside: true,
+            // },
+            // axisLine: {
+            //     show: true,
+            //     onZero: false,
+            // },
+            // splitLine: {
+            //     show: false
+            // },
             type: 'value',
         },
         series: [
@@ -477,7 +499,7 @@ socket.on('retailLineMessage', (d: any) => {
                         color: 'rgba(0, 85, 137, 0.7)'
                     }])
                 },
-                data: mock
+                data: data
             }
         ]
     }

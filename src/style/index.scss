@@ -210,7 +210,7 @@ iframe {
                     left: 0;
                     border-width: 2px;
                     border-style: solid;
-                    border-image-source: linear-gradient(180deg, #fff 0%, #fff 7%, #fff 7%, rgba(0, 78, 157, 0) 7%, #fff 50%, rgba(0, 78, 157, 0) 93%, #fff 93%, #fff 100%);
+                    border-image-source: linear-gradient(180deg, #fff 0%, #fff 7%, rgba(0, 78, 157, 0) 7%, rgba(0, 78, 157, 0) 7%, #fff 50%, rgba(0, 78, 157, 0) 93%, #fff 93%, #fff 100%);
                     border-image-slice: 1;
                     border-image-slice: 1 100%;
                     box-sizing: border-box;

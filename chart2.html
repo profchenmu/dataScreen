@@ -8,11 +8,12 @@
     <title>Document</title>
     <style>
         body#chart2 {
-            height: 350px;
-            width: 350px;
+            /* height: 350px;
+            width: 350px; */
             margin: 0;
-            padding-top: 20px;
-            padding-left: 20px;
+            /* padding-top: 20px;
+            padding-left: 20px; */
+            background: #000;
         }
 
         .container {
@@ -20,47 +21,54 @@
             align-content: center;
         }
 
-        #main {
+        /* #main {
             height: 370px;
             width: 370px;
-        }
+        } */
 
         #office-line {
-            height: 76px;
-            width: 312px;
+            height: 130px;
+            width: 100%;
         }
 
         #industry-line {
-            height: 76px;
-            width: 312px;
+            height: 130px;
+            width: 100%;
         }
 
-        .right {
+        /* .right {
             margin-left: -40px;
-        }
+        } */
 
         #industrial-park-line {
-            height: 76px;
-            width: 312px;
+            height: 130px;
+            width: 100%;
         }
 
         #retail-line {
-            height: 76px;
-            width: 312px;
+            height: 130px;
+            width: 100%;
+        }
+
+        .right {
+            display: flex;
+            position: relative;
+            flex-wrap: wrap;
+            width: 888px;
         }
 
         .chart-holder {
-            display: flex;
+            /* display: flex;
             justify-content: center;
             align-content: center;
-            align-items: center;
+            align-items: center; */
         }
 
         .chart-holder p {
             font-size: 26px;
             font-family: Arial, Helvetica, sans-serif;
-            text-align: right;
-            width: 170px;
+            /* text-align: right; */
+            width: 100%;
             padding-top: 0;
             margin-bottom: 0;
             padding-right: 20px;
@@ -71,18 +79,22 @@
         }
 
         .chart-holder.line-1 {
+            width: 50%;
             color: #fff;
         }
 
         .chart-holder.line-2 {
+            width: 50%;
             color: #fff;
         }
 
         .chart-holder.line-3 {
+            width: 50%;
             color: #fff;
         }
 
         .chart-holder.line-4 {
+            width: 50%;
             color: #fff;
         }
     </style>
@@ -90,24 +102,24 @@
 
 <body id="chart2">
     <div class="container">
-        <div class="left">
+        <!-- <div class="left">
             <div id="main"></div>
-        </div>
+        </div> -->
         <div class="right">
             <div class="chart-holder line-1">
-                <p>Office<br /><span id="office-percent">25%</span></p>
+                <p>Office | <span id="office-percent">25%</span></p>
                 <div id="office-line"></div>
             </div>
             <div class="chart-holder line-2">
-                <p>Industrial<br /><span id="industry-percent">25%</span></p>
+                <p>Industrial | <span id="industry-percent">25%</span></p>
                 <div id="industry-line"></div>
             </div>
             <div class="chart-holder line-4">
-                <p>Retail<br /><span id="retail-percent">25%</span></p>
+                <p>Retail | <span id="retail-percent">25%</span></p>
                 <div id="retail-line"></div>
             </div>
             <div class="chart-holder line-3">
-                <p>Business Park<br /><span id="industrial-park-percent">25%</span></p>
+                <p>Business Park | <span id="industrial-park-percent">25%</span></p>
                 <div id="industrial-park-line"></div>
             </div>
         </div>

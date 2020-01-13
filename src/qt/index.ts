@@ -13,6 +13,8 @@ interface dataQt {
     Date: Date,
 }
 const socket = socketIOClient(config.url);
+socket.emit('cliStart', { cliRequire: 'qtMessage' });
+
 socket.on('qtMessage', (data: any) => {
     const qtArr: [dataQt] = data.message;
     qtArr.forEach((ele, index) => {

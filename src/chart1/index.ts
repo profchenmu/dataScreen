@@ -7,6 +7,7 @@ const socket = socketIOClient(config.url);
 
 
 interface Iproperty { property_type: string, Count: number, Area: number, Value: number }
+socket.emit('cliStart', { cliRequire: 'propertyMessage' });
 
 socket.on('propertyMessage', (data: any) => {
     const propertyData = data.message;

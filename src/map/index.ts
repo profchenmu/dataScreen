@@ -19,6 +19,8 @@ interface dataCity {
     entity: string
     unit: string
 }
+socket.emit('cliStart', { cliRequire: 'propertyCountMessage' });
+
 socket.on('propertyCountMessage', (data: any) => {
     // propertyCountMessage
     const { message } = data;

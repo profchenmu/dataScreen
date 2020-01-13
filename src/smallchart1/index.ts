@@ -15,6 +15,8 @@ const socket = socketIOClient(config.url);
 // var myChart = echarts.init(dom);
 var app = {};
 let option: any = null;
+socket.emit('cliStart', { cliRequire: 'lineDataMessage' });
+
 socket.on('lineDataMessage', (d: any) => {
     const data = d.message.map((e: any) => {
         return e.Value;

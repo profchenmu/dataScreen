@@ -61,17 +61,20 @@ body#chart1 {
     }
 
     .name {
-        color: #fff;
+        font-family: 'Times New Roman', Times, serif;
+        color: #e30613;
         font-size: 46px;
+        font-style: italic;
     }
 
     .data-count {
-        color: #00AED6;
+        color: #f6f5f1;
         font-size: 60px;
     }
 
     .data-area {
-        color: #00FFFF;
+        color: #d8d9d9;
         font-size: 38px;
     }
+
 }

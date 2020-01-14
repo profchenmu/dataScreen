@@ -24,20 +24,25 @@ socket.on('qtMessage', (data: any) => {
         let shining: number = 0;
         polygons.attr('style', (e: any, i: number) => {
             if (i <= qtInfo.Value) {
-                const opacity: number = i / qtInfo.Value;
-                return `fill: #42FBFA; opacity: ${opacity}`;
+                //     const opacity: number = i / qtInfo.Value;
+                //     return `fill: #42FBFA; opacity: ${opacity}`;
+                return 'fill: #e30613; opacity: 1'
             } else {
-                return 'fill: #0055be; opacity: 1';
+                //     return 'fill: #0055be; opacity: 1';
+                return 'fill: #b1b2b4; opacity: 1';
             }
-        }).attr('filter', (e: any, i: number) => {
-            if (i <= parseInt(qtInfo.Value as any)) {
-                return 'url(#filter-blur)'
-            }
-        }).attr('id', (e: any, i: number) => {
-            if (i === parseInt(qtInfo.Value as any)) {
-                return 'shining'
-            }
-        });
+
+        })
+            // .attr('filter', (e: any, i: number) => {
+            //     if (i <= parseInt(qtInfo.Value as any)) {
+            //         return 'url(#filter-blur)'
+            //     }
+            // })
+            .attr('id', (e: any, i: number) => {
+                if (i === parseInt(qtInfo.Value as any)) {
+                    return 'shining'
+                }
+            });
         // d3.select(`#qt-${index} #title`).text('Title');
         d3.select(`#${ele.Entity} #percent`).text(qtInfo.Value);
     })

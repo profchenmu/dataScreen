@@ -75,7 +75,7 @@ socket.on('lineDataMessage', (d: any) => {
             data: data,
             type: 'line',
             itemStyle: {
-                color: '#00ffff'
+                color: '#e30613'
             },
         }]
     };

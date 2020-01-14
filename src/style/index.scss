@@ -79,7 +79,7 @@
 
     h1 {
         font-size: 50px;
-        color: #00DEFE;
+        color: #fff;
         width: 60%;
         margin-left: 20%;
         // background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 60%);
@@ -100,7 +100,8 @@ iframe {
     .base-holder {
         width: 3840px;
         height: 1080px;
-        background: radial-gradient(circle, #001323 0%, #000 100%);
+        // background: radial-gradient(circle, #001323 0%, #000 100%);
+        background: #000;
         position: relative;
         margin-left: -1920px;
         left: 50%;
@@ -123,11 +124,20 @@ iframe {
             font-size: 56px;
 
             &.transaction-count-holder {
-                color: #00ffff;
+                // font-size: 36px;
+                font-family: 'Times New Roman', Times, serif;
+                font-style: italic;
+                font-weight: 100;
+                color: #e30613;
+                // color: #00ffff;
             }
 
             &.transaction-area-holder {
-                color: #00ffff;
+                // color: #00ffff;
+                font-family: 'Times New Roman', Times, serif;
+                font-style: italic;
+                font-weight: 100;
+                color: #e30613;
             }
         }
 
@@ -174,14 +184,36 @@ iframe {
             height: 68px;
 
             .screen-title {
-                background: linear-gradient(90deg, rgba(0, 78, 157, 1) 0%, rgba(0, 78, 157, 0) 100%);
+                // background: linear-gradient(90deg, rgba(0, 78, 157, 1) 0%, rgba(0, 78, 157, 0) 100%);
                 padding-left: 20px;
 
+                .sub-title {
+                    font-size: 18px;
+                    display: block;
+                }
+
                 p {
+                    &::before {
+                        content: '';
+                        display: inline-block;
+                        background: #e30613;
+                        width: 20px;
+                        height: 30px;
+                        vertical-align: middle;
+                        margin-bottom: 5px;
+                        margin-right: 10px;
+                    }
+
+                    .red-title {
+                        // font-weight: 800;
+                        color: #fff;
+                    }
+
                     font-size: 40px;
-                    color: #00DEFF;
+                    color: #fff;
                     height: 68px;
-                    line-height: 68px;
+                    line-height: 38px;
+                    vertical-align: middle;
                 }
             }
 
@@ -254,7 +286,7 @@ iframe {
 
                 // padding-right: 30px;
                 iframe {
-                    margin-left: -20px;
+                    margin-left: 20px;
                 }
             }
         }
@@ -318,6 +350,21 @@ iframe {
             .screen-data-holder {
                 height: 158px;
                 width: 100%;
+
+                &::after {
+                    content: '';
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    border-width: 2px;
+                    border-style: solid;
+                    border-image-source: linear-gradient(180deg, #fff 0%, #fff 13%, rgba(255, 255, 255, 0) 13%, #fff 50%, rgba(255, 255, 255, 0) 87%, #fff 87%, #fff 100%);
+                    border-image-slice: 1;
+                    border-image-slice: 1 100%;
+                    box-sizing: border-box;
+                }
             }
         }
 

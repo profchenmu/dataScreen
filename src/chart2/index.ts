@@ -9,7 +9,7 @@ const industryLineChart = echarts.init(document.querySelector('#industry-line'))
 const industrialParkLineChart = echarts.init(document.querySelector('#industrial-park-line'));
 const retailLineChart = echarts.init(document.querySelector('#retail-line'));
 // draw chart
-const colorPalette = ['#00FFFF', '#00AED6', '#0079AF', '#005589', 'red', '#efa18d', '#787464', '#cc7e63', '#724e58', '#4b565b'];
+const colorPalette = ['#f6f5f1', '#00AED6', '#0079AF', '#005589', 'red', '#efa18d', '#787464', '#cc7e63', '#724e58', '#4b565b'];
 
 const socket = socketIOClient(config.url);
 
@@ -28,85 +28,85 @@ interface Iline {
     Area: number
     unit: string
 }
-socket.emit('cliStart', { cliRequire: 'pieMessage' });
-socket.on('pieMessage', (data: any) => {
-    const pieData: [Ipie] = data.message;
-    const names: [string?] = []
-    const displayData = pieData.map((e, i) => {
-        names.push(e.property_type);
-        console.log(e)
-        // const ele = document.querySelector(`#${e.property_type}-percent`)
-        // ele.innerHTML = `${e.Area}`
-        let ele: any
-        switch (e.property_type) {
-            case 'Office/Commercial':
-                ele = document.querySelector(`#office-percent`)
-                ele.innerHTML = `${e.percent}`;
-                break;
-            case 'Industrial':
-                ele = document.querySelector(`#industry-percent`)
-                ele.innerHTML = `${e.percent}`;
-                break;
-            case 'Retail':
-                ele = document.querySelector(`#retail-percent`)
-                ele.innerHTML = `${e.percent}`;
-                break;
-            case 'Business Park':
-                ele = document.querySelector(`#industrial-park-percent`)
-                ele.innerHTML = `${e.percent}`;
-                break;
-        }
-        return {
-            value: e.Area,
-            name: e.property_type,
-            itemStyle: {
-                color: colorPalette[i],
-            }
-        }
-    })
-    // myChart.setOption({
-    //     legend: {
-    //         show: false,
-    //         orient: 'vertical',
-    //         // x: 'left',
-    //         data: names
-    //     },
-    //     series: [
-    //         {
-    //             // name: 'title',
-    //             type: 'pie',
-    //             radius: ['30%', '90%'],
-    //             avoidLabelOverlap: false,
-    //             label: {
-    //                 normal: {
-    //                     show: false,
-    //                     position: 'center'
-    //                 },
-    //                 emphasis: {
-    //                     show: false,
-    //                     textStyle: {
-    //                         fontSize: '30',
-    //                         fontWeight: 'bold'
-    //                     }
-    //                 }
-    //             },
-    //             labelLine: {
-    //                 normal: {
-    //                     show: false
-    //                 }
-    //             },
-    //             data: displayData
-    //         }
-    //     ]
-    // });
-});
+// socket.emit('cliStart', { cliRequire: 'pieMessage' });
+// socket.on('pieMessage', (data: any) => {
+//     const pieData: [Ipie] = data.message;
+//     const names: [string?] = []
+//     const displayData = pieData.map((e, i) => {
+//         names.push(e.property_type);
+//         console.log(e)
+//         // const ele = document.querySelector(`#${e.property_type}-percent`)
+//         // ele.innerHTML = `${e.Area}`
+//         let ele: any
+//         switch (e.property_type) {
+//             case 'Office/Commercial':
+//                 ele = document.querySelector(`#office-percent`)
+//                 ele.innerHTML = `${e.percent}`;
+//                 break;
+//             case 'Industrial':
+//                 ele = document.querySelector(`#industry-percent`)
+//                 ele.innerHTML = `${e.percent}`;
+//                 break;
+//             case 'Retail':
+//                 ele = document.querySelector(`#retail-percent`)
+//                 ele.innerHTML = `${e.percent}`;
+//                 break;
+//             case 'Business Park':
+//                 ele = document.querySelector(`#industrial-park-percent`)
+//                 ele.innerHTML = `${e.percent}`;
+//                 break;
+//         }
+//         return {
+//             value: e.Area,
+//             name: e.property_type,
+//             itemStyle: {
+//                 color: colorPalette[i],
+//             }
+//         }
+//     })
+//     // myChart.setOption({
+//     //     legend: {
+//     //         show: false,
+//     //         orient: 'vertical',
+//     //         // x: 'left',
+//     //         data: names
+//     //     },
+//     //     series: [
+//     //         {
+//     //             // name: 'title',
+//     //             type: 'pie',
+//     //             radius: ['30%', '90%'],
+//     //             avoidLabelOverlap: false,
+//     //             label: {
+//     //                 normal: {
+//     //                     show: false,
+//     //                     position: 'center'
+//     //                 },
+//     //                 emphasis: {
+//     //                     show: false,
+//     //                     textStyle: {
+//     //                         fontSize: '30',
+//     //                         fontWeight: 'bold'
+//     //                     }
+//     //                 }
+//     //             },
+//     //             labelLine: {
+//     //                 normal: {
+//     //                     show: false
+//     //                 }
+//     //             },
+//     //             data: displayData
+//     //         }
+//     //     ]
+//     // });
+// });
 socket.emit('cliStart', { cliRequire: 'officeLineMessage' });
 socket.on('officeLineMessage', (d: any) => {
     const officeLineData: [Iline] = d.message;
     const date: any = []
     const data: any = []
     officeLineData.forEach((e: any, i: number) => {
-        date.push(moment(e.Month, 'YYYY-MM').format('YYYY'));
+        date.push(moment(e.Month, 'YYYY-MM').format('YYYY-MM'));
         // if (i === 0 || i === officeLineData.length - 1) {
         //     date.push(moment(e.Month, 'YYYY-MM').format('YYYY'));
         // } else {
@@ -127,8 +127,8 @@ socket.on('officeLineMessage', (d: any) => {
     // })
     const options: any = {
         grid: {
-            top: 0,
-            left: 0,
+            top: '10px',
+            left: '10px',
             // right: 0,
             bottom: 0,
             // bottom: '10px',
@@ -156,18 +156,28 @@ socket.on('officeLineMessage', (d: any) => {
             },
         },
         yAxis: {
-            show: false,
-            // splitNumber: 1,
-            // axisLabel: {
-            //     inside: true,
-            // },
-            // axisLine: {
-            //     show: true,
-            //     onZero: false,
-            // },
-            // splitLine: {
-            //     show: false
-            // },
+            show: true,
+            splitNumber: 1,
+            position: 'right',
+            axisLabel: {
+                inside: false,
+                color: '#fff'
+            },
+            axisLine: {
+                show: true,
+                onZero: false,
+                lineStyle: {
+                    color: '#fff'
+                }
+            },
+            axisTick: {
+                lineStyle: {
+                    color: '#fff'
+                }
+            },
+            splitLine: {
+                show: false,
+            },
             type: 'value',
         },
         series: [
@@ -180,20 +190,20 @@ socket.on('officeLineMessage', (d: any) => {
                 itemStyle: {
                     color: colorPalette[0]
                 },
-                markLine: {
-                    symbolSize: 0,
-                    data: [
-                        { type: 'max', name: 'Max' },
-                        { type: 'min', name: 'Min' },
-                    ]
-                },
+                // markLine: {
+                //     symbolSize: 0,
+                //     data: [
+                //         { type: 'max', name: 'Max' },
+                //         { type: 'min', name: 'Min' },
+                //     ]
+                // },
                 areaStyle: {
                     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                         offset: 0,
                         color: colorPalette[0]
                     }, {
                         offset: 1,
-                        color: 'rgba(0, 222, 255, 0.7)'
+                        color: colorPalette[0] //'rgba(0, 222, 255, 0.7)'
                     }])
                 },
                 data: data
@@ -210,7 +220,7 @@ socket.on('industryLineMessage', (d: any) => {
     const date: any = []
     const data: any = []
     industryLineData.forEach((e: any, i: number) => {
-        date.push(moment(e.Month, 'YYYY-MM').format('YYYY'));
+        date.push(moment(e.Month, 'YYYY-MM').format('YYYY-MM'));
         // if (i === 0 || i === industryLineData.length - 1) {
         //     date.push(moment(e.Month, 'YYYY-MM').format('YYYY'));
         // } else {
@@ -230,8 +240,8 @@ socket.on('industryLineMessage', (d: any) => {
     // console.log(data, mockDate, industryLineData)
     const options: any = {
         grid: {
-            top: '7px',
-            left: 0,
+            top: '10px',
+            left: '10px',
             // right: 0,
             bottom: 0,
             // bottom: '10px',
@@ -259,18 +269,28 @@ socket.on('industryLineMessage', (d: any) => {
             },
         },
         yAxis: {
-            show: false,
-            // splitNumber: 1,
-            // axisLabel: {
-            //     inside: true,
-            // },
-            // axisLine: {
-            //     show: true,
-            //     onZero: false,
-            // },
-            // splitLine: {
-            //     show: false
-            // },
+            show: true,
+            splitNumber: 1,
+            position: 'right',
+            axisLabel: {
+                inside: false,
+                color: '#fff'
+            },
+            axisLine: {
+                show: true,
+                onZero: false,
+                lineStyle: {
+                    color: '#fff'
+                }
+            },
+            axisTick: {
+                lineStyle: {
+                    color: '#fff'
+                }
+            },
+            splitLine: {
+                show: false,
+            },
             type: 'value',
         },
         series: [
@@ -283,20 +303,20 @@ socket.on('industryLineMessage', (d: any) => {
                 itemStyle: {
                     color: colorPalette[0]
                 },
-                markLine: {
-                    symbolSize: 0,
-                    data: [
-                        { type: 'max', name: 'Max' },
-                        { type: 'min', name: 'Min' },
-                    ]
-                },
+                // markLine: {
+                //     symbolSize: 0,
+                //     data: [
+                //         { type: 'max', name: 'Max' },
+                //         { type: 'min', name: 'Min' },
+                //     ]
+                // },
                 areaStyle: {
                     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                         offset: 0,
                         color: colorPalette[0]
                     }, {
                         offset: 1,
-                        color: 'rgba(0, 222, 255, 0.7)'
+                        color: colorPalette[0] //'rgba(0, 222, 255, 0.7)'
                     }])
                 },
                 data: data
@@ -312,7 +332,7 @@ socket.on('industrialParkLineMessage', (d: any) => {
     const date: any = []
     const data: any = []
     industrialParkLineData.forEach((e: any, i: number) => {
-        date.push(moment(e.Month, 'YYYY-MM').format('YYYY'));
+        date.push(moment(e.Month, 'YYYY-MM').format('YYYY-MM'));
         // if (i === 0 || i === industrialParkLineData.length - 1) {
         //     date.push(moment(e.Month, 'YYYY-MM').format('YYYY'));
         // } else {
@@ -331,8 +351,8 @@ socket.on('industrialParkLineMessage', (d: any) => {
     // console.log(data, mockDate, industrialParkLineData)
     const options: any = {
         grid: {
-            top: '7px',
-            left: 0,
+            top: '10px',
+            left: '10px',
             // right: 0,
             bottom: 0,
             // bottom: '10px',
@@ -360,18 +380,28 @@ socket.on('industrialParkLineMessage', (d: any) => {
             },
         },
         yAxis: {
-            show: false,
-            // splitNumber: 1,
-            // axisLabel: {
-            //     inside: true,
-            // },
-            // axisLine: {
-            //     show: true,
-            //     onZero: false,
-            // },
-            // splitLine: {
-            //     show: false
-            // },
+            show: true,
+            splitNumber: 1,
+            position: 'right',
+            axisLabel: {
+                inside: false,
+                color: '#fff'
+            },
+            axisLine: {
+                show: true,
+                onZero: false,
+                lineStyle: {
+                    color: '#fff'
+                }
+            },
+            axisTick: {
+                lineStyle: {
+                    color: '#fff'
+                }
+            },
+            splitLine: {
+                show: false,
+            },
             type: 'value',
         },
         series: [
@@ -384,20 +414,20 @@ socket.on('industrialParkLineMessage', (d: any) => {
                 itemStyle: {
                     color: colorPalette[0]
                 },
-                markLine: {
-                    symbolSize: 0,
-                    data: [
-                        { type: 'max', name: 'Max' },
-                        { type: 'min', name: 'Min' },
-                    ]
-                },
+                // markLine: {
+                //     symbolSize: 0,
+                //     data: [
+                //         { type: 'max', name: 'Max' },
+                //         { type: 'min', name: 'Min' },
+                //     ]
+                // },
                 areaStyle: {
                     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                         offset: 0,
                         color: colorPalette[0]
                     }, {
                         offset: 1,
-                        color: 'rgba(0, 222, 255, 0.7)'
+                        color: colorPalette[0] //'rgba(0, 222, 255, 0.7)'
                     }])
                 },
                 data: data
@@ -413,7 +443,7 @@ socket.on('retailLineMessage', (d: any) => {
     const date: any = []
     const data: any = []
     retailLineData.forEach((e: any, i: number) => {
-        date.push(moment(e.Month, 'YYYY-MM').format('YYYY'));
+        date.push(moment(e.Month, 'YYYY-MM').format('YYYY-MM'));
         // if (i === 0 || i === retailLineData.length - 1) {
         //     date.push(moment(e.Month, 'YYYY-MM').format('YYYY'));
         // } else {
@@ -431,8 +461,8 @@ socket.on('retailLineMessage', (d: any) => {
     // })
     const options: any = {
         grid: {
-            top: 0,
-            left: 0,
+            top: '10px',
+            left: '10px',
             // right: 0,
             bottom: 0,
             // bottom: '10px',
@@ -460,18 +490,28 @@ socket.on('retailLineMessage', (d: any) => {
             },
         },
         yAxis: {
-            show: false,
-            // splitNumber: 1,
-            // axisLabel: {
-            //     inside: true,
-            // },
-            // axisLine: {
-            //     show: true,
-            //     onZero: false,
-            // },
-            // splitLine: {
-            //     show: false
-            // },
+            show: true,
+            splitNumber: 1,
+            position: 'right',
+            axisLabel: {
+                inside: false,
+                color: '#fff'
+            },
+            axisLine: {
+                show: true,
+                onZero: false,
+                lineStyle: {
+                    color: '#fff'
+                }
+            },
+            axisTick: {
+                lineStyle: {
+                    color: '#fff'
+                }
+            },
+            splitLine: {
+                show: false,
+            },
             type: 'value',
         },
         series: [
@@ -484,20 +524,20 @@ socket.on('retailLineMessage', (d: any) => {
                 itemStyle: {
                     color: colorPalette[0]
                 },
-                markLine: {
-                    symbolSize: 0,
-                    data: [
-                        { type: 'max', name: 'Max' },
-                        { type: 'min', name: 'Min' },
-                    ]
-                },
+                // markLine: {
+                //     symbolSize: 0,
+                //     data: [
+                //         { type: 'max', name: 'Max' },
+                //         { type: 'min', name: 'Min' },
+                //     ]
+                // },
                 areaStyle: {
                     color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                         offset: 0,
                         color: colorPalette[0]
                     }, {
                         offset: 1,
-                        color: 'rgba(0, 222, 255, 0.7)'
+                        color: colorPalette[0] //'rgba(0, 222, 255, 0.7)'
                     }])
                 },
                 data: data

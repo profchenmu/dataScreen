@@ -17,7 +17,7 @@ module.exports = {
         chart1: path.resolve(__dirname, './src/chart1/index.ts'),
         chart2: path.resolve(__dirname, './src/chart2/index.ts'),
         matrix: path.resolve(__dirname, './src/matrix/index.ts'),
-        logos: path.resolve(__dirname, './src/logos/index.ts'),
+        // logos: path.resolve(__dirname, './src/logos/index.ts'),
         incremental: path.resolve(__dirname, './src/incremental/index.ts'),
         smallchart1: path.resolve(__dirname, './src/smallchart1/index.ts'),
     },
@@ -139,12 +139,12 @@ module.exports = {
             chunks: ['matrix'],
             inject: true,
         }),
-        new HtmlWebpackPlugin({
-            filename: 'logos.html',
-            template: './logos.html',
-            chunks: ['logos'],
-            inject: true,
-        }),
+        // new HtmlWebpackPlugin({
+        //     filename: 'logos.html',
+        //     template: './logos.html',
+        //     chunks: ['logos'],
+        //     inject: true,
+        // }),
         new HtmlWebpackPlugin({
             filename: 'incremental.html',
             template: './incremental.html',

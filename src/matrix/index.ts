@@ -6,9 +6,8 @@ const matrixData =
     ['Lease/Sale', 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0],
     ['Transaction', 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0],
     ['Availability', 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0],
-    ['Finance', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
-    ['Opportunity', 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0],
-    ['FFS', 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0],
+    ['Financial', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    ['Fee Forecast', 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0],
     ['Digital Assets', 1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0]]
 const tableBody = document.getElementById('table-info');
 let tpl: string = (matrixData.map((e) => {

@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Led';
+    src: url('./UnidreamLED.ttf');
+    font-weight: 600;
+    font-style: normal;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -112,12 +119,32 @@ iframe {
         font-family: Arial, Helvetica, sans-serif;
         position: absolute;
         left: 1005px;
-        top: 230px;
+        top: 200px;
         z-index: 2;
+        font-size: normal;
+        // width: 460px;
+
+        .small-title {
+            margin-top: 10px;
+            font-size: 22px;
+            color: #fff;
+        }
 
         h3 {
             color: #fff;
-            font-size: 36px;
+            font-size: 40px;
+            font-weight: normal;
+
+            &::before {
+                content: '';
+                display: inline-block;
+                background: #e30613;
+                width: 20px;
+                height: 30px;
+                vertical-align: middle;
+                margin-bottom: 5px;
+                margin-right: 10px;
+            }
         }
 
         p {
@@ -153,13 +180,28 @@ iframe {
         background-size: cover;
     }
 
+    .commands {
+        color: #fff;
+        text-align: right;
+        width: 100%;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        font-style: italic;
+    }
+
     .time {
         height: 63px;
         position: absolute;
         left: 2450px;
         top: 60px;
         color: #fff;
-        font-size: 44px;
+        font-family: Led;
+        font-size: 53px;
+
+        span {
+            margin-right: 10px;
+        }
     }
 
     .map-holder {
@@ -178,6 +220,10 @@ iframe {
         left: 36px;
         top: 25px;
 
+        &.data-3 {
+            height: 508px;
+        }
+
         .screen-holder-in {
             position: relative;
             width: 888px;
@@ -188,8 +234,11 @@ iframe {
                 padding-left: 20px;
 
                 .sub-title {
-                    font-size: 18px;
+                    font-size: 22px;
                     display: block;
+                    margin-top: -6px;
+                    padding-left: 30px;
+                    color: #b1b2c7;
                 }
 
                 p {
@@ -323,13 +372,21 @@ iframe {
 
         &.data-small-2 {
             width: 750px;
-            height: 300px;
+            height: 390px;
             left: 2100px;
             top: 140px;
 
             .screen-holder-in {
                 width: 100%;
+
+                // .screen-title {
+                //     p {
+                //         font-size: 34px;
+                //     }
+                // }
             }
+
+
 
             .screen-data-holder {
                 height: 295px;
@@ -340,6 +397,9 @@ iframe {
                     height: 100%;
                     background: url('../images/logosys-02.png');
                     background-size: contain;
+
+
+
                 }
             }
         }

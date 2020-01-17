@@ -9,7 +9,8 @@ numeral.defaultFormat('0,0.0');
 window.onload = () => {
     const wHeight = window.innerHeight;
     const wWidth = window.innerWidth;
-    const scale = `scale( ${wWidth / 3840}, ${wHeight / 1080}) translateY(50%)`;
+    // , ${wHeight / 1080}
+    const scale = `scale( ${wWidth / 3840}) translateY(50%)`;
     const indexHtml = document.getElementById('index-base')
     indexHtml.style.transform = scale;
     let needFresh = true;
@@ -36,7 +37,8 @@ window.onload = () => {
         value: string
         count: string
     }
-    const dataTime = d3.select('#data-time');
+    const dateNow = d3.select('#date');
+    const timeNow = d3.select('#time');
     const basicCountDom = d3.select('#data-basic-count');
     const basicAreaDom = d3.select('#data-basic-area');
     socket.emit('cliStart', { cliRequire: 'transactionMessage' });
@@ -157,8 +159,10 @@ window.onload = () => {
             basicAreaDom.text(displayArea);
             basicCountDom.text(numeral(count - 0).format('0,0'));
         }
-        const timeInfo = moment().format('YYYY-MM-DD HH:mm:ss')
-        dataTime.text(timeInfo)
+        // const timeInfo = moment().format('YYYY-MM-DD HH:mm:ss');
+        // const dateInfo = moment().format('YYYY-MM-DD HH:mm:ss');
+        dateNow.text(moment().format('YYYY-MM-DD'));
+        timeNow.text(moment().format('HH:mm:ss'))
         // const transactionDataStep = JSON.parse(window.localStorage.getItem('transactionDataStep'))
 
         // transactionDataStep.forEach((e: ItransactionDataStep) => {

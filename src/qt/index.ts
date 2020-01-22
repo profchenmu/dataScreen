@@ -26,23 +26,27 @@ socket.on('qtMessage', (data: any) => {
             if (i <= qtInfo.Value) {
                 //     const opacity: number = i / qtInfo.Value;
                 //     return `fill: #42FBFA; opacity: ${opacity}`;
-                return 'fill: #e30613; opacity: 1'
+                // return 'fill: #e30613; opacity: 1'
+                return 'fill: #e30612;'
+                // return 'fill: #000;opacity: 0';
             } else {
+
                 //     return 'fill: #0055be; opacity: 1';
-                return 'fill: #b1b2b4; opacity: 1';
+                // return 'fill: #fff; opacity: 1';
+                return 'fill: #fff;';
             }
 
         })
-            // .attr('filter', (e: any, i: number) => {
-            //     if (i <= parseInt(qtInfo.Value as any)) {
-            //         return 'url(#filter-blur)'
-            //     }
-            // })
-            .attr('id', (e: any, i: number) => {
-                if (i === parseInt(qtInfo.Value as any)) {
-                    return 'shining'
-                }
-            });
+        // .attr('filter', (e: any, i: number) => {
+        //     if (i <= parseInt(qtInfo.Value as any)) {
+        //         return 'url(#filter-blur)'
+        //     }
+        // })
+        // .attr('id', (e: any, i: number) => {
+        //     if (i === parseInt(qtInfo.Value as any)) {
+        //         return 'shining'
+        //     }
+        // });
         // d3.select(`#qt-${index} #title`).text('Title');
         d3.select(`#${ele.Entity} #percent`).text(qtInfo.Value);
     })

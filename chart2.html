@@ -68,12 +68,22 @@
             font-size: 36px;
             font-family: 'Times New Roman', Times, serif;
             text-align: center;
-            width: 100%;
+            width: 80%;
             margin-top: 5px;
             padding-top: 0;
             color: #e30613;
             margin-bottom: 6px;
             font-style: italic;
+            /* position: relative; */
+        }
+
+        .chart-holder small {
+            position: absolute;
+            display: block;
+            right: 60px;
+            color: #fff;
+            top: 10px;
+            font-size: 20px;
         }
 
         .chart-holder b {
@@ -88,21 +98,25 @@
         .chart-holder.line-1 {
             width: 50%;
             color: #fff;
+            position: relative;
         }
 
         .chart-holder.line-2 {
             width: 50%;
             color: #fff;
+            position: relative;
         }
 
         .chart-holder.line-3 {
             width: 50%;
             color: #fff;
+            position: relative;
         }
 
         .chart-holder.line-4 {
             width: 50%;
             color: #fff;
+            position: relative;
         }
     </style>
 </head>
@@ -117,24 +131,29 @@
                 <p>Office
                     <!-- <b> | </b><span id="office-percent">25%</span> -->
                 </p>
+                <small>m<sup>2</sup></small>
                 <div id="office-line"></div>
             </div>
             <div class="chart-holder line-2">
                 <p>Industrial
                     <!-- <b> | </b><span id="industry-percent">25%</span> -->
                 </p>
+                <small>m<sup>2</sup></small>
                 <div id="industry-line"></div>
             </div>
             <div class="chart-holder line-3">
                 <p>Business Park
                     <!-- <b> | </b><span id="industrial-park-percent">25%</span> -->
+
                 </p>
+                <small>m<sup>2</sup></small>
                 <div id="industrial-park-line"></div>
             </div>
             <div class="chart-holder line-4">
                 <p>Retail
                     <!-- <b> | </b><span id="retail-percent">25%</span> -->
                 </p>
+                <small>m<sup>2</sup></small>
                 <div id="retail-line"></div>
             </div>
 

@@ -59,12 +59,22 @@
             font-size: 36px;
             font-family: 'Times New Roman', Times, serif;
             text-align: center;
-            width: 100%;
+            width: 80%;
             margin-top: 5px;
             padding-top: 0;
             color: #e30613;
             margin-bottom: 6px;
             font-style: italic;
+            /* position: relative; */
+        }
+
+        .chart-holder small {
+            position: absolute;
+            display: block;
+            right: 60px;
+            color: #fff;
+            top: 10px;
+            font-size: 20px;
         }
 
         .chart-holder b {
@@ -79,19 +89,23 @@
         .chart-holder.line-1 {
             width: 50%;
             color: #fff;
+            position: relative;
         }
 
         .chart-holder.line-2 {
             width: 50%;
             color: #fff;
+            position: relative;
         }
 
         .chart-holder.line-3 {
             width: 50%;
             color: #fff;
+            position: relative;
         }
 
         .chart-holder.line-4 {
             width: 50%;
             color: #fff;
-        }</style></head><body id="chart2"><div class="container"><div class="right"><div class="chart-holder line-1"><p>Office</p><div id="office-line"></div></div><div class="chart-holder line-2"><p>Industrial</p><div id="industry-line"></div></div><div class="chart-holder line-3"><p>Business Park</p><div id="industrial-park-line"></div></div><div class="chart-holder line-4"><p>Retail</p><div id="retail-line"></div></div></div></div><script src="/library/library.dll.js"></script><script src="chart2.bundle.js"></script></body></html>
+            position: relative;
+        }</style></head><body id="chart2"><div class="container"><div class="right"><div class="chart-holder line-1"><p>Office</p><small>m<sup>2</sup></small><div id="office-line"></div></div><div class="chart-holder line-2"><p>Industrial</p><small>m<sup>2</sup></small><div id="industry-line"></div></div><div class="chart-holder line-3"><p>Business Park</p><small>m<sup>2</sup></small><div id="industrial-park-line"></div></div><div class="chart-holder line-4"><p>Retail</p><small>m<sup>2</sup></small><div id="retail-line"></div></div></div></div><script src="/library/library.dll.js"></script><script src="chart2.bundle.js"></script></body></html>

@@ -122,7 +122,7 @@ const testAnimation = () => {
 
     requestAnimationFrame(function (timestamp) {
         starttime = timestamp || new Date().getTime()
-        moveit(timestamp, newsContainer, (-sHeight + 180), 100000)
+        moveit(timestamp, newsContainer, (-sHeight + 180), 200000)
     })
 }
 setTimeout(() => {

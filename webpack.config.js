@@ -20,6 +20,7 @@ module.exports = {
         // logos: path.resolve(__dirname, './src/logos/index.ts'),
         incremental: path.resolve(__dirname, './src/incremental/index.ts'),
         smallchart1: path.resolve(__dirname, './src/smallchart1/index.ts'),
+        smallchart2: path.resolve(__dirname, './src/smallchart2/index.ts'),
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -161,6 +162,12 @@ module.exports = {
             filename: 'smallchart1.html',
             template: './smallchart1.html',
             chunks: ['smallchart1'],
+            inject: true,
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'smallchart2.html',
+            template: './smallchart2.html',
+            chunks: ['smallchart2'],
             inject: true,
         }),
         new webpack.DllReferencePlugin({

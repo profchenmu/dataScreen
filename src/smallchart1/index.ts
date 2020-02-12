@@ -21,7 +21,6 @@ socket.on('lineDataMessage', (d: any) => {
     const data = d.message.map((e: any) => {
         return e.Value;
     });
-
     option = {
         grid: {
             top: 10,

@@ -5,76 +5,32 @@ import './incremental.scss';
 // const socket = socketIOClient('http://127.0.0.1:4000');
 const demo = [
     {
-        title: 'Lorem ipsum dolor sit amet 1',
-        date: '2020-01-01',
-        detail: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit, 
-            sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-            Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis 
-            nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in 
-            vulputate velit esse molestie consequat, vel illum dolore eu feugiat consectetuer 
-            adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore 
-            magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci 
-            tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum`
+        title: 'JLL Data Dashboard Launched in Shanghai Office',
+        date: '2020-03-01',
+        detail: `A data dashboard will be launched in Shanghai Office’s big screen in March. The dashboard is aim to display the data assets information owned by JLL across Greater China, demonstrate the data capability of us and improve the data awareness within the organization.
+ 
+        The dashboard reflects  JLL’s data from the quantity and quality perspectives in nearly real time, as well as utilization of data in our business.`
     },
     {
-        title: 'Lorem ipsum dolor sit amet 2',
-        date: '2020-01-01',
-        detail: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit, 
-            sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-            Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis 
-            nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in 
-            vulputate velit esse molestie consequat, vel illum dolore eu feugiat consectetuer 
-            adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore 
-            magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci 
-            tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum`
+        title: 'JLL Data Dashboard Launched in Shanghai Office',
+        date: '2020-03-01',
+        detail: `A data dashboard will be launched in Shanghai Office’s big screen in March. The dashboard is aim to display the data assets information owned by JLL across Greater China, demonstrate the data capability of us and improve the data awareness within the organization.
+ 
+        The dashboard reflects  JLL’s data from the quantity and quality perspectives in nearly real time, as well as utilization of data in our business.`
     },
     {
-        title: 'Lorem ipsum dolor sit amet 3',
-        date: '2020-01-01',
-        detail: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit, 
-            sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-            Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis 
-            nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in 
-            vulputate velit esse molestie consequat, vel illum dolore eu feugiat consectetuer 
-            adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore 
-            magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci 
-            tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum`
+        title: 'JLL Data Dashboard Launched in Shanghai Office',
+        date: '2020-03-01',
+        detail: `A data dashboard will be launched in Shanghai Office’s big screen in March. The dashboard is aim to display the data assets information owned by JLL across Greater China, demonstrate the data capability of us and improve the data awareness within the organization.
+ 
+        The dashboard reflects  JLL’s data from the quantity and quality perspectives in nearly real time, as well as utilization of data in our business.`
     },
     {
-        title: 'Lorem ipsum dolor sit amet 4',
-        date: '2020-01-02',
-        detail: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit, 
-            sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-            Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis 
-            nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in 
-            vulputate velit esse molestie consequat, vel illum dolore eu feugiat consectetuer 
-            adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore 
-            magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci 
-            tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum`
-    },
-    {
-        title: 'Lorem ipsum dolor sit amet 5',
-        date: '2020-01-03',
-        detail: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit, 
-            sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-            Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis 
-            nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in 
-            vulputate velit esse molestie consequat, vel illum dolore eu feugiat consectetuer 
-            adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore 
-            magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci 
-            tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum`
-    },
-    {
-        title: 'Lorem ipsum dolor sit amet 6',
-        date: '2020-01-03',
-        detail: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit, 
-            sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
-            Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis 
-            nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in 
-            vulputate velit esse molestie consequat, vel illum dolore eu feugiat consectetuer 
-            adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore 
-            magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci 
-            tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum`
+        title: 'JLL Data Dashboard Launched in Shanghai Office',
+        date: '2020-03-01',
+        detail: `A data dashboard will be launched in Shanghai Office’s big screen in March. The dashboard is aim to display the data assets information owned by JLL across Greater China, demonstrate the data capability of us and improve the data awareness within the organization.
+ 
+        The dashboard reflects  JLL’s data from the quantity and quality perspectives in nearly real time, as well as utilization of data in our business.`
     },
 ]
 

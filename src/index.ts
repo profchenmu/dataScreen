@@ -41,6 +41,8 @@ window.onload = () => {
     const timeNow = d3.select('#time');
     const basicCountDom = d3.select('#data-basic-count');
     const basicAreaDom = d3.select('#data-basic-area');
+    let areat: any;
+    let countt: any;
     socket.emit('cliStart', { cliRequire: 'transactionMessage' });
     socket.on('transactionMessage', (data: any) => {
         const transactionData = data.message;
@@ -82,6 +84,8 @@ window.onload = () => {
         // }
         // const arr = [];
         const todayArea = area[0].Area;
+        areat = todayArea;
+        countt = todayCount;
         const yesterdayArea = area[usefulIndex].Area;
         const areaDiffInfos = todayArea - yesterdayArea;
         const areaPerSecond = (areaDiffInfos / secondsPerDay).toFixed(1);
@@ -150,7 +154,7 @@ window.onload = () => {
         const areayesterdayLocal: any = window.localStorage.getItem('areayesterdayLocal');
         const countYesterdayLocal: any = window.localStorage.getItem('countYesterdayLocal');
         const diffSeconds = moment().diff(moment('09:30:00', 'HH:mm:ss'), 'seconds')
-
+        console.log(diffSeconds, 'ddddddddddd')
         if (diffSeconds > 0 && diffSeconds <= 28800) {
             const area = areayesterdayLocal - 0 + areaPerSecondLocal * diffSeconds;
             const count = countYesterdayLocal - 0 + countPerSecondLocal * diffSeconds;
@@ -158,7 +162,11 @@ window.onload = () => {
             // const displayCount = numeral(area).format();
             basicAreaDom.text(displayArea);
             basicCountDom.text(numeral(count - 0).format('0,0'));
+        } else if (diffSeconds > 28800) {
+            basicAreaDom.text(numeral(areat - 0).format('0,0'));
+            basicCountDom.text(numeral(countt - 0).format('0,0'));
         }
+
         // const timeInfo = moment().format('YYYY-MM-DD HH:mm:ss');
         // const dateInfo = moment().format('YYYY-MM-DD HH:mm:ss');
         dateNow.text(moment().format('YYYY-MM-DD'));

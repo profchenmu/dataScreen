@@ -13,7 +13,7 @@ const colorPalette = ['#00DEFF', '#FFA820', '#00E59A', 'yellow', 'red', '#efa18d
 const socket = socketIOClient(config.url);
 // var dom = document.getElementById("container");
 // var myChart = echarts.init(dom);
-var app:any = {};
+var app: any = {};
 let option: any = null;
 
 var posList = [
@@ -43,7 +43,7 @@ app.configParameters = {
         }
     },
     position: {
-        options: (echarts as any).util.reduce(posList, function (map:any, pos:any) {
+        options: (echarts as any).util.reduce(posList, function (map: any, pos: any) {
             map[pos] = pos;
             return map;
         }, {})
@@ -66,30 +66,30 @@ socket.emit('cliStart', { cliRequire: 'polyDataMessage' });
 
 socket.on('polyDataMessage', (d: any) => {
     console.log(d, 'ddddddd')
-    const date:[string?] = []
-    const data:any ={}
+    const date: [string?] = []
+    const data: any = {}
     d.message.forEach((e: any) => {
         date.indexOf(e.Department) < 0 && date.push(e.Department);
-        if(!data[e.month]){
+        if (!data[e.month]) {
             data[e.month] = [e.value]
-        }else{
+        } else {
             console.log(data, e.month)
             data[e.month].push(e.value)
         }
     });
-    const infos:any = []
-    for(let key in data){
+    const infos: any = []
+    for (let key in data) {
         infos.push({
             name: key,
             type: 'bar',
             label: {
-                show: true,
+                show: false,
                 position: app.config.position,
                 distance: app.config.distance,
                 align: app.config.align,
                 verticalAlign: app.config.verticalAlign,
                 rotate: app.config.rotate,
-                formatter: '{name|{a}}',
+                // formatter: '{name|{a}}',
                 fontSize: 20,
                 rich: {
                     name: {
@@ -102,8 +102,7 @@ socket.on('polyDataMessage', (d: any) => {
         })
     }
 
-    console.log(infos)
-    
+    const infoData = [infos[0]];
     option = {
         grid: {
             top: 10,
@@ -113,8 +112,8 @@ socket.on('polyDataMessage', (d: any) => {
             containLabel: true,
             show: false
         },
-        color: ['#dbd6c7', '#e30613', '#fff', 'red'],
-        xAxis: {
+        color: ['#e30613', '#dbd6c7', '#fff', 'red'],
+        yAxis: {
             type: 'category',
             data: date,
             splitLine: {
@@ -134,7 +133,7 @@ socket.on('polyDataMessage', (d: any) => {
                 }
             }
         },
-        yAxis: {
+        xAxis: {
             type: 'value',
             splitLine: {
                 show: false,
@@ -154,7 +153,7 @@ socket.on('polyDataMessage', (d: any) => {
             },
 
         },
-        series: infos,
+        series: infoData,
     };
     // const data = d.message.map((e: any) => {
     //     return e.Value;

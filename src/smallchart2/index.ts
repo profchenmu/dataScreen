@@ -90,7 +90,7 @@ socket.on('polyDataMessage', (d: any) => {
                 verticalAlign: app.config.verticalAlign,
                 rotate: app.config.rotate,
                 // formatter: '{name|{a}}',
-                fontSize: 20,
+                fontSize: 30,
                 rich: {
                     name: {
                         // textBorderColor: '#fff'
@@ -105,7 +105,7 @@ socket.on('polyDataMessage', (d: any) => {
     const infoData = [infos[0]];
     option = {
         grid: {
-            top: 10,
+            top: 5,
             left: 5,
             right: 5,
             bottom: 0,
@@ -117,10 +117,11 @@ socket.on('polyDataMessage', (d: any) => {
             type: 'category',
             data: date,
             splitLine: {
-                show: false
+                show: false,
             },
             axisLabel: {
-                color: '#fff'
+                color: '#fff',
+                fontSize: 20,
             },
             axisLine: {
                 lineStyle: {

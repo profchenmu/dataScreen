@@ -207,7 +207,7 @@ iframe {
     .map-holder {
         width: 930px;
         height: 900px;
-        left: 1300px;
+        left: 1270px;
         top: -40px;
         position: absolute;
         transform: scale(0.7);
@@ -328,7 +328,7 @@ iframe {
         }
 
         &.data-2 {
-            top: 564px;
+            top: 550px;
 
             .screen-data-holder {
                 padding: 0;
@@ -346,7 +346,7 @@ iframe {
 
         &.data-4 {
             left: 2908px;
-            top: 564px;
+            top: 550px;
 
             .screen-data-holder {
                 padding: 30px 10px;
@@ -355,7 +355,7 @@ iframe {
 
         &.data-small-1 {
             left: 990px;
-            top: 562px;
+            top: 550px;
             height: auto;
             z-index: 2;
 
@@ -406,16 +406,16 @@ iframe {
 
         &.data-small-3 {
             width: 922px;
-            height: 231px;
+            height: 220px;
             left: 1930px;
-            top: 567px;
+            top: 550px;
 
             .screen-holder-in {
                 width: 100%;
             }
 
             .screen-data-holder {
-                height: 158px;
+                height: 140px;
                 width: 100%;
 
                 &::after {
@@ -437,16 +437,16 @@ iframe {
 
         &.data-small-4 {
             width: 922px;
-            height: 231px;
+            height: 260px;
             left: 1930px;
-            top: 814px;
+            top: 780px;
 
             .screen-holder-in {
                 width: 100%;
             }
 
             .screen-data-holder {
-                height: 158px;
+                height: 178px;
                 width: 100%;
             }
         }

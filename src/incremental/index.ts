@@ -5,32 +5,54 @@ import './incremental.scss';
 // const socket = socketIOClient('http://127.0.0.1:4000');
 const demo = [
     {
-        title: 'JLL Data Dashboard Launched in Shanghai Office',
-        date: '2020-03-01',
-        detail: `A data dashboard will be launched in Shanghai Office’s big screen in March. The dashboard is aim to display the data assets information owned by JLL across Greater China, demonstrate the data capability of us and improve the data awareness within the organization.
- 
-        The dashboard reflects  JLL’s data from the quantity and quality perspectives in nearly real time, as well as utilization of data in our business.`
+        title: 'MapIT',
+        date: 'Managed by Research team',
+        detail: `MapIT is a location intelligence platform that enables users to gain access to global market data and GIS (geographical information system) analytic insights. The platform is widely used by organizations in the industry to unlock new market opportunities.`
     },
     {
-        title: 'JLL Data Dashboard Launched in Shanghai Office',
-        date: '2020-03-01',
-        detail: `A data dashboard will be launched in Shanghai Office’s big screen in March. The dashboard is aim to display the data assets information owned by JLL across Greater China, demonstrate the data capability of us and improve the data awareness within the organization.
- 
-        The dashboard reflects  JLL’s data from the quantity and quality perspectives in nearly real time, as well as utilization of data in our business.`
+        title: 'Command Centre 智控中心',
+        date: 'Managed by PAM team',
+        detail: `Command Centre is our intelligent building management platform. It captures building’s operational data through existing systems as well as wireless sensors (IoT). With a centralized data storage and analysis, the platform enables real-time, remote monitoring of buildings and facilities to drive efficient operations and reduce risk.`
     },
     {
-        title: 'JLL Data Dashboard Launched in Shanghai Office',
-        date: '2020-03-01',
-        detail: `A data dashboard will be launched in Shanghai Office’s big screen in March. The dashboard is aim to display the data assets information owned by JLL across Greater China, demonstrate the data capability of us and improve the data awareness within the organization.
- 
-        The dashboard reflects  JLL’s data from the quantity and quality perspectives in nearly real time, as well as utilization of data in our business.`
+        title: 'DiChanDaDang 地产搭档',
+        date: 'Managed by Markets team',
+        detail: `DiChanDadang.com is JLL China’s first online marketplace for commercial real estate, offering rental and sales services for office and retail space. DiChanDaDang mini program will soon be launched internally.`
     },
     {
-        title: 'JLL Data Dashboard Launched in Shanghai Office',
-        date: '2020-03-01',
-        detail: `A data dashboard will be launched in Shanghai Office’s big screen in March. The dashboard is aim to display the data assets information owned by JLL across Greater China, demonstrate the data capability of us and improve the data awareness within the organization.
- 
-        The dashboard reflects  JLL’s data from the quantity and quality perspectives in nearly real time, as well as utilization of data in our business.`
+        title: 'Fee Forecasting System',
+        date: 'Managed by TDIM team',
+        detail: `Fee Forecasting System is an online dashboard empowering business intelligence and analytics, and it enables us to monitor business performance, identify opportunities and risks, and present key win projects.`
+    },
+    {
+        title: 'Blossom',
+        date: 'Managed by TDIM team',
+        detail: `Blossom is a supplement to our CRM systems, and it is an innovative tool that helps our colleagues manage, share client information and business referrals across cities and departments.`
+    },
+    {
+        title: 'MapIT',
+        date: 'Managed by Research team',
+        detail: `MapIT is a location intelligence platform that enables users to gain access to global market data and GIS (geographical information system) analytic insights. The platform is widely used by organizations in the industry to unlock new market opportunities.`
+    },
+    {
+        title: 'Command Centre 智控中心',
+        date: 'Managed by PAM team',
+        detail: `Command Centre is our intelligent building management platform. It captures building’s operational data through existing systems as well as wireless sensors (IoT). With a centralized data storage and analysis, the platform enables real-time, remote monitoring of buildings and facilities to drive efficient operations and reduce risk.`
+    },
+    {
+        title: 'DiChanDaDang 地产搭档',
+        date: 'Managed by Markets team',
+        detail: `DiChanDadang.com is JLL China’s first online marketplace for commercial real estate, offering rental and sales services for office and retail space. DiChanDaDang mini program will soon be launched internally.`
+    },
+    {
+        title: 'Fee Forecasting System',
+        date: 'Managed by TDIM team',
+        detail: `Fee Forecasting System is an online dashboard empowering business intelligence and analytics, and it enables us to monitor business performance, identify opportunities and risks, and present key win projects.`
+    },
+    {
+        title: 'Blossom',
+        date: 'Managed by TDIM team',
+        detail: `Blossom is a supplement to our CRM systems, and it is an innovative tool that helps our colleagues manage, share client information and business referrals across cities and departments.`
     },
 ]
 
@@ -78,7 +100,7 @@ const testAnimation = () => {
 
     requestAnimationFrame(function (timestamp) {
         starttime = timestamp || new Date().getTime()
-        moveit(timestamp, newsContainer, (-sHeight + 180), 200000)
+        moveit(timestamp, newsContainer, (-sHeight + 180), 196000)
     })
 }
 setTimeout(() => {

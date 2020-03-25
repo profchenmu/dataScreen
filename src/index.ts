@@ -7,6 +7,7 @@ import numeral from 'numeral';
 import './style/index.scss';
 numeral.defaultFormat('0,0.0');
 window.onload = () => {
+    window.localStorage.setItem('countPertimeNow', 'needInit')
     const wHeight = window.innerHeight;
     const wWidth = window.innerWidth;
     // , ${wHeight / 1080}
@@ -156,9 +157,25 @@ window.onload = () => {
         const diffSeconds = moment().diff(moment('09:30:00', 'HH:mm:ss'), 'seconds')
         console.log(diffSeconds, 'ddddddddddd')
         if (diffSeconds > 0 && diffSeconds <= 28800) {
+            const countPertimeBefore = window.localStorage.getItem('countPertimeNow');
             const area = areayesterdayLocal - 0 + areaPerSecondLocal * diffSeconds;
             const count = countYesterdayLocal - 0 + countPerSecondLocal * diffSeconds;
             const displayArea = numeral(area).format();
+            if (countPertimeBefore === 'needInit') {
+                basicAreaDom.text(displayArea);
+                basicCountDom.text(numeral(count - 0).format('0,0'));
+                window.localStorage.setItem('countPertimeNow', numeral(count - 0).format('0,0'))
+            } else {
+                if (countPertimeBefore === numeral(count - 0).format('0,0')) {
+                    return;
+                } else {
+                    basicAreaDom.text(displayArea);
+                    basicCountDom.text(numeral(count - 0).format('0,0'));
+                    window.localStorage.setItem('countPertimeNow', numeral(count - 0).format('0,0'))
+                }
+            }
+
+
             // const displayCount = numeral(area).format();
             basicAreaDom.text(displayArea);
             basicCountDom.text(numeral(count - 0).format('0,0'));

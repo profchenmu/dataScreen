@@ -9,7 +9,7 @@ const industryLineChart = echarts.init(document.querySelector('#industry-line'))
 const industrialParkLineChart = echarts.init(document.querySelector('#industrial-park-line'));
 const retailLineChart = echarts.init(document.querySelector('#retail-line'));
 // draw chart
-const colorPalette = ['#f6f5f1', '#00AED6', '#0079AF', '#005589', 'red', '#efa18d', '#787464', '#cc7e63', '#724e58', '#4b565b'];
+const colorPalette = ['#e30613', '#f6f5f1', '#00AED6', '#0079AF', '#005589', 'red', '#efa18d', '#787464', '#cc7e63', '#724e58', '#4b565b'];
 
 const socket = socketIOClient(config.url);
 

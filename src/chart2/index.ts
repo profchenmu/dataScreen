@@ -128,7 +128,7 @@ socket.on('officeLineMessage', (d: any) => {
     const options: any = {
         grid: {
             top: '10px',
-            left: '10px',
+            left: '30px',
             // right: 0,
             bottom: 0,
             // bottom: '10px',
@@ -241,7 +241,7 @@ socket.on('industryLineMessage', (d: any) => {
     const options: any = {
         grid: {
             top: '10px',
-            left: '10px',
+            left: '30px',
             // right: 0,
             bottom: 0,
             // bottom: '10px',
@@ -352,7 +352,7 @@ socket.on('industrialParkLineMessage', (d: any) => {
     const options: any = {
         grid: {
             top: '10px',
-            left: '10px',
+            left: '30px',
             // right: 0,
             bottom: 0,
             // bottom: '10px',
@@ -462,7 +462,7 @@ socket.on('retailLineMessage', (d: any) => {
     const options: any = {
         grid: {
             top: '10px',
-            left: '10px',
+            left: '30px',
             // right: 0,
             bottom: 0,
             // bottom: '10px',

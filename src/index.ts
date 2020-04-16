@@ -150,12 +150,13 @@ window.onload = () => {
 
     // }
     setInterval(() => {
+        dateNow.text(moment().format('YYYY-MM-DD'));
+        timeNow.text(moment().format('HH:mm:ss'))
         const areaPerSecondLocal: number = window.localStorage.getItem('areaPerSecondLocal') as any - 0;
         const countPerSecondLocal: number = window.localStorage.getItem('countPerSecondLocal') as any - 0;
         const areayesterdayLocal: any = window.localStorage.getItem('areayesterdayLocal');
         const countYesterdayLocal: any = window.localStorage.getItem('countYesterdayLocal');
         const diffSeconds = moment().diff(moment('09:30:00', 'HH:mm:ss'), 'seconds')
-        console.log(diffSeconds, 'ddddddddddd')
         if (diffSeconds > 0 && diffSeconds <= 28800) {
             const countPertimeBefore = window.localStorage.getItem('countPertimeNow');
             const area = areayesterdayLocal - 0 + areaPerSecondLocal * diffSeconds;
@@ -186,8 +187,7 @@ window.onload = () => {
 
         // const timeInfo = moment().format('YYYY-MM-DD HH:mm:ss');
         // const dateInfo = moment().format('YYYY-MM-DD HH:mm:ss');
-        dateNow.text(moment().format('YYYY-MM-DD'));
-        timeNow.text(moment().format('HH:mm:ss'))
+
         // const transactionDataStep = JSON.parse(window.localStorage.getItem('transactionDataStep'))
 
         // transactionDataStep.forEach((e: ItransactionDataStep) => {

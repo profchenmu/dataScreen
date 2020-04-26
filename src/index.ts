@@ -42,6 +42,7 @@ window.onload = () => {
     const timeNow = d3.select('#time');
     const basicCountDom = d3.select('#data-basic-count');
     const basicAreaDom = d3.select('#data-basic-area');
+    const video = document.getElementById('my-video');
     let areat: any;
     let countt: any;
     socket.emit('cliStart', { cliRequire: 'transactionMessage' });
@@ -199,6 +200,62 @@ window.onload = () => {
         // })
 
     }, 1000)
+    function testAnimationHide() {
+        let starttime: any
+        function moveit(timestamp: number, el: any, dist: number, duration: number) {
+            //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date:
+            const t = timestamp || new Date().getTime()
+            const runtime = t - starttime
+            let progress = 1 - runtime / duration
+
+            progress = Math.min(progress, 1)
+            console.log(dist * progress, 'ppppppppp')
+            el.style.opacity = dist * progress;
+            if (runtime < duration) {
+                requestAnimationFrame(function (t) {
+                    moveit(t, el, dist, duration)
+                })
+            } else {
+                setTimeout(() => {
+                    testAnimationShow()
+                }, 18000)
+            }
+        }
+
+        requestAnimationFrame(function (timestamp) {
+            starttime = timestamp || new Date().getTime()
+            moveit(timestamp, video, 1, 1000)
+        })
+    }
+    function testAnimationShow() {
+        let starttime: any
+        function moveit(timestamp: number, el: any, dist: number, duration: number) {
+            //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date:
+            const t = timestamp || new Date().getTime()
+            const runtime = t - starttime
+            let progress = runtime / duration
+            progress = Math.min(progress, 1)
+            el.style.opacity = dist * progress;
+            if (runtime < duration) {
+                requestAnimationFrame(function (t) {
+                    moveit(t, el, dist, duration)
+                })
+            } else {
+                setTimeout(() => {
+                    testAnimationHide()
+                }, 18000)
+            }
+        }
+
+        requestAnimationFrame(function (timestamp) {
+            starttime = timestamp || new Date().getTime()
+            moveit(timestamp, video, 1, 1000)
+        })
+    }
+
+    setTimeout(() => {
+        testAnimationShow()
+    }, 18000)
 }
 
 

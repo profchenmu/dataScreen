@@ -99,6 +99,7 @@ socket.on('polyDataMessage', (d: any) => {
                 }
             },
             data: data[key],
+            barWidth: 10,
         })
     }
 
@@ -112,7 +113,7 @@ socket.on('polyDataMessage', (d: any) => {
             containLabel: true,
             show: false
         },
-        color: ['#e30613', '#dbd6c7', '#fff', 'red'],
+        color: ['#e30613', '#dbd6c7', '#fff', '#e30613'],
         yAxis: {
             type: 'category',
             data: date,

@@ -2,7 +2,6 @@ import echarts from 'echarts';
 import socketIOClient from 'socket.io-client';
 import moment from 'moment';
 import config from '../config';
-import * as d3 from 'd3';
 // initialize echarts instance with prepared DOM
 // const myChart = echarts.init(document.querySelector('#main'));
 const officeLineChart = echarts.init(document.querySelector('#office-line'));
@@ -101,39 +100,6 @@ interface Iline {
 //     //     ]
 //     // });
 // });
-
-const drawSvg = (dataArr: [number]) => {
-    const svg = d3.select('#test');
-    svg.attr('width', 1000);
-    svg.attr('height', 1000);
-    const g = svg.append('g');
-
-    const max: number = d3.max(dataArr);
-    const scaleY = d3.scaleLinear().domain([0, max]).range([0, 1000])
-    const scaleX = d3.scaleLinear().domain([0, dataArr.length - 1]).range([0, 1000])
-
-    const lineGenerator = d3.line()
-        .x((d, i) => {
-            console.log(i, 'ddddddd')
-            return scaleX(i as any);
-        })
-        .y((d, i) => {
-            // console.log(scaleY(1000 - (d as any)))
-            return 1000 - scaleY(d as any);
-        })
-        .curve(d3.curveCatmullRomOpen);
-    g.append('path')
-        .attr('d', lineGenerator(mock))
-        .attr('fill', 'none')
-        .attr('stroke', 'cornflowerblue')
-        .attr('stroke-width', '2px')
-    // console.log(aa, 'aaaaa')
-    // const test = document.getElementById('chart2');
-    // test.append(svg);
-}
-let mock: any = [120, 145, 166, 177, 200, 223, 555, 666];
-console.log(drawSvg(mock))
-
 socket.emit('cliStart', { cliRequire: 'officeLineMessage' });
 socket.on('officeLineMessage', (d: any) => {
     const officeLineData: [Iline] = d.message;

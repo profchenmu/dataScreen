@@ -39,6 +39,18 @@ table {
 
 
     .active {
-        background: #dbd6c7;
+        // background: #dbd6c7;
+        padding: 0;
+        height: 10px;
+
+        &:after {
+            content: "";
+            width: 100px;
+            height: 16px;
+            background: #dbd6c7;
+            display: block;
+            margin: auto;
+            // border-radius: 50%;
+        }
     }
 }

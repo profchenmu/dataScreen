@@ -1,9 +1,13 @@
 import './chart1.scss';
 import socketIOClient from 'socket.io-client';
-const socket = socketIOClient('http://127.0.0.1:4000');
+import config from '../config';
+import numeral from 'numeral';
+numeral.defaultFormat('0,0');
+const socket = socketIOClient(config.url);
 
 
-interface Iproperty { property_type: string, Count: number, Area: number }
+interface Iproperty { property_type: string, Count: number, Area: number, Value: number }
+socket.emit('cliStart', { cliRequire: 'propertyMessage' });
 
 socket.on('propertyMessage', (data: any) => {
     const propertyData = data.message;
@@ -11,20 +15,20 @@ socket.on('propertyMessage', (data: any) => {
         switch (e.property_type) {
             case 'Office/Commercial':
                 console.log(document.querySelector('#chart1-office-data .count'))
-                document.querySelector('#chart1-office-data .count').innerHTML = e.Count as any;
-                document.querySelector('#chart1-office-data .area').innerHTML = e.Area as any;
+                document.querySelector('#chart1-office-data .count').innerHTML = numeral(e.Count).format();
+                document.querySelector('#chart1-office-data .area').innerHTML = numeral(e.Area).format();
                 break;
-            case 'Industry':
-                document.querySelector('#chart1-industry-data .count').innerHTML = e.Count as any;
-                document.querySelector('#chart1-industry-data .area').innerHTML = e.Area as any;
+            case 'Industrial':
+                document.querySelector('#chart1-industry-data .count').innerHTML = numeral(e.Count).format();
+                document.querySelector('#chart1-industry-data .area').innerHTML = numeral(e.Area).format();
                 break;
-            case 'Industrial Park':
-                document.querySelector('#chart1-park-data .count').innerHTML = e.Count as any;
-                document.querySelector('#chart1-park-data .area').innerHTML = e.Area as any;
+            case 'Business Park':
+                document.querySelector('#chart1-park-data .count').innerHTML = numeral(e.Count).format();
+                document.querySelector('#chart1-park-data .area').innerHTML = numeral(e.Area).format();
                 break;
             case 'Retail':
-                document.querySelector('#chart1-retail-data .count').innerHTML = e.Count as any;
-                document.querySelector('#chart1-retail-data .area').innerHTML = e.Area as any;
+                document.querySelector('#chart1-retail-data .count').innerHTML = numeral(e.Count).format();
+                document.querySelector('#chart1-retail-data .area').innerHTML = numeral(e.Area).format();
                 break;
         }
     })

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import * as d3 from 'd3';
 import socketIOClient from 'socket.io-client';
+import config from '../config';
 import './qt.scss';
 const qtSvg = d3.select("#qt");
 // const shanghai = svg.select("#shanghai").attr("r", "5");
@@ -11,32 +12,43 @@ interface dataQt {
     unit: string,
     Date: Date,
 }
-const socket = socketIOClient('http://127.0.0.1:4000');
+const socket = socketIOClient(config.url);
+socket.emit('cliStart', { cliRequire: 'qtMessage' });
+
 socket.on('qtMessage', (data: any) => {
     const qtArr: [dataQt] = data.message;
     qtArr.forEach((ele, index) => {
         const qtInfo: dataQt = ele;
         console.log(ele, 'ele');
-        const polygons: any = d3.selectAll(`#qt-${index} #datas polygon`);
+        const polygons: any = d3.selectAll(`#${ele.Entity} #datas polygon`);
         let shining: number = 0;
         polygons.attr('style', (e: any, i: number) => {
             if (i <= qtInfo.Value) {
-                const opacity: number = i / qtInfo.Value;
-                return `fill: #42FBFA; opacity: ${opacity}`;
+                //     const opacity: number = i / qtInfo.Value;
+                //     return `fill: #42FBFA; opacity: ${opacity}`;
+                // return 'fill: #e30613; opacity: 1'
+                return 'fill: #e30612;'
+                // return 'fill: #000;opacity: 0';
             } else {
-                return 'fill: #0055be; opacity: 1';
+
+                //     return 'fill: #0055be; opacity: 1';
+                // return 'fill: #fff; opacity: 1';
+                return 'fill: #fff;';
             }
-        }).attr('filter', (e: any, i: number) => {
-            if (i <= parseInt(qtInfo.Value as any)) {
-                return 'url(#filter-blur)'
-            }
-        }).attr('id', (e: any, i: number) => {
-            if (i === parseInt(qtInfo.Value as any)) {
-                return 'shining'
-            }
-        });
-        d3.select(`#qt-${index} #title`).text('Title');
-        d3.select(`#qt-${index} #percent`).text(qtInfo.Value);
+
+        })
+        // .attr('filter', (e: any, i: number) => {
+        //     if (i <= parseInt(qtInfo.Value as any)) {
+        //         return 'url(#filter-blur)'
+        //     }
+        // })
+        // .attr('id', (e: any, i: number) => {
+        //     if (i === parseInt(qtInfo.Value as any)) {
+        //         return 'shining'
+        //     }
+        // });
+        // d3.select(`#qt-${index} #title`).text('Title');
+        d3.select(`#${ele.Entity} #percent`).text(qtInfo.Value);
     })
 })
 

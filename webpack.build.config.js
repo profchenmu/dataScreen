@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
 const host = process.env.HOST || '0.0.0.0';
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
 // const cssFilename = 'dist/css/[name].[contenthash:8].css';
 
 module.exports = {
@@ -18,7 +19,9 @@ module.exports = {
         chart2: path.resolve(__dirname, "./src/chart2/index.ts"),
         matrix: path.resolve(__dirname, "./src/matrix/index.ts"),
         logos: path.resolve(__dirname, "./src/logos/index.ts"),
-        news: path.resolve(__dirname, "./src/news/index.ts"),
+        incremental: path.resolve(__dirname, "./src/incremental/index.ts"),
+        smallchart1: path.resolve(__dirname, "./src/smallchart1/index.ts"),
+        smallchart2: path.resolve(__dirname, "./src/smallchart2/index.ts"),
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -47,6 +50,12 @@ module.exports = {
                         }
                     ]
                 })
+            },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                use: [{
+                    loader: 'file-loader',
+                }],
             },
             {
                 test: /\.(png|jpg|gif|svg)$/i,
@@ -78,7 +87,7 @@ module.exports = {
         extensions: ['.tsx', '.ts', '.js'],
     },
     plugins: [
-        new CleanWebpackPlugin(),
+        // new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: './index.html',
@@ -178,9 +187,37 @@ module.exports = {
             }
         }),
         new HtmlWebpackPlugin({
-            filename: 'news.html',
-            template: './news.html',
-            chunks: ['news'],
+            filename: 'incremental.html',
+            template: './incremental.html',
+            chunks: ['incremental'],
+            inject: true,
+            minify: {
+                collapseWhitespace: true,
+                removeComments: true,
+                removeRedundantAttributes: true,
+                removeScriptTypeAttributes: true,
+                removeStyleLinkTypeAttributes: true,
+                useShortDoctype: true
+            }
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'smallchart1.html',
+            template: './smallchart1.html',
+            chunks: ['smallchart1'],
+            inject: true,
+            minify: {
+                collapseWhitespace: true,
+                removeComments: true,
+                removeRedundantAttributes: true,
+                removeScriptTypeAttributes: true,
+                removeStyleLinkTypeAttributes: true,
+                useShortDoctype: true
+            }
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'smallchart2.html',
+            template: './smallchart2.html',
+            chunks: ['smallchart2'],
             inject: true,
             minify: {
                 collapseWhitespace: true,
@@ -193,6 +230,10 @@ module.exports = {
         }),
         new ExtractTextPlugin({
             filename: './[name].css'
+        }),
+        new webpack.DllReferencePlugin({
+            context: __dirname,
+            manifest: require('./dist/library/library.json')
         }),
     ]
 };

@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body#news {
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+    overflow: hidden;
+
+    #news-container {
+        height: 380px;
+        // overflow: hidden;
+    }
+
+    .news-holder {
+        margin: auto;
+        padding: 20px 30px;
+
+        h3 {
+            font-size: 38px;
+            color: #f6f5f1;
+        }
+
+        .time {
+            font-size: 32px;
+            color: #c5c5c7;
+        }
+
+        p {
+            margin-top: 10px;
+            font-size: 32px;
+            color: #fff;
+        }
+    }
+}

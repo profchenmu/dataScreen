@@ -8,11 +8,12 @@
     <title>Document</title>
     <style>
         body#chart2 {
-            height: 350px;
-            width: 350px;
+            /* height: 350px;
+            width: 350px; */
             margin: 0;
-            padding-top: 20px;
-            padding-left: 20px;
+            /* padding-top: 20px;
+            padding-left: 20px; */
+            /* background: #000; */
         }
 
         .container {
@@ -20,94 +21,146 @@
             align-content: center;
         }
 
-        #main {
+        /* #main {
             height: 370px;
             width: 370px;
-        }
+        } */
 
         #office-line {
-            height: 76px;
-            width: 312px;
+            height: 130px;
+            width: 100%;
         }
 
         #industry-line {
-            height: 76px;
-            width: 312px;
+            height: 130px;
+            width: 100%;
         }
 
-        .right {
+        /* .right {
             margin-left: -40px;
-        }
+        } */
 
         #industrial-park-line {
-            height: 76px;
-            width: 312px;
+            height: 130px;
+            width: 100%;
         }
 
         #retail-line {
-            height: 76px;
-            width: 312px;
+            height: 130px;
+            width: 100%;
+        }
+
+        .right {
+            display: flex;
+            /* position: relative; */
+            flex-wrap: wrap;
+            width: 100%;
         }
 
         .chart-holder {
-            display: flex;
+            /* display: flex;
             justify-content: center;
             align-content: center;
-            align-items: center;
+            align-items: center; */
         }
 
         .chart-holder p {
-            font-size: 26px;
-            font-family: Arial, Helvetica, sans-serif;
-            text-align: right;
-            width: 170px;
-            padding-top: 30px;
-            margin-bottom: 0;
-            padding-right: 20px;
+            font-size: 36px;
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;
+            width: 80%;
+            margin-top: 5px;
+            padding-top: 0;
+            color: #fff;
+            /* color: #e30613; */
+            margin-bottom: 6px;
+            font-style: italic;
+            /* position: relative; */
+        }
+
+        .chart-holder small {
+            position: absolute;
+            display: block;
+            right: 60px;
+            color: #fff;
+            top: 10px;
+            font-size: 20px;
+        }
+
+        .chart-holder b {
+            color: #fff;
+        }
+
+        .chart-holder p span {
+            color: #fff;
+            font-size: 18px;
         }
 
         .chart-holder.line-1 {
+            width: 50%;
             color: #fff;
+            position: relative;
         }
 
         .chart-holder.line-2 {
+            width: 50%;
             color: #fff;
+            position: relative;
         }
 
         .chart-holder.line-3 {
+            width: 50%;
             color: #fff;
+            position: relative;
         }
 
         .chart-holder.line-4 {
+            width: 50%;
             color: #fff;
+            position: relative;
         }
     </style>
 </head>
 
 <body id="chart2">
     <div class="container">
-        <div class="left">
+        <!-- <div class="left">
             <div id="main"></div>
-        </div>
+        </div> -->
         <div class="right">
             <div class="chart-holder line-1">
-                <p>Office</p>
+                <p>Office
+                    <!-- <b> | </b><span id="office-percent">25%</span> -->
+                </p>
+                <small>m<sup>2</sup></small>
                 <div id="office-line"></div>
             </div>
             <div class="chart-holder line-2">
-                <p>Industry</p>
+                <p>Industrial
+                    <!-- <b> | </b><span id="industry-percent">25%</span> -->
+                </p>
+                <small>m<sup>2</sup></small>
                 <div id="industry-line"></div>
             </div>
-            <div class="chart-holder line-4">
-                <p>Retail</p>
-                <div id="retail-line"></div>
-            </div>
             <div class="chart-holder line-3">
-                <p>Industrial Park</p>
+                <p>Business Park
+                    <!-- <b> | </b><span id="industrial-park-percent">25%</span> -->
+
+                </p>
+                <small>m<sup>2</sup></small>
                 <div id="industrial-park-line"></div>
             </div>
+            <div class="chart-holder line-4">
+                <p>Retail
+                    <!-- <b> | </b><span id="retail-percent">25%</span> -->
+                </p>
+                <small>m<sup>2</sup></small>
+                <div id="retail-line"></div>
+            </div>
+
         </div>
     </div>
+    <script src='/library/library.dll.js'></script>
 </body>
 
 </html>

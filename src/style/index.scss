@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Led';
+    src: url('./UnidreamLED.ttf');
+    font-weight: 600;
+    font-style: normal;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -12,8 +19,90 @@
     top: 0;
 }
 
+#my-video {
+    opacity: 0;
+    // display: none;
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+}
+
 #index-html {
-    background-color: rgba(5, 11, 32, 1);
+    background-color: #000;
+}
+
+.data-screen-title {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    height: 120px;
+    line-height: 120px;
+    position: relative;
+
+
+    #bottom-line {
+        position: absolute;
+        height: 2px;
+        width: 50%;
+        left: 25%;
+        bottom: 16px;
+        // background: #00d4ff;
+        background: linear-gradient(90deg, #fff 20%, rgba(255, 255, 255, 1) 50%, #fff 80%);
+        // background: linear-gradient(90deg, rgba(0, 222, 254, 1) 20%, rgba(0, 222, 254, 1) 44%, rgba(255, 255, 255, 1) 45%, rgba(255, 255, 255, 1) 55%, rgba(0, 222, 254, 1) 56%, rgba(0, 222, 254, 1) 80%);
+    }
+
+    #left-middle-line {
+        position: absolute;
+        height: 2px;
+        width: 4%;
+        left: 22%;
+        top: 70px;
+        background: #fff;
+        transform: rotateZ(60deg);
+    }
+
+    #right-middle-line {
+        position: absolute;
+        height: 2px;
+        width: 4%;
+        right: 22%;
+        top: 70px;
+        background: #fff;
+        transform: rotateZ(-60deg);
+    }
+
+    #left-line {
+        position: absolute;
+        height: 2px;
+        width: 23%;
+        left: 0;
+        top: 36px;
+        // background: #00d4ff;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #fff 68%, #fff 100%);
+    }
+
+    #right-line {
+        position: absolute;
+        height: 2px;
+        width: 23%;
+        right: 0;
+        top: 36px;
+        // background: #00d4ff;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #fff 68%, #fff 100%);
+        transform: rotateZ(180deg);
+    }
+
+    h1 {
+        font-size: 50px;
+        color: #fff;
+        width: 60%;
+        margin-left: 20%;
+        // background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 60%);
+    }
 }
 
 iframe {
@@ -23,14 +112,15 @@ iframe {
 }
 
 #index-body {
-    background-color: rgba(5, 11, 32, 1);
+    background-color: #000;
     font-family: Arial, Helvetica, sans-serif;
     overflow: hidden;
 
     .base-holder {
         width: 3840px;
         height: 1080px;
-        background: radial-gradient(circle, rgba(0, 50, 120, 1) 0%, rgba(5, 11, 32, 1) 100%);
+        // background: radial-gradient(circle, #001323 0%, #000 100%);
+        background: #000;
         position: relative;
         margin-left: -1920px;
         left: 50%;
@@ -41,22 +131,52 @@ iframe {
         font-family: Arial, Helvetica, sans-serif;
         position: absolute;
         left: 1005px;
-        top: 240px;
+        top: 200px;
+        z-index: 2;
+        font-size: normal;
+        // width: 460px;
+
+        .small-title {
+            margin-top: 10px;
+            font-size: 22px;
+            color: #fff;
+        }
 
         h3 {
             color: #fff;
-            font-size: 41px;
+            font-size: 40px;
+            font-weight: normal;
+
+            &::before {
+                content: '';
+                display: inline-block;
+                background: #e30613;
+                width: 20px;
+                height: 30px;
+                vertical-align: middle;
+                margin-bottom: 5px;
+                margin-right: 10px;
+            }
         }
 
         p {
             font-size: 56px;
 
             &.transaction-count-holder {
-                color: #00ffff;
+                // font-size: 36px;
+                font-family: 'Times New Roman', Times, serif;
+                font-style: italic;
+                font-weight: 100;
+                color: #e30613;
+                // color: #00ffff;
             }
 
             &.transaction-area-holder {
-                color: #00e59a;
+                // color: #00ffff;
+                font-family: 'Times New Roman', Times, serif;
+                font-style: italic;
+                font-weight: 100;
+                color: #e30613;
             }
         }
 
@@ -65,27 +185,44 @@ iframe {
     .logo {
         position: absolute;
         left: 1005px;
-        top: 45px;
-        width: 488px;
-        height: 117px;
-        background: url('../images/logo-05.png') 100% no-repeat;
+        top: 70px;
+        width: 400px;
+        height: 100px;
+        background: url('../images/logo-05.png') no-repeat;
+        background-size: cover;
+    }
+
+    .commands {
+        color: #fff;
+        text-align: right;
+        width: 100%;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        font-style: italic;
     }
 
     .time {
         height: 63px;
         position: absolute;
-        left: 2325px;
-        top: 69px;
+        left: 2450px;
+        top: 60px;
         color: #fff;
-        font-size: 58px;
+        font-family: Led;
+        font-size: 53px;
+
+        span {
+            margin-right: 10px;
+        }
     }
 
     .map-holder {
         width: 930px;
         height: 900px;
-        left: 1377px;
-        top: 30px;
+        left: 1270px;
+        top: -40px;
         position: absolute;
+        transform: scale(0.7);
     }
 
     .screen-holder {
@@ -95,18 +232,60 @@ iframe {
         left: 36px;
         top: 25px;
 
+        &.data-3 {
+            height: 508px;
+
+            .screen-data-holder-in {
+                width: 100%;
+                height: 100%;
+                background: url('../images/logosys-02.png');
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+
+
+            }
+        }
+
         .screen-holder-in {
             position: relative;
             width: 888px;
             height: 68px;
 
             .screen-title {
-                background: linear-gradient(90deg, rgba(0, 78, 157, 1) 0%, rgba(0, 78, 157, 0) 100%);
+                // background: linear-gradient(90deg, rgba(0, 78, 157, 1) 0%, rgba(0, 78, 157, 0) 100%);
                 padding-left: 20px;
 
+                .sub-title {
+                    font-size: 22px;
+                    display: block;
+                    margin-top: -6px;
+                    padding-left: 30px;
+                    color: #b1b2c7;
+                }
+
                 p {
-                    font-size: 53px;
-                    color: #00DEFF;
+                    &::before {
+                        content: '';
+                        display: inline-block;
+                        background: #e30613;
+                        width: 20px;
+                        height: 30px;
+                        vertical-align: middle;
+                        margin-bottom: 5px;
+                        margin-right: 10px;
+                    }
+
+                    .red-title {
+                        // font-weight: 800;
+                        color: #fff;
+                    }
+
+                    font-size: 40px;
+                    color: #fff;
+                    height: 68px;
+                    line-height: 38px;
+                    vertical-align: middle;
                 }
             }
 
@@ -133,9 +312,9 @@ iframe {
                     position: absolute;
                     top: 0;
                     left: 0;
-                    border-width: 1px;
+                    border-width: 2px;
                     border-style: solid;
-                    border-image-source: linear-gradient(180deg, rgba(63, 169, 245, 1) 0%, rgba(63, 169, 245, 1) 7%, rgba(0, 78, 157, 1) 7%, rgba(0, 78, 157, 0) 7%, rgba(63, 169, 245, 1) 50%, rgba(0, 78, 157, 0) 93%, rgba(63, 169, 245, 1) 93%, rgba(63, 169, 245, 1) 100%);
+                    border-image-source: linear-gradient(180deg, #fff 0%, #fff 6%, rgba(255, 255, 255, 0) 6%, #fff 50%, rgba(255, 255, 255, 0) 94%, #fff 94%, #fff 100%);
                     border-image-slice: 1;
                     border-image-slice: 1 100%;
                     box-sizing: border-box;
@@ -148,9 +327,9 @@ iframe {
                     position: absolute;
                     top: 0;
                     left: 0;
-                    border-width: 1px;
+                    border-width: 2px;
                     border-style: solid;
-                    border-image-source: linear-gradient(90deg, rgba(63, 169, 245, 1) 0%, rgba(63, 169, 245, 1) 3%, rgba(0, 78, 157, 1) 3%, rgba(0, 78, 157, 0) 7%, rgba(63, 169, 245, 1) 50%, rgba(0, 78, 157, 0) 97%, rgba(63, 169, 245, 1) 97%, rgba(63, 169, 245, 1) 100%);
+                    border-image-source: linear-gradient(90deg, #fff 0%, #fff 3%, rgba(255, 255, 255, 0) 3%, #fff 50%, rgba(255, 255, 255, 0) 97%, #fff 97%, #fff 100%);
                     border-image-slice: 1;
                     border-image-slice: 100% 1;
                     box-sizing: border-box;
@@ -172,7 +351,16 @@ iframe {
         }
 
         &.data-2 {
-            top: 564px;
+            top: 550px;
+
+            .screen-data-holder {
+                padding: 0;
+
+                // padding-right: 30px;
+                iframe {
+                    margin-left: 20px;
+                }
+            }
         }
 
         &.data-3 {
@@ -181,7 +369,7 @@ iframe {
 
         &.data-4 {
             left: 2908px;
-            top: 564px;
+            top: 550px;
 
             .screen-data-holder {
                 padding: 30px 10px;
@@ -190,64 +378,91 @@ iframe {
 
         &.data-small-1 {
             left: 990px;
-            top: 666px;
+            top: 550px;
             height: auto;
+            z-index: 2;
 
             .screen-holder-in {
-                width: 894px;
+                width: 870px;
             }
 
             .screen-data-holder {
-                height: 312px;
-                width: 894px;
+                height: 412px;
+                width: 870px;
+                padding-right: 5px;
             }
         }
 
         &.data-small-2 {
-            width: 506px;
-            height: 300px;
-            left: 2348px;
-            top: 210px;
+            width: 750px;
+            height: 400px;
+            left: 2100px;
+            top: 130px;
 
             .screen-holder-in {
-                width: 506px;
+                width: 100%;
+
+                // .screen-title {
+                //     p {
+                //         font-size: 34px;
+                //     }
+                // }
             }
 
+
+
             .screen-data-holder {
-                height: 224px;
-                width: 506px;
+                height: 305px;
+                width: 100%;
+
+
             }
         }
 
         &.data-small-3 {
-            width: 596px;
-            height: 231px;
-            left: 2255px;
-            top: 567px;
+            width: 922px;
+            height: 220px;
+            left: 1930px;
+            top: 550px;
 
             .screen-holder-in {
-                width: 596px;
+                width: 100%;
             }
 
             .screen-data-holder {
-                height: 156px;
-                width: 596px;
+                height: 140px;
+                width: 100%;
+
+                &::after {
+                    content: '';
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    border-width: 2px;
+                    border-style: solid;
+                    border-image-source: linear-gradient(180deg, #fff 0%, #fff 13%, rgba(255, 255, 255, 0) 13%, #fff 50%, rgba(255, 255, 255, 0) 87%, #fff 87%, #fff 100%);
+                    border-image-slice: 1;
+                    border-image-slice: 1 100%;
+                    box-sizing: border-box;
+                }
             }
         }
 
         &.data-small-4 {
-            width: 596px;
-            height: 231px;
-            left: 2255px;
-            top: 823px;
+            width: 922px;
+            height: 260px;
+            left: 1930px;
+            top: 780px;
 
             .screen-holder-in {
-                width: 596px;
+                width: 100%;
             }
 
             .screen-data-holder {
-                height: 156px;
-                width: 596px;
+                height: 178px;
+                width: 100%;
             }
         }
     }

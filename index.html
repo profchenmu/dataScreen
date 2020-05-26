@@ -9,12 +9,24 @@
 </head>
 
 <body id="index-body">
-<!-- <div id="index-base-holder"> -->
+    <!-- <div id="index-base-holder"> -->
     <div class="base-holder" id="index-base">
+        <div class="data-screen-title">
+            <h1>JLL Data Dashboard - Greater China</h1>
+            <div id="bottom-line"></div>
+            <div id="left-middle-line"></div>
+            <div id="right-middle-line"></div>
+            <div id="left-line"></div>
+            <div id="right-line"></div>
+        </div>
+
         <div class="screen-holder data-1">
             <div class="screen-holder-in">
                 <div class="screen-title">
-                    <p>Lorem ipsum</p>
+                    <p>Properties Tracked across Greater China<br />
+                        <small class="sub-title">
+                            Total Buildings & GFA by Property Type
+                        </small></p>
                 </div>
                 <div class="screen-data-holder">
                     <div class="screen-data-holder-in">
@@ -26,7 +38,11 @@
         <div class="screen-holder data-2">
             <div class="screen-holder-in">
                 <div class="screen-title">
-                    <p>Lorem ipsum</p>
+                    <p>Transactions Tracked across Greater China<br />
+                        <small class="sub-title">
+                            Transactions Volume by Area by Property Type
+                        </small>
+                    </p>
                 </div>
                 <div class="screen-data-holder">
                     <div class="screen-data-holder-in">
@@ -38,23 +54,32 @@
         <div class="screen-holder data-3">
             <div class="screen-holder-in">
                 <div class="screen-title">
-                    <p>Lorem ipsum</p>
+                    <p>JLL Digital Platforms<br />
+                        <small class="sub-title">
+                            Data originated from the systems below
+                        </small></p>
+
+
                 </div>
                 <div class="screen-data-holder">
                     <div class="screen-data-holder-in">
-                        <iframe src='/qt.html'></iframe>
+                        <!-- <iframe src='/qt.html'></iframe> -->
                     </div>
                 </div>
             </div>
+            <small class="commands"> * Including but not limited to key systems listed</small>
+
         </div>
         <div class="screen-holder data-4">
             <div class="screen-holder-in">
                 <div class="screen-title">
-                    <p>Lorem ipsum</p>
+                    <p>Spotlights of Innovation Initiatives<br />
+                        <small class="sub-title">Stories, news and announcements related to innovation</small>
+                    </p>
                 </div>
                 <div class="screen-data-holder">
                     <div class="screen-data-holder-in">
-                        <iframe src='/news.html'></iframe>
+                        <iframe src='/incremental.html'></iframe>
                     </div>
                 </div>
             </div>
@@ -63,22 +88,25 @@
             <!-- <img src="/images/logo-05.png" width="488" height="117" /> -->
         </div>
         <div class="transaction">
-            <h3>Area:</h3>
-            <p class="transaction-area-holder"><span id="data-basic-area">377593200.1</span>
-                <small> m<sup>2</sup></small>
+            <h3>Current Transaction Tracker</h3>
+            <p class="small-title">Area (<small>m<sup>2</sup></small>):</p>
+            <p class="transaction-area-holder"><span id="data-basic-area">377,593,200.1</span>
+                <!-- <small> m<sup>2</sup></small> -->
             </p>
-            <h3>Count:</h3>
-            <p class="transaction-count-holder"><span id="data-basic-count">161416</span>
-                <small> DEAL</small>
+            <p class="small-title">Deal:</p class="small-title">
+            <p class="transaction-count-holder"><span id="data-basic-count">100,200</span>
+                <!-- <small> DEAL</small> -->
             </p>
         </div>
         <div class="time">
-            <p id="data-time">2020-01-01 00:00:00</p>
+            <p><span id="date">2020-01-01</span> <span id="time">00:00:00</span></p>
         </div>
         <div class="screen-holder data-small-1">
             <div class="screen-holder-in">
                 <div class="screen-title">
-                    <p>Lorem ipsum</p>
+                    <p>Data Coverage Matrix<br />
+                        <small class="sub-title">Data assets owned by business lines</small>
+                    </p>
                 </div>
                 <div class="screen-data-holder">
                     <div class="screen-data-holder-in">
@@ -90,23 +118,29 @@
         <div class="screen-holder data-small-2">
             <div class="screen-holder-in">
                 <div class="screen-title">
-                    <p>Lorem ipsum</p>
+                    <p>Data Quality Score<br /><small class="sub-title">Data quality measures over data assets</small>
+                    </p>
                 </div>
                 <div class="screen-data-holder">
                     <div class="screen-data-holder-in">
-                        <iframe src='/logos.html'></iframe>
+                        <iframe src='/qt.html'></iframe>
+                        <!-- <iframe src='/logos.html'></iframe> -->
                     </div>
                 </div>
+
             </div>
+            <small class="commands"> * Sample showcase of office leasing data only </small>
+
         </div>
         <div class="screen-holder data-small-3">
             <div class="screen-holder-in">
                 <div class="screen-title">
-                    <p>Lorem ipsum</p>
+                    <p>Digital Innovation Initiatives<br />
+                        <small class="sub-title">No. of digital innovation projects over time</small></p>
                 </div>
                 <div class="screen-data-holder">
                     <div class="screen-data-holder-in">
-                        <!-- <iframe src='/qt.html'></iframe> -->
+                        <iframe src='/smallchart1.html'></iframe>
                     </div>
                 </div>
             </div>
@@ -114,11 +148,12 @@
         <div class="screen-holder data-small-4">
             <div class="screen-holder-in">
                 <div class="screen-title">
-                    <p>Lorem ipsum</p>
+                    <p>Monthly Data Growth<br />
+                        <small class="sub-title">New records generated by business lines</small></p>
                 </div>
                 <div class="screen-data-holder">
                     <div class="screen-data-holder-in">
-                        <!-- <iframe src='/qt.html'></iframe> -->
+                        <iframe src='/smallchart2.html'></iframe>
                     </div>
                 </div>
             </div>
@@ -130,7 +165,11 @@
             <p id="area"></p>
         </div>
     </div>
-<!-- </div> -->
+    <video autoplay muted loop id="my-video">
+        <source src="/video/annual_movie_final.mp4" type="video/mp4">
+    </video>
+    <script src='/library/library.dll.js'></script>
+    <!-- </div> -->
 
 </body>
 

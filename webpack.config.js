@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const {
     CleanWebpackPlugin
 } = require('clean-webpack-plugin');
@@ -11,13 +12,15 @@ module.exports = {
     mode: 'production',
     entry: {
         index: path.resolve(__dirname, './src/index.ts'),
-        qt: path.resolve(__dirname, "./src/qt/index.ts"),
-        map: path.resolve(__dirname, "./src/map/index.ts"),
-        chart1: path.resolve(__dirname, "./src/chart1/index.ts"),
-        chart2: path.resolve(__dirname, "./src/chart2/index.ts"),
-        matrix: path.resolve(__dirname, "./src/matrix/index.ts"),
-        logos: path.resolve(__dirname, "./src/logos/index.ts"),
-        news: path.resolve(__dirname, "./src/news/index.ts"),
+        qt: path.resolve(__dirname, './src/qt/index.ts'),
+        map: path.resolve(__dirname, './src/map/index.ts'),
+        chart1: path.resolve(__dirname, './src/chart1/index.ts'),
+        chart2: path.resolve(__dirname, './src/chart2/index.ts'),
+        matrix: path.resolve(__dirname, './src/matrix/index.ts'),
+        // logos: path.resolve(__dirname, './src/logos/index.ts'),
+        incremental: path.resolve(__dirname, './src/incremental/index.ts'),
+        smallchart1: path.resolve(__dirname, './src/smallchart1/index.ts'),
+        smallchart2: path.resolve(__dirname, './src/smallchart2/index.ts'),
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -71,6 +74,12 @@ module.exports = {
                 ],
             },
             {
+                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                use: [{
+                    loader: 'file-loader',
+                }],
+            },
+            {
                 test: /\.(png|jpg|gif|svg)$/i,
                 use: [{
                     loader: 'url-loader',
@@ -100,7 +109,7 @@ module.exports = {
         extensions: ['.tsx', '.ts', '.js'],
     },
     plugins: [
-        new CleanWebpackPlugin(),
+        // new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: './index.html',
@@ -137,17 +146,33 @@ module.exports = {
             chunks: ['matrix'],
             inject: true,
         }),
+        // new HtmlWebpackPlugin({
+        //     filename: 'logos.html',
+        //     template: './logos.html',
+        //     chunks: ['logos'],
+        //     inject: true,
+        // }),
         new HtmlWebpackPlugin({
-            filename: 'logos.html',
-            template: './logos.html',
-            chunks: ['logos'],
+            filename: 'incremental.html',
+            template: './incremental.html',
+            chunks: ['incremental'],
             inject: true,
         }),
         new HtmlWebpackPlugin({
-            filename: 'news.html',
-            template: './news.html',
-            chunks: ['news'],
+            filename: 'smallchart1.html',
+            template: './smallchart1.html',
+            chunks: ['smallchart1'],
             inject: true,
         }),
+        new HtmlWebpackPlugin({
+            filename: 'smallchart2.html',
+            template: './smallchart2.html',
+            chunks: ['smallchart2'],
+            inject: true,
+        }),
+        new webpack.DllReferencePlugin({
+            context: __dirname,
+            manifest: require('./dist/library/library.json')
+        })
     ]
 };

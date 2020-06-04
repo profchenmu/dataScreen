@@ -11,6 +11,20 @@
     box-sizing: border-box;
 }
 
+#video-file-input {
+    &:hover {
+        opacity: 1;
+    }
+
+    opacity: 0;
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    z-index: 20000;
+    top: 0;
+    left: 0;
+}
+
 #index-base-holder {
     position: absolute;
     width: 100%;
@@ -21,7 +35,6 @@
 
 #my-video {
     opacity: 0;
-    // display: none;
     position: fixed;
     z-index: 10000;
     top: 0;
@@ -29,6 +42,7 @@
     width: 100%;
     height: 100%;
     background: #000;
+    object-fit: fill;
 }
 
 #index-html {

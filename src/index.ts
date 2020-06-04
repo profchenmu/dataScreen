@@ -5,9 +5,107 @@ import socketIOClient from 'socket.io-client';
 import config from './config';
 import numeral from 'numeral';
 import './style/index.scss';
+type Tcount = {
+    entity: string
+    date: Date
+    Count: number
+    unit: string
+}
+type Tarea = {
+    entity: string
+    date: Date
+    Area: number
+    unit: string
+}
+interface Itransaction {
+    count: [Tcount]
+    area: [Tarea]
+}
+interface ItransactionDataStep {
+    time: string
+    valuePlus: string
+    value: string
+    count: string
+}
 numeral.defaultFormat('0,0.0');
+const urlParams = new URLSearchParams(window.location.search);
+const videoTime = parseInt(urlParams.get('video')) * 1000 + 2000 || 139000;
+const dashboardTime = parseInt(urlParams.get('dashboard')) * 1000 + 2000 || 300000;
+const video: any = document.getElementById('my-video');
+const videoSource: any = document.getElementById('video-source');
+const videoInput: any = document.getElementById('video-file-input')
+videoInput.onchange = function (e: any) {
+    const videoFile = videoInput.files[0];
+    const url = URL.createObjectURL(videoFile);
+    video.src = url;
+    videoInput.style.display = 'none';
+    // videoSource.setAttribute('src','')
+    testAnimationShow()
+}
+video.onended = function () {
+    testAnimationHide()
+}
+function testAnimationHide() {
+
+    let starttime: any
+    function moveit(timestamp: number, el: any, dist: number, duration: number) {
+        //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date:
+        const t = timestamp || new Date().getTime()
+        const runtime = t - starttime
+        let progress = 1 - runtime / duration
+
+        progress = Math.min(progress, 1)
+        el.style.opacity = dist * progress;
+        if (runtime < duration) {
+            requestAnimationFrame(function (t) {
+                moveit(t, el, dist, duration)
+            })
+        } else {
+            el.pause();
+            // video.style.display = 'none';
+            setTimeout(() => {
+                testAnimationShow()
+            }, dashboardTime)
+        }
+    }
+
+    requestAnimationFrame(function (timestamp) {
+        starttime = timestamp || new Date().getTime()
+        moveit(timestamp, video, 1, 2000)
+    })
+}
+function testAnimationShow() {
+    // video.style.display = 'block';
+    let starttime: any
+    function moveit(timestamp: number, el: any, dist: number, duration: number) {
+        //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date:
+        const t = timestamp || new Date().getTime()
+        const runtime = t - starttime
+        let progress = runtime / duration
+        progress = Math.min(progress, 1)
+        el.style.opacity = dist * progress;
+        if (runtime < duration) {
+            requestAnimationFrame(function (t) {
+                moveit(t, el, dist, duration)
+            })
+        } else {
+            el.currentTime = 0;
+            el.play();
+
+            // setTimeout(() => {
+
+            // }, videoTime)
+        }
+    }
+
+    requestAnimationFrame(function (timestamp) {
+        starttime = timestamp || new Date().getTime()
+        moveit(timestamp, video, 1, 2000)
+    })
+}
 window.onload = () => {
-    window.localStorage.setItem('countPertimeNow', 'needInit')
+    // window.localStorage.setItem('countPertimeNow', 'needInit');
+
     const wHeight = window.innerHeight;
     const wWidth = window.innerWidth;
     // , ${wHeight / 1080}
@@ -16,246 +114,113 @@ window.onload = () => {
     indexHtml.style.transform = scale;
     let needFresh = true;
     const socket = socketIOClient(config.url);
-    type Tcount = {
-        entity: string
-        date: Date
-        Count: number
-        unit: string
-    }
-    type Tarea = {
-        entity: string
-        date: Date
-        Area: number
-        unit: string
-    }
-    interface Itransaction {
-        count: [Tcount]
-        area: [Tarea]
-    }
-    interface ItransactionDataStep {
-        time: string
-        valuePlus: string
-        value: string
-        count: string
-    }
+
     const dateNow = d3.select('#date');
     const timeNow = d3.select('#time');
     const basicCountDom = d3.select('#data-basic-count');
     const basicAreaDom = d3.select('#data-basic-area');
-    const video = document.getElementById('my-video');
+
     let areat: any;
     let countt: any;
+
+    let areatYesterday: any;
+    let counttYesterday: any;
+
+    let perSecondCount: any;
+    let perSecondArea: any;
+
     socket.emit('cliStart', { cliRequire: 'transactionMessage' });
     socket.on('transactionMessage', (data: any) => {
+
         const transactionData = data.message;
-        // const dateTodayLocal = window.localStorage.getItem('dateTodayLocal');
-        // const basicCountLocal = window.localStorage.getItem('basicCountLocal');
-        // const areaPerSecondLocal = window.localStorage.getItem('areaPerSecondLocal');
-        // const countPerSecondLocal = window.localStorage.getItem('countPerSecondLocal');
-        // const basicCount = transactionData.count[0].Count;
-        // const dateToday = transactionData.count[0].date;
-        console.log(needFresh)
-        // if (dateTodayLocal === dateToday &&
-        //     basicCount == basicCountLocal &&
-        //     window.localStorage.getItem('transactionDataStep') &&
-        //     areaPerSecondLocal &&
-        //     !needFresh) {
-        //     return;
-        // }
-        // window.localStorage.setItem('dateTodayLocal', dateToday);
-        // window.localStorage.setItem('basicCountLocal', basicCount);
-        // const timeArr = [];
         const { count, area } = transactionData;
-        let usefulIndex = 1;
-        for (let i = 0; i < count.length; i++) {
-            if (count[i].Count !== count[0].Count) {
-                usefulIndex = i
-                break;
+        if (needFresh === true || moment().diff(moment(count[0].date), 'days') >= 0) {
+            let usefulIndex = 1;
+            for (let i = 0; i < count.length; i++) {
+                if (count[i].Count !== count[0].Count) {
+                    usefulIndex = i
+                    break;
+                }
             }
+            const secondsPerDay = 32400;
+
+            const todayCount = count[0].Count;
+            const yesterdayCount = count[usefulIndex].Count;
+            const diffCount = todayCount - yesterdayCount;
+            const countPerSecond = (diffCount / secondsPerDay) + '';
+
+            const todayArea = area[0].Area;
+
+            const yesterdayArea = area[usefulIndex].Area;
+
+            const areaPerSecond = ((todayArea - yesterdayArea) / secondsPerDay).toFixed(1);
+
+            areat = todayArea;
+            countt = todayCount;
+
+            areatYesterday = yesterdayArea;
+            counttYesterday = yesterdayCount;
+
+            perSecondCount = countPerSecond
+            perSecondArea = areaPerSecond
+
+            needFresh = false;
         }
-        const secondsPerDay = 28800;
 
-        const todayCount = count[0].Count;
-        const yesterdayCount = count[usefulIndex].Count;
-        const diffCount = todayCount - yesterdayCount;
-        const countPerSecond = (diffCount / secondsPerDay) + '';
-        // const timeStep = Math.round(secondsPerDay / diffInfos);
-        // for (let i = 0, t = moment('09:30:00', 'HH:mm:ss'); i < diffInfos; i++) {
-        //     t = t.add(timeStep, 'seconds');
-        //     timeArr.push(t.format('HH:mm:ss'))
-        // }
-        // const arr = [];
-        const todayArea = area[0].Area;
-        areat = todayArea;
-        countt = todayCount;
-        const yesterdayArea = area[usefulIndex].Area;
-        const areaDiffInfos = todayArea - yesterdayArea;
-        const areaPerSecond = (areaDiffInfos / secondsPerDay).toFixed(1);
-
-        window.localStorage.setItem('areaPerSecondLocal', areaPerSecond);
-        window.localStorage.setItem('countPerSecondLocal', countPerSecond);
-        window.localStorage.setItem('areayesterdayLocal', yesterdayArea);
-        window.localStorage.setItem('countYesterdayLocal', yesterdayCount);
-        // for (let i = timeArr.length, j = 0, d = areaDiffInfos, y = yesterdayArea, c = yesterday; i > 0; i--) {
-        //     if (i === 1) {
-        //         j = todayArea - y;
-        //     } else {
-        //         d = d - j;
-        //         j = d / i;
-        //         let rNum = Math.round(Math.random() * j);
-        //         if (rNum < j) {
-        //             j += rNum;
-        //         }
-        //     }
-        //     y += j
-        //     const obj = {
-        //         time: `${moment().format('YYYY-MM-DD')} ${timeArr[timeArr.length - i]}`,
-        //         valuePlus: j.toFixed(1),
-        //         value: y.toFixed(1),
-        //         count: c += 1,
-        //     }
-        //     arr.push(obj)
-        // }
-        // if (needFresh) {
-        //     basicCountDom.text(today)
-        //     basicAreaDom.text(todayArea.toFixed(1));
-        // (window as any).needFresh = 0;
-        // }
-
-        // window.localStorage.setItem('transactionDataStep', JSON.stringify(arr))
+        // window.localStorage.setItem('areaPerSecondLocal', areaPerSecond);
+        // window.localStorage.setItem('countPerSecondLocal', countPerSecond);
+        // window.localStorage.setItem('areayesterdayLocal', yesterdayArea);
+        // window.localStorage.setItem('countYesterdayLocal', yesterdayCount);
     })
 
-    // for (let i = 0, t = moment('09:30:00', 'HH:mm:ss'); i < secondsPerDay; i++) {
-    //     const area = (yesterdayArea + areaPerSecond).toFixed(1);
-    //     t = t.add(1, 'seconds');
-    //     const obj = {
-    //         time: `${moment().format('YYYY-MM-DD')} ${t.format('HH:mm:ss')}`,
-    //         area
-    //     }
-    //     areaSteps.push(obj)
-    // }
-    // console.log(needFresh)
-    // if (needFresh) {
-
-    //     needFresh = false;
-
-    //     const timeInfoTemp = moment().format('HH')
-    //     const transactionDataStep = JSON.parse(window.localStorage.getItem('transactionDataStep'));
-    //     transactionDataStep.forEach((e: any) => {
-    //         const timeTemp = moment(e.time, 'YYYY-MM-DD HH:mm:ss').format('HH')
-    //         if (timeInfoTemp == timeTemp) {
-    //             const count: any = e.count;
-    //             basicCountDom.text(numeral(count - 0).format('0,0'));
-    //         }
-    //     })
-
-    // }
     setInterval(() => {
         dateNow.text(moment().format('YYYY-MM-DD'));
         timeNow.text(moment().format('HH:mm:ss'))
-        const areaPerSecondLocal: number = window.localStorage.getItem('areaPerSecondLocal') as any - 0;
-        const countPerSecondLocal: number = window.localStorage.getItem('countPerSecondLocal') as any - 0;
-        const areayesterdayLocal: any = window.localStorage.getItem('areayesterdayLocal');
-        const countYesterdayLocal: any = window.localStorage.getItem('countYesterdayLocal');
-        const diffSeconds = moment().diff(moment('09:30:00', 'HH:mm:ss'), 'seconds')
-        if (diffSeconds > 0 && diffSeconds <= 28800) {
-            const countPertimeBefore = window.localStorage.getItem('countPertimeNow');
-            const area = areayesterdayLocal - 0 + areaPerSecondLocal * diffSeconds;
-            const count = countYesterdayLocal - 0 + countPerSecondLocal * diffSeconds;
+        // const areaPerSecondLocal: number = window.localStorage.getItem('areaPerSecondLocal') as any - 0;
+        // const countPerSecondLocal: number = window.localStorage.getItem('countPerSecondLocal') as any - 0;
+        // const areayesterdayLocal: any = window.localStorage.getItem('areayesterdayLocal');
+        // const countYesterdayLocal: any = window.localStorage.getItem('countYesterdayLocal');
+        const diffSeconds = moment().diff(moment('09:00:00', 'HH:mm:ss'), 'seconds')
+        if (diffSeconds > 0 && diffSeconds <= 32400) {
+            // const countPertimeBefore = window.localStorage.getItem('countPertimeNow');
+            const area = areatYesterday - 0 + perSecondArea * diffSeconds;
+            const count = counttYesterday - 0 + perSecondCount * diffSeconds;
             const displayArea = numeral(area).format();
-            if (countPertimeBefore === 'needInit') {
+            const readyForInputCount = numeral(count - 0).format('0,0');
+            const alreadyInputCount = basicCountDom.text();
+            if (readyForInputCount !== alreadyInputCount) {
                 basicAreaDom.text(displayArea);
-                basicCountDom.text(numeral(count - 0).format('0,0'));
-                window.localStorage.setItem('countPertimeNow', numeral(count - 0).format('0,0'))
-            } else {
-                if (countPertimeBefore === numeral(count - 0).format('0,0')) {
-                    return;
-                } else {
-                    basicAreaDom.text(displayArea);
-                    basicCountDom.text(numeral(count - 0).format('0,0'));
-                    window.localStorage.setItem('countPertimeNow', numeral(count - 0).format('0,0'))
-                }
+                basicCountDom.text(readyForInputCount);
             }
+            // if (countPertimeBefore === 'needInit') {
+            // basicAreaDom.text(displayArea);
+            // basicCountDom.text(numeral(count - 0).format('0,0'));
+            // window.localStorage.setItem('countPertimeNow', numeral(count - 0).format('0,0'))
+            // } else {
+            //     if (countPertimeBefore === numeral(count - 0).format('0,0')) {
+            //         return;
+            //     } else {
+            //         basicAreaDom.text(displayArea);
+            //         basicCountDom.text(numeral(count - 0).format('0,0'));
+            //         // window.localStorage.setItem('countPertimeNow', numeral(count - 0).format('0,0'))
+            //     }
+            // }
 
 
             // const displayCount = numeral(area).format();
-            basicAreaDom.text(displayArea);
-            basicCountDom.text(numeral(count - 0).format('0,0'));
-        } else if (diffSeconds > 28800) {
+
+
+        } else if (diffSeconds > 32400) {
             basicAreaDom.text(numeral(areat - 0).format('0,0'));
             basicCountDom.text(numeral(countt - 0).format('0,0'));
         }
 
-        // const timeInfo = moment().format('YYYY-MM-DD HH:mm:ss');
-        // const dateInfo = moment().format('YYYY-MM-DD HH:mm:ss');
-
-        // const transactionDataStep = JSON.parse(window.localStorage.getItem('transactionDataStep'))
-
-        // transactionDataStep.forEach((e: ItransactionDataStep) => {
-        //     if (e.time == timeInfo) {
-        //         // basicAreaDom.text(e.value);
-        //         const count: any = e.count;
-        //         basicCountDom.text(numeral(count - 0).format('0,0'));
-        //     }
-        // })
-
     }, 1000)
-    function testAnimationHide() {
-        let starttime: any
-        function moveit(timestamp: number, el: any, dist: number, duration: number) {
-            //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date:
-            const t = timestamp || new Date().getTime()
-            const runtime = t - starttime
-            let progress = 1 - runtime / duration
 
-            progress = Math.min(progress, 1)
-            console.log(dist * progress, 'ppppppppp')
-            el.style.opacity = dist * progress;
-            if (runtime < duration) {
-                requestAnimationFrame(function (t) {
-                    moveit(t, el, dist, duration)
-                })
-            } else {
-                setTimeout(() => {
-                    testAnimationShow()
-                }, 18000)
-            }
-        }
 
-        requestAnimationFrame(function (timestamp) {
-            starttime = timestamp || new Date().getTime()
-            moveit(timestamp, video, 1, 1000)
-        })
-    }
-    function testAnimationShow() {
-        let starttime: any
-        function moveit(timestamp: number, el: any, dist: number, duration: number) {
-            //if browser doesn't support requestAnimationFrame, generate our own timestamp using Date:
-            const t = timestamp || new Date().getTime()
-            const runtime = t - starttime
-            let progress = runtime / duration
-            progress = Math.min(progress, 1)
-            el.style.opacity = dist * progress;
-            if (runtime < duration) {
-                requestAnimationFrame(function (t) {
-                    moveit(t, el, dist, duration)
-                })
-            } else {
-                setTimeout(() => {
-                    testAnimationHide()
-                }, 18000)
-            }
-        }
-
-        requestAnimationFrame(function (timestamp) {
-            starttime = timestamp || new Date().getTime()
-            moveit(timestamp, video, 1, 1000)
-        })
-    }
-
-    setTimeout(() => {
-        testAnimationShow()
-    }, 18000)
+    // setTimeout(() => {
+    // testAnimationShow()
+    // }, 1000)
 }
 
 

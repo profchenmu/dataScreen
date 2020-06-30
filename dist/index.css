@@ -1,1 +1,448 @@
-@font-face{font-family:'Led';src:url("./UnidreamLED.ttf");font-weight:600;font-style:normal}*{margin:0;padding:0;box-sizing:border-box}#video-file-input{opacity:0;position:fixed;width:100px;height:100px;z-index:20000;top:0;left:0}#video-file-input:hover{opacity:1}#index-base-holder{position:absolute;width:100%;height:100%;left:0;top:0}#my-video{opacity:0;position:fixed;z-index:10000;top:0;left:0;width:100%;height:100%;background:#000;object-fit:fill}#index-html{background-color:#000}.data-screen-title{margin:auto;width:50%;text-align:center;height:120px;line-height:120px;position:relative}.data-screen-title #bottom-line{position:absolute;height:2px;width:50%;left:25%;bottom:16px;background:linear-gradient(90deg, #fff 20%, #fff 50%, #fff 80%)}.data-screen-title #left-middle-line{position:absolute;height:2px;width:4%;left:22%;top:70px;background:#fff;transform:rotateZ(60deg)}.data-screen-title #right-middle-line{position:absolute;height:2px;width:4%;right:22%;top:70px;background:#fff;transform:rotateZ(-60deg)}.data-screen-title #left-line{position:absolute;height:2px;width:23%;left:0;top:36px;background:linear-gradient(90deg, rgba(255,255,255,0) 0%, #fff 68%, #fff 100%)}.data-screen-title #right-line{position:absolute;height:2px;width:23%;right:0;top:36px;background:linear-gradient(90deg, rgba(255,255,255,0) 0%, #fff 68%, #fff 100%);transform:rotateZ(180deg)}.data-screen-title h1{font-size:50px;color:#fff;width:60%;margin-left:20%}iframe{border:none;width:100%;height:100%}#index-body{background-color:#000;font-family:Arial, Helvetica, sans-serif;overflow:hidden}#index-body .base-holder{width:3840px;height:1080px;background:#000;position:relative;margin-left:-1920px;left:50%;margin-top:-540px}#index-body .transaction{font-family:Arial, Helvetica, sans-serif;position:absolute;left:1005px;top:200px;z-index:2;font-size:normal}#index-body .transaction .small-title{margin-top:10px;font-size:22px;color:#fff}#index-body .transaction h3{color:#fff;font-size:40px;font-weight:normal}#index-body .transaction h3::before{content:'';display:inline-block;background:#e30613;width:20px;height:30px;vertical-align:middle;margin-bottom:5px;margin-right:10px}#index-body .transaction p{font-size:56px}#index-body .transaction p.transaction-count-holder{font-family:'Times New Roman', Times, serif;font-style:italic;font-weight:100;color:#e30613}#index-body .transaction p.transaction-area-holder{font-family:'Times New Roman', Times, serif;font-style:italic;font-weight:100;color:#e30613}#index-body .logo{position:absolute;left:1005px;top:70px;width:400px;height:100px;background:url("../images/logo-05.png") no-repeat;background-size:cover}#index-body .commands{color:#fff;text-align:right;width:100%;position:absolute;right:0;bottom:0;font-style:italic}#index-body .time{height:63px;position:absolute;left:2450px;top:60px;color:#fff;font-family:Led;font-size:53px}#index-body .time span{margin-right:10px}#index-body .map-holder{width:930px;height:900px;left:1270px;top:-40px;position:absolute;transform:scale(0.7)}#index-body .screen-holder{position:absolute;width:888px;height:490px;left:36px;top:25px}#index-body .screen-holder.data-3{height:508px}#index-body .screen-holder.data-3 .screen-data-holder-in{width:100%;height:100%;background:url("../images/logosys-02.png");background-size:contain;background-repeat:no-repeat;background-position:center}#index-body .screen-holder .screen-holder-in{position:relative;width:888px;height:68px}#index-body .screen-holder .screen-holder-in .screen-title{padding-left:20px}#index-body .screen-holder .screen-holder-in .screen-title .sub-title{font-size:22px;display:block;margin-top:-6px;padding-left:30px;color:#b1b2c7}#index-body .screen-holder .screen-holder-in .screen-title p{font-size:40px;color:#fff;height:68px;line-height:38px;vertical-align:middle}#index-body .screen-holder .screen-holder-in .screen-title p::before{content:'';display:inline-block;background:#e30613;width:20px;height:30px;vertical-align:middle;margin-bottom:5px;margin-right:10px}#index-body .screen-holder .screen-holder-in .screen-title p .red-title{color:#fff}#index-body .screen-holder .screen-holder-in .screen-data-holder{position:absolute;left:0;top:78px;height:410px;width:888px;background-size:100% 100%;background-repeat:no-repeat;box-sizing:border-box}#index-body .screen-holder .screen-holder-in .screen-data-holder::after{content:'';width:100%;height:100%;position:absolute;top:0;left:0;border-width:2px;border-style:solid;border-image-source:linear-gradient(180deg, #fff 0%, #fff 6%, rgba(255,255,255,0) 6%, #fff 50%, rgba(255,255,255,0) 94%, #fff 94%, #fff 100%);border-image-slice:1;border-image-slice:1 100%;box-sizing:border-box}#index-body .screen-holder .screen-holder-in .screen-data-holder::before{content:'';width:100%;height:100%;position:absolute;top:0;left:0;border-width:2px;border-style:solid;border-image-source:linear-gradient(90deg, #fff 0%, #fff 3%, rgba(255,255,255,0) 3%, #fff 50%, rgba(255,255,255,0) 97%, #fff 97%, #fff 100%);border-image-slice:1;border-image-slice:100% 1;box-sizing:border-box}#index-body .screen-holder .screen-holder-in .screen-data-holder .screen-data-holder-in{position:relative;height:100%}#index-body .screen-holder .screen-holder-in .screen-data-holder .screen-data-holder-in iframe{height:100%;width:100%;position:absolute}#index-body .screen-holder.data-2{top:550px}#index-body .screen-holder.data-2 .screen-data-holder{padding:0}#index-body .screen-holder.data-2 .screen-data-holder iframe{margin-left:20px}#index-body .screen-holder.data-3{left:2908px}#index-body .screen-holder.data-4{left:2908px;top:550px}#index-body .screen-holder.data-4 .screen-data-holder{padding:30px 10px}#index-body .screen-holder.data-small-1{left:990px;top:550px;height:auto;z-index:2}#index-body .screen-holder.data-small-1 .screen-holder-in{width:870px}#index-body .screen-holder.data-small-1 .screen-data-holder{height:412px;width:870px;padding-right:5px}#index-body .screen-holder.data-small-2{width:750px;height:400px;left:2100px;top:130px}#index-body .screen-holder.data-small-2 .screen-holder-in{width:100%}#index-body .screen-holder.data-small-2 .screen-data-holder{height:305px;width:100%}#index-body .screen-holder.data-small-3{width:922px;height:220px;left:1930px;top:550px}#index-body .screen-holder.data-small-3 .screen-holder-in{width:100%}#index-body .screen-holder.data-small-3 .screen-data-holder{height:140px;width:100%}#index-body .screen-holder.data-small-3 .screen-data-holder::after{content:'';width:100%;height:100%;position:absolute;top:0;left:0;border-width:2px;border-style:solid;border-image-source:linear-gradient(180deg, #fff 0%, #fff 13%, rgba(255,255,255,0) 13%, #fff 50%, rgba(255,255,255,0) 87%, #fff 87%, #fff 100%);border-image-slice:1;border-image-slice:1 100%;box-sizing:border-box}#index-body .screen-holder.data-small-4{width:922px;height:260px;left:1930px;top:780px}#index-body .screen-holder.data-small-4 .screen-holder-in{width:100%}#index-body .screen-holder.data-small-4 .screen-data-holder{height:178px;width:100%}
+@font-face {
+    font-family: 'Led';
+    src: url("./UnidreamLED.ttf");
+    font-weight: 600;
+    font-style: normal
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+#video-file-input {
+    opacity: 0;
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    z-index: 20000;
+    top: 0;
+    left: 0
+}
+
+#video-file-input:hover {
+    opacity: 1
+}
+
+#index-base-holder {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0
+}
+
+#my-video {
+    opacity: 0;
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    object-fit: fill
+}
+
+#index-html {
+    background-color: #000
+}
+
+.data-screen-title {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    height: 120px;
+    line-height: 120px;
+    position: relative
+}
+
+.data-screen-title #bottom-line {
+    position: absolute;
+    height: 2px;
+    width: 50%;
+    left: 25%;
+    bottom: 16px;
+    background: linear-gradient(90deg, #fff 20%, #fff 50%, #fff 80%)
+}
+
+.data-screen-title #left-middle-line {
+    position: absolute;
+    height: 2px;
+    width: 4%;
+    left: 22%;
+    top: 70px;
+    background: #fff;
+    transform: rotateZ(60deg)
+}
+
+.data-screen-title #right-middle-line {
+    position: absolute;
+    height: 2px;
+    width: 4%;
+    right: 22%;
+    top: 70px;
+    background: #fff;
+    transform: rotateZ(-60deg)
+}
+
+.data-screen-title #left-line {
+    position: absolute;
+    height: 2px;
+    width: 23%;
+    left: 0;
+    top: 36px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #fff 68%, #fff 100%)
+}
+
+.data-screen-title #right-line {
+    position: absolute;
+    height: 2px;
+    width: 23%;
+    right: 0;
+    top: 36px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #fff 68%, #fff 100%);
+    transform: rotateZ(180deg)
+}
+
+.data-screen-title h1 {
+    font-size: 50px;
+    color: #fff;
+    width: 60%;
+    margin-left: 20%
+}
+
+iframe {
+    border: none;
+    width: 100%;
+    height: 100%
+}
+
+#index-body {
+    background-color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden
+}
+
+#index-body .base-holder {
+    width: 3840px;
+    height: 1080px;
+    background: #000;
+    position: relative;
+    margin-left: -1920px;
+    left: 50%;
+    margin-top: -540px
+}
+
+#index-body .transaction {
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    left: 1005px;
+    top: 200px;
+    z-index: 2;
+    font-size: normal
+}
+
+#index-body .transaction .small-title {
+    margin-top: 10px;
+    font-size: 22px;
+    color: #fff
+}
+
+#index-body .transaction h3 {
+    color: #fff;
+    font-size: 40px;
+    font-weight: normal
+}
+
+#index-body .transaction h3::before {
+    content: '';
+    display: inline-block;
+    background: #e30613;
+    width: 20px;
+    height: 30px;
+    vertical-align: middle;
+    margin-bottom: 5px;
+    margin-right: 10px
+}
+
+#index-body .transaction p {
+    font-size: 56px
+}
+
+#index-body .transaction p.transaction-count-holder {
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-weight: 100;
+    color: #e30613
+}
+
+#index-body .transaction p.transaction-area-holder {
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-weight: 100;
+    color: #e30613
+}
+
+#index-body .logo {
+    position: absolute;
+    left: 1005px;
+    top: 70px;
+    width: 400px;
+    height: 100px;
+    background: url("images/logo-05.png") no-repeat;
+    background-size: cover
+}
+
+#index-body .commands {
+    color: #fff;
+    text-align: right;
+    width: 100%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-style: italic
+}
+
+#index-body .time {
+    height: 63px;
+    position: absolute;
+    left: 2450px;
+    top: 60px;
+    color: #fff;
+    font-family: Led;
+    font-size: 53px
+}
+
+#index-body .time span {
+    margin-right: 10px
+}
+
+#index-body .map-holder {
+    width: 930px;
+    height: 900px;
+    left: 1270px;
+    top: -40px;
+    position: absolute;
+    transform: scale(0.7)
+}
+
+#index-body .screen-holder {
+    position: absolute;
+    width: 888px;
+    height: 490px;
+    left: 36px;
+    top: 25px
+}
+
+#index-body .screen-holder.data-3 {
+    height: 508px
+}
+
+#index-body .screen-holder.data-3 .screen-data-holder-in {
+    width: 100%;
+    height: 100%;
+    background: url("images/logosys-02.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center
+}
+
+#index-body .screen-holder .screen-holder-in {
+    position: relative;
+    width: 888px;
+    height: 68px
+}
+
+#index-body .screen-holder .screen-holder-in .screen-title {
+    padding-left: 20px
+}
+
+#index-body .screen-holder .screen-holder-in .screen-title .sub-title {
+    font-size: 22px;
+    display: block;
+    margin-top: -6px;
+    padding-left: 30px;
+    color: #b1b2c7
+}
+
+#index-body .screen-holder .screen-holder-in .screen-title p {
+    font-size: 40px;
+    color: #fff;
+    height: 68px;
+    line-height: 38px;
+    vertical-align: middle
+}
+
+#index-body .screen-holder .screen-holder-in .screen-title p::before {
+    content: '';
+    display: inline-block;
+    background: #e30613;
+    width: 20px;
+    height: 30px;
+    vertical-align: middle;
+    margin-bottom: 5px;
+    margin-right: 10px
+}
+
+#index-body .screen-holder .screen-holder-in .screen-title p .red-title {
+    color: #fff
+}
+
+#index-body .screen-holder .screen-holder-in .screen-data-holder {
+    position: absolute;
+    left: 0;
+    top: 78px;
+    height: 410px;
+    width: 888px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    box-sizing: border-box
+}
+
+#index-body .screen-holder .screen-holder-in .screen-data-holder::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-width: 2px;
+    border-style: solid;
+    border-image-source: linear-gradient(180deg, #fff 0%, #fff 6%, rgba(255, 255, 255, 0) 6%, #fff 50%, rgba(255, 255, 255, 0) 94%, #fff 94%, #fff 100%);
+    border-image-slice: 1;
+    border-image-slice: 1 100%;
+    box-sizing: border-box
+}
+
+#index-body .screen-holder .screen-holder-in .screen-data-holder::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-width: 2px;
+    border-style: solid;
+    border-image-source: linear-gradient(90deg, #fff 0%, #fff 3%, rgba(255, 255, 255, 0) 3%, #fff 50%, rgba(255, 255, 255, 0) 97%, #fff 97%, #fff 100%);
+    border-image-slice: 1;
+    border-image-slice: 100% 1;
+    box-sizing: border-box
+}
+
+#index-body .screen-holder .screen-holder-in .screen-data-holder .screen-data-holder-in {
+    position: relative;
+    height: 100%
+}
+
+#index-body .screen-holder .screen-holder-in .screen-data-holder .screen-data-holder-in iframe {
+    height: 100%;
+    width: 100%;
+    position: absolute
+}
+
+#index-body .screen-holder.data-2 {
+    top: 550px
+}
+
+#index-body .screen-holder.data-2 .screen-data-holder {
+    padding: 0
+}
+
+#index-body .screen-holder.data-2 .screen-data-holder iframe {
+    margin-left: 20px
+}
+
+#index-body .screen-holder.data-3 {
+    left: 2908px
+}
+
+#index-body .screen-holder.data-4 {
+    left: 2908px;
+    top: 550px
+}
+
+#index-body .screen-holder.data-4 .screen-data-holder {
+    padding: 30px 10px
+}
+
+#index-body .screen-holder.data-small-1 {
+    left: 990px;
+    top: 550px;
+    height: auto;
+    z-index: 2
+}
+
+#index-body .screen-holder.data-small-1 .screen-holder-in {
+    width: 870px
+}
+
+#index-body .screen-holder.data-small-1 .screen-data-holder {
+    height: 412px;
+    width: 870px;
+    padding-right: 5px
+}
+
+#index-body .screen-holder.data-small-2 {
+    width: 750px;
+    height: 400px;
+    left: 2100px;
+    top: 130px
+}
+
+#index-body .screen-holder.data-small-2 .screen-holder-in {
+    width: 100%
+}
+
+#index-body .screen-holder.data-small-2 .screen-data-holder {
+    height: 305px;
+    width: 100%
+}
+
+#index-body .screen-holder.data-small-3 {
+    width: 922px;
+    height: 220px;
+    left: 1930px;
+    top: 550px
+}
+
+#index-body .screen-holder.data-small-3 .screen-holder-in {
+    width: 100%
+}
+
+#index-body .screen-holder.data-small-3 .screen-data-holder {
+    height: 140px;
+    width: 100%
+}
+
+#index-body .screen-holder.data-small-3 .screen-data-holder::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-width: 2px;
+    border-style: solid;
+    border-image-source: linear-gradient(180deg, #fff 0%, #fff 13%, rgba(255, 255, 255, 0) 13%, #fff 50%, rgba(255, 255, 255, 0) 87%, #fff 87%, #fff 100%);
+    border-image-slice: 1;
+    border-image-slice: 1 100%;
+    box-sizing: border-box
+}
+
+#index-body .screen-holder.data-small-4 {
+    width: 922px;
+    height: 260px;
+    left: 1930px;
+    top: 780px
+}
+
+#index-body .screen-holder.data-small-4 .screen-holder-in {
+    width: 100%
+}
+
+#index-body .screen-holder.data-small-4 .screen-data-holder {
+    height: 178px;
+    width: 100%
+}

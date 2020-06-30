@@ -2,12 +2,15 @@
   "name": "data-screen",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --open --config webpack.config.js",
     "build": "webpack --config webpack.build.config.js",
-    "dll": "webpack --config webpack.dll.config.js"
+    "dll": "webpack --config webpack.dll.config.js",
+    "estart": "electron .",
+    "epack": "electron-builder --dir",
+    "edist": "electron-builder"
   },
   "repository": {
     "type": "git",
@@ -52,6 +55,11 @@
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0",
-    "xml-loader": "^1.2.1"
+    "xml-loader": "^1.2.1",
+    "electron": "^9.0.1",
+    "electron-builder": "^22.7.0"
+  },
+  "build": {
+    "appId": "UMIMI"
   }
 }

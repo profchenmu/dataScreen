@@ -30,7 +30,7 @@ interface ItransactionDataStep {
 numeral.defaultFormat('0,0.0');
 const urlParams = new URLSearchParams(window.location.search);
 const videoTime = parseInt(urlParams.get('video')) * 1000 + 2000 || 139000;
-const dashboardTime = parseInt(urlParams.get('dashboard')) * 1000 + 2000 || 300000;
+const dashboardTime = parseInt(urlParams.get('dashboard')) * 1000 + 2000 || 90000;
 const video: any = document.getElementById('my-video');
 const videoSource: any = document.getElementById('video-source');
 const videoInput: any = document.getElementById('video-file-input')
@@ -109,7 +109,7 @@ window.onload = () => {
     const wHeight = window.innerHeight;
     const wWidth = window.innerWidth;
     // , ${wHeight / 1080}
-    const scale = `scale( ${wWidth / 3840}, ${wHeight / 1080}) translateY(50%)`;
+    const scale = `scale( ${wWidth / 3840}, ${wHeight / 1800}) translateY(50%)`;
     const indexHtml = document.getElementById('index-base')
     indexHtml.style.transform = scale;
     let needFresh = true;

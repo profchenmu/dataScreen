@@ -3,7 +3,7 @@ import * as d3 from 'd3';
 import socketIOClient from 'socket.io-client';
 import config from '../config'
 // import './map.scss';
-const svg = d3.select("#svg2");
+const svg = d3.select('#svg2');
 // const shanghai = svg.select("#shanghai").attr("r", "5");
 const socket = socketIOClient(config.url);
 socket.on('message', (data: string) => { console.log(data) });

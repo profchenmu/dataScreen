@@ -108,8 +108,8 @@ window.onload = () => {
 
     const wHeight = window.innerHeight;
     const wWidth = window.innerWidth;
-    // , ${wHeight / 1080}
-    const scale = `scale( ${wWidth / 3840}, ${wHeight / 1800}) translateY(50%)`;
+    // 3840 * 1080
+    const scale = `scale( ${wWidth / 3840}, ${wHeight / 1080}) translateY(50%)`;
     const indexHtml = document.getElementById('index-base')
     indexHtml.style.transform = scale;
     let needFresh = true;

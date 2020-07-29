@@ -10,16 +10,28 @@
 
 <body id="index-body">
     <!-- <div id="index-base-holder"> -->
-    <div class="base-holder" id="index-base">
-        <div class="data-screen-title">
-            <h1>JLL Data Dashboard - Greater China</h1>
-            <div id="bottom-line"></div>
-            <div id="left-middle-line"></div>
-            <div id="right-middle-line"></div>
-            <div id="left-line"></div>
-            <div id="right-line"></div>
+        <div id="title-holder">
+            <div class="data-screen-title">
+                <h1>JLL Data Dashboard - Greater China</h1>
+                <div id="bottom-line"></div>
+                <div id="left-middle-line"></div>
+                <div id="right-middle-line"></div>
+                <div id="left-line"></div>
+                <div id="right-line"></div>
+            </div>
+            <div class="logo">
+                <!-- <img src="/images/logo-05.png" width="488" height="117" /> -->
+            </div>
+            
+            <div class="time">
+                <p><span id="date">2020-01-01</span>
+                    <br /><span id="time">00:00:00</span></p>
+            </div>
         </div>
 
+
+        <!--
+    <div class="base-holder" id="index-base">
         <div class="screen-holder data-1">
             <div class="screen-holder-in">
                 <div class="screen-title">
@@ -63,7 +75,6 @@
                 </div>
                 <div class="screen-data-holder">
                     <div class="screen-data-holder-in">
-                        <!-- <iframe src='/qt.html'></iframe> -->
                     </div>
                 </div>
             </div>
@@ -83,23 +94,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="logo">
-            <!-- <img src="/images/logo-05.png" width="488" height="117" /> -->
-        </div>
-        <div class="transaction">
-            <h3>Current Transaction Tracker</h3>
-            <p class="small-title">Area (<small>m<sup>2</sup></small>):</p>
-            <p class="transaction-area-holder"><span id="data-basic-area">377,593,200.1</span>
-                <!-- <small> m<sup>2</sup></small> -->
-            </p>
-            <p class="small-title">Deal:</p class="small-title">
-            <p class="transaction-count-holder"><span id="data-basic-count">100,200</span>
-                <!-- <small> DEAL</small> -->
-            </p>
-        </div>
-        <div class="time">
-            <p><span id="date">2020-01-01</span> <span id="time">00:00:00</span></p>
         </div>
         <div class="screen-holder data-small-1">
             <div class="screen-holder-in">
@@ -124,7 +118,6 @@
                 <div class="screen-data-holder">
                     <div class="screen-data-holder-in">
                         <iframe src='/qt.html'></iframe>
-                        <!-- <iframe src='/logos.html'></iframe> -->
                     </div>
                 </div>
 
@@ -159,18 +152,18 @@
             </div>
         </div>
         <div class="map-holder">
-            <iframe src='/map.html'></iframe>
-        </div>
-        <div class="transition-holder">
-            <p id="area"></p>
+            <iframe src='/sliderInfos.html'></iframe>
         </div>
     </div>
-    <input type="file" id="video-file-input">
-    <video autoplay muted id="my-video">
-        <!-- <source id="video-source" type="video/mp4"> -->
 
-        <!-- <source id="video-source" src="/video/JLLMapITVideo.mp4" type="video/mp4"> -->
-    </video>
+-->
+<div id="data-holder">
+    <iframe src='/sliderInfos.html'></iframe>
+</div>
+    
+    <!-- <input type="file" id="video-file-input">
+    <video autoplay muted id="my-video">
+    </video> -->
     <script src='/library/library.dll.js'></script>
     <!-- </div> -->
 

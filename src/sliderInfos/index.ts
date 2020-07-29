@@ -2,9 +2,9 @@ import axios from 'axios';
 import * as d3 from 'd3';
 import moment from 'moment';
 import socketIOClient from 'socket.io-client';
-import config from './config';
+import config from '../config';
 import numeral from 'numeral';
-import './style/index.scss';
+import './sliderInfos.scss';
 type Tcount = {
     entity: string
     date: Date
@@ -39,7 +39,6 @@ const videoInput: any = document.getElementById('video-file-input')
 //     const url = URL.createObjectURL(videoFile);
 //     video.src = url;
 //     videoInput.style.display = 'none';
-//     // videoSource.setAttribute('src','')
 //     testAnimationShow()
 // }
 // video.onended = function () {
@@ -115,8 +114,8 @@ window.onload = () => {
     let needFresh = true;
     const socket = socketIOClient(config.url);
 
-    const dateNow = d3.select('#date');
-    const timeNow = d3.select('#time');
+    // const dateNow = d3.select('#date');
+    // const timeNow = d3.select('#time');
     const basicCountDom = d3.select('#data-basic-count');
     const basicAreaDom = d3.select('#data-basic-area');
 
@@ -129,68 +128,68 @@ window.onload = () => {
     let perSecondCount: any;
     let perSecondArea: any;
 
-    // socket.emit('cliStart', { cliRequire: 'transactionMessage' });
-    // socket.on('transactionMessage', (data: any) => {
+    socket.emit('cliStart', { cliRequire: 'transactionMessage' });
+    socket.on('transactionMessage', (data: any) => {
 
-    //     const transactionData = data.message;
-    //     const { count, area } = transactionData;
-    //     if (needFresh === true || moment().diff(moment(count[0].date), 'days') >= 0) {
-    //         let usefulIndex = 1;
-    //         for (let i = 0; i < count.length; i++) {
-    //             if (count[i].Count !== count[0].Count) {
-    //                 usefulIndex = i
-    //                 break;
-    //             }
-    //         }
-    //         const secondsPerDay = 32400;
+        const transactionData = data.message;
+        const { count, area } = transactionData;
+        if (needFresh === true || moment().diff(moment(count[0].date), 'days') >= 0) {
+            let usefulIndex = 1;
+            for (let i = 0; i < count.length; i++) {
+                if (count[i].Count !== count[0].Count) {
+                    usefulIndex = i
+                    break;
+                }
+            }
+            const secondsPerDay = 32400;
 
-    //         const todayCount = count[0].Count;
-    //         const yesterdayCount = count[usefulIndex].Count;
-    //         const diffCount = todayCount - yesterdayCount;
-    //         const countPerSecond = (diffCount / secondsPerDay) + '';
+            const todayCount = count[0].Count;
+            const yesterdayCount = count[usefulIndex].Count;
+            const diffCount = todayCount - yesterdayCount;
+            const countPerSecond = (diffCount / secondsPerDay) + '';
 
-    //         const todayArea = area[0].Area;
+            const todayArea = area[0].Area;
 
-    //         const yesterdayArea = area[usefulIndex].Area;
+            const yesterdayArea = area[usefulIndex].Area;
 
-    //         const areaPerSecond = ((todayArea - yesterdayArea) / secondsPerDay).toFixed(1);
+            const areaPerSecond = ((todayArea - yesterdayArea) / secondsPerDay).toFixed(1);
 
-    //         areat = todayArea;
-    //         countt = todayCount;
+            areat = todayArea;
+            countt = todayCount;
 
-    //         areatYesterday = yesterdayArea;
-    //         counttYesterday = yesterdayCount;
+            areatYesterday = yesterdayArea;
+            counttYesterday = yesterdayCount;
 
-    //         perSecondCount = countPerSecond
-    //         perSecondArea = areaPerSecond
+            perSecondCount = countPerSecond
+            perSecondArea = areaPerSecond
 
-    //         needFresh = false;
-    //     }
+            needFresh = false;
+        }
 
-    //     // window.localStorage.setItem('areaPerSecondLocal', areaPerSecond);
-    //     // window.localStorage.setItem('countPerSecondLocal', countPerSecond);
-    //     // window.localStorage.setItem('areayesterdayLocal', yesterdayArea);
-    //     // window.localStorage.setItem('countYesterdayLocal', yesterdayCount);
-    // })
+        // window.localStorage.setItem('areaPerSecondLocal', areaPerSecond);
+        // window.localStorage.setItem('countPerSecondLocal', countPerSecond);
+        // window.localStorage.setItem('areayesterdayLocal', yesterdayArea);
+        // window.localStorage.setItem('countYesterdayLocal', yesterdayCount);
+    })
 
     setInterval(() => {
-        dateNow.text(moment().format('YYYY-MM-DD'));
-        timeNow.text(moment().format('HH:mm:ss'))
-    //     const diffSeconds = moment().diff(moment('09:00:00', 'HH:mm:ss'), 'seconds')
-    //     if (diffSeconds > 0 && diffSeconds <= 32400) {
-    //         const area = areatYesterday - 0 + perSecondArea * diffSeconds;
-    //         const count = counttYesterday - 0 + perSecondCount * diffSeconds;
-    //         const displayArea = numeral(area).format();
-    //         const readyForInputCount = numeral(count - 0).format('0,0');
-    //         const alreadyInputCount = basicCountDom.text();
-    //         if (readyForInputCount !== alreadyInputCount) {
-    //             basicAreaDom.text(displayArea);
-    //             basicCountDom.text(readyForInputCount);
-    //         }
-    //     } else if (diffSeconds > 32400) {
-    //         basicAreaDom.text(numeral(areat - 0).format('0,0'));
-    //         basicCountDom.text(numeral(countt - 0).format('0,0'));
-    //     }
+        // dateNow.text(moment().format('YYYY-MM-DD'));
+        // timeNow.text(moment().format('HH:mm:ss'))
+        const diffSeconds = moment().diff(moment('09:00:00', 'HH:mm:ss'), 'seconds')
+        if (diffSeconds > 0 && diffSeconds <= 32400) {
+            const area = areatYesterday - 0 + perSecondArea * diffSeconds;
+            const count = counttYesterday - 0 + perSecondCount * diffSeconds;
+            const displayArea = numeral(area).format();
+            const readyForInputCount = numeral(count - 0).format('0,0');
+            const alreadyInputCount = basicCountDom.text();
+            if (readyForInputCount !== alreadyInputCount) {
+                basicAreaDom.text(displayArea);
+                basicCountDom.text(readyForInputCount);
+            }
+        } else if (diffSeconds > 32400) {
+            basicAreaDom.text(numeral(areat - 0).format('0,0'));
+            basicCountDom.text(numeral(countt - 0).format('0,0'));
+        }
 
     }, 1000)
 }

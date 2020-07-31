@@ -1,6 +1,7 @@
 import echarts from 'echarts';
 import socketIOClient from 'socket.io-client';
 import config from '../config';
+import './smallchart2.scss';
 // initialize echarts instance with prepared DOM
 const myChart = echarts.init(document.querySelector('#main'));
 // const officeLineChart = echarts.init(document.querySelector('#office-line'));
@@ -89,15 +90,16 @@ socket.on('polyDataMessage', (d: any) => {
                 align: app.config.align,
                 verticalAlign: app.config.verticalAlign,
                 rotate: app.config.rotate,
-                // formatter: '{name|{a}}',
+                formatter: '{name|{a}}',
                 fontSize: 30,
                 rich: {
                     name: {
-                        // textBorderColor: '#fff'
-                        color: '#000'
+                        textBorderColor: '#fff',
+                        color: '#fff'
                     }
                 }
             },
+            barWidth: '40%',
             data: data[key],
         })
     }
@@ -121,7 +123,7 @@ socket.on('polyDataMessage', (d: any) => {
             },
             axisLabel: {
                 color: '#fff',
-                fontSize: 20,
+                fontSize: 30,
             },
             axisLine: {
                 lineStyle: {
@@ -140,7 +142,8 @@ socket.on('polyDataMessage', (d: any) => {
                 show: false,
             },
             axisLabel: {
-                color: '#fff'
+                color: '#fff',
+                fontSize: 20
             },
             axisLine: {
                 lineStyle: {

@@ -1,6 +1,7 @@
 import echarts from 'echarts';
 import socketIOClient from 'socket.io-client';
 import config from '../config';
+import './smallchart1.scss';
 // initialize echarts instance with prepared DOM
 const myChart = echarts.init(document.querySelector('#main'));
 // const officeLineChart = echarts.init(document.querySelector('#office-line'));
@@ -53,7 +54,8 @@ socket.on('lineDataMessage', (d: any) => {
                 show: false
             },
             axisLabel: {
-                color: '#fff'
+                color: '#fff',
+                fontSize: 20,
             },
             axisLine: {
                 lineStyle: {
@@ -72,7 +74,8 @@ socket.on('lineDataMessage', (d: any) => {
                 show: false,
             },
             axisLabel: {
-                color: '#fff'
+                color: '#fff',
+                fontSize: 20
             },
             axisLine: {
                 lineStyle: {

@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body#smallchart2 {
+    margin: 0;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    align-content: center;
+}
+
+#main {
+    height: 700px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+// #office-line {
+//     height: 76px;
+//     width: 312px;
+// }
+
+// #industry-line {
+//     height: 76px;
+//     width: 312px;
+// }
+
+
+
+
+
+// .chart-holder {
+//     display: flex;
+//     justify-content: center;
+//     align-content: center;
+//     align-items: center;
+// }
+
+// .chart-holder p {
+//     font-size: 26px;
+//     font-family: Arial, Helvetica, sans-serif;
+//     text-align: right;
+//     width: 170px;
+//     padding-top: 30px;
+//     margin-bottom: 0;
+//     padding-right: 20px;
+// }
+
+// .chart-holder.line-1 {
+//     color: #fff;
+// }
+
+// .chart-holder.line-2 {
+//     color: #fff;
+// }
+
+// .chart-holder.line-3 {
+//     color: #fff;
+// }
+
+// .chart-holder.line-4 {
+//     color: #fff;
+// }

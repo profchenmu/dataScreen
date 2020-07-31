@@ -8,11 +8,12 @@
     justify-content: space-around;
     flex-wrap: wrap;
     align-content: center;
-    height: 305px;
+    // height: 305px;
 
     svg {
         width: 33.333333%;
-        height: 40%;
+        padding: 10px 50px;
+        box-sizing: border-box;
     }
 
     .title-holder {
@@ -23,8 +24,8 @@
             width: 33.333333%;
             color: #fff;
             text-align: center;
-            font-size: 20px;
-            padding: 10px;
+            font-size: 35px;
+            padding: 25px;
             font-family: Arial, Helvetica, sans-serif;
         }
     }

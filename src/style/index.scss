@@ -208,19 +208,18 @@ iframe {
     // left: 36px;
     // top: 25px;
 
-    &.data-3 {
-        height: 508px;
+    #system-logos {
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        width: 90%;
+        height: 90%;
+        background: url('../images/logosys-02.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
 
-        .screen-data-holder-in {
-            width: 100%;
-            height: 100%;
-            background: url('../images/logosys-02.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
 
-
-        }
     }
 
     // .screen-holder-in {
@@ -230,7 +229,8 @@ iframe {
 
     .screen-title {
         padding-left: 80px;
-
+        white-space: nowrap;
+        overflow: hidden;
         .sub-title {
             font-size: 25px;
             display: block;
@@ -268,7 +268,7 @@ iframe {
 
         height: 68%;
         width: 88%;
-        margin: auto;
+        margin-left: 6%;
         background-size: 100% 100%;
         background-repeat: no-repeat;
         box-sizing: border-box;

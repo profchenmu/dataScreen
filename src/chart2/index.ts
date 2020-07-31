@@ -129,7 +129,7 @@ socket.on('officeLineMessage', (d: any) => {
     const options: any = {
         grid: {
             top: '10px',
-            left: '30px',
+            left: '50px',
             // right: 0,
             bottom: 0,
             // bottom: '10px',
@@ -153,7 +153,8 @@ socket.on('officeLineMessage', (d: any) => {
             },
             axisLabel: {
                 inside: false,
-                color: '#fff'
+                color: '#fff',
+                fontSize:20
             },
         },
         yAxis: {
@@ -162,7 +163,8 @@ socket.on('officeLineMessage', (d: any) => {
             position: 'right',
             axisLabel: {
                 inside: false,
-                color: '#fff'
+                color: '#fff',
+                fontSize:20,
             },
             axisLine: {
                 show: true,
@@ -242,7 +244,7 @@ socket.on('industryLineMessage', (d: any) => {
     const options: any = {
         grid: {
             top: '10px',
-            left: '30px',
+            left: '50px',
             // right: 0,
             bottom: 0,
             // bottom: '10px',
@@ -266,7 +268,8 @@ socket.on('industryLineMessage', (d: any) => {
             },
             axisLabel: {
                 inside: false,
-                color: '#fff'
+                color: '#fff',
+                fontSize:20,
             },
         },
         yAxis: {
@@ -275,7 +278,8 @@ socket.on('industryLineMessage', (d: any) => {
             position: 'right',
             axisLabel: {
                 inside: false,
-                color: '#fff'
+                color: '#fff',
+                fontSize:20,
             },
             axisLine: {
                 show: true,
@@ -353,7 +357,7 @@ socket.on('industrialParkLineMessage', (d: any) => {
     const options: any = {
         grid: {
             top: '10px',
-            left: '30px',
+            left: '50px',
             // right: 0,
             bottom: 0,
             // bottom: '10px',
@@ -377,7 +381,8 @@ socket.on('industrialParkLineMessage', (d: any) => {
             },
             axisLabel: {
                 inside: false,
-                color: '#fff'
+                color: '#fff',
+                fontSize:20,
             },
         },
         yAxis: {
@@ -386,7 +391,8 @@ socket.on('industrialParkLineMessage', (d: any) => {
             position: 'right',
             axisLabel: {
                 inside: false,
-                color: '#fff'
+                color: '#fff',
+                fontSize:20,
             },
             axisLine: {
                 show: true,
@@ -463,7 +469,7 @@ socket.on('retailLineMessage', (d: any) => {
     const options: any = {
         grid: {
             top: '10px',
-            left: '30px',
+            left: '50px',
             // right: 0,
             bottom: 0,
             // bottom: '10px',
@@ -487,7 +493,8 @@ socket.on('retailLineMessage', (d: any) => {
             },
             axisLabel: {
                 inside: false,
-                color: '#fff'
+                color: '#fff',
+                fontSize:20,
             },
         },
         yAxis: {
@@ -496,7 +503,8 @@ socket.on('retailLineMessage', (d: any) => {
             position: 'right',
             axisLabel: {
                 inside: false,
-                color: '#fff'
+                color: '#fff',
+                fontSize:20,
             },
             axisLine: {
                 show: true,

@@ -192,7 +192,35 @@ window.onload = () => {
         //         basicCountDom.text(numeral(countt - 0).format('0,0'));
         //     }
 
-    }, 1000)
+    }, 1000);
+    const title = d3.select('.screen-title');
+    const dataBox = d3.select('.screen-data-holder');
+    const showDataBox = () => {
+        dataBox
+            .transition()
+            .duration(2000)
+            .style('width', '3%')
+            .style('height', '3%')
+            .transition()
+            .duration(1000)
+            .style('width', '88%')
+            .style('height', '68%')
+            .on("end", showDataBox);
+    }
+    const repeat = () => {
+        title
+            .transition()
+            .duration(2000)
+            .style('width', '0%')
+            .style('opacity', 0)
+            .transition()
+            .duration(1000)
+            .style('width', '100%')
+            .style('opacity', 1)
+            .on("end", repeat);
+    }
+    repeat();
+    showDataBox();
 }
 
 

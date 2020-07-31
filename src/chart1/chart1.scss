@@ -44,13 +44,12 @@ body#chart1 {
     }
 
     .chart1-datas-holder {
-        width: 369px;
-        height: 186px;
+        width: 50%;
+        height: 360px;
+        align-items: center;
         display: flex;
-        padding: 10px 30px;
-        padding-left: 0;
-        transform: scale(0.86);
-        margin-right: 36px;
+        padding-left: 60px;
+        box-sizing: border-box;
 
         .data-holder {
             margin-left: 25px;

@@ -2,6 +2,7 @@ import echarts from 'echarts';
 import socketIOClient from 'socket.io-client';
 import moment from 'moment';
 import config from '../config';
+import './chart2.scss';
 // initialize echarts instance with prepared DOM
 // const myChart = echarts.init(document.querySelector('#main'));
 const officeLineChart = echarts.init(document.querySelector('#office-line'));
@@ -157,7 +158,7 @@ socket.on('officeLineMessage', (d: any) => {
         },
         yAxis: {
             show: true,
-            splitNumber: 1,
+            // splitNumber: 1,
             position: 'right',
             axisLabel: {
                 inside: false,
@@ -270,7 +271,7 @@ socket.on('industryLineMessage', (d: any) => {
         },
         yAxis: {
             show: true,
-            splitNumber: 1,
+            // splitNumber: 1,
             position: 'right',
             axisLabel: {
                 inside: false,
@@ -381,7 +382,7 @@ socket.on('industrialParkLineMessage', (d: any) => {
         },
         yAxis: {
             show: true,
-            splitNumber: 1,
+            // splitNumber: 1,
             position: 'right',
             axisLabel: {
                 inside: false,
@@ -491,7 +492,7 @@ socket.on('retailLineMessage', (d: any) => {
         },
         yAxis: {
             show: true,
-            splitNumber: 1,
+            // splitNumber: 1,
             position: 'right',
             axisLabel: {
                 inside: false,

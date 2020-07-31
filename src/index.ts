@@ -109,9 +109,9 @@ window.onload = () => {
     const wHeight = window.innerHeight;
     const wWidth = window.innerWidth;
     // 3840 * 1080
-    const scale = `scale( ${wWidth / 3840}, ${wHeight / 1080}) translateY(50%)`;
-    const indexHtml = document.getElementById('index-base')
-    // indexHtml.style.transform = scale;
+    const scale = `scale( ${wWidth / 1920}, ${wHeight / 1080})`;
+    const indexHtml = document.getElementById('index-body')
+    indexHtml.style.transform = scale;
     let needFresh = true;
     const socket = socketIOClient(config.url);
 
@@ -176,21 +176,21 @@ window.onload = () => {
     setInterval(() => {
         dateNow.text(moment().format('YYYY-MM-DD'));
         timeNow.text(moment().format('HH:mm:ss'))
-    //     const diffSeconds = moment().diff(moment('09:00:00', 'HH:mm:ss'), 'seconds')
-    //     if (diffSeconds > 0 && diffSeconds <= 32400) {
-    //         const area = areatYesterday - 0 + perSecondArea * diffSeconds;
-    //         const count = counttYesterday - 0 + perSecondCount * diffSeconds;
-    //         const displayArea = numeral(area).format();
-    //         const readyForInputCount = numeral(count - 0).format('0,0');
-    //         const alreadyInputCount = basicCountDom.text();
-    //         if (readyForInputCount !== alreadyInputCount) {
-    //             basicAreaDom.text(displayArea);
-    //             basicCountDom.text(readyForInputCount);
-    //         }
-    //     } else if (diffSeconds > 32400) {
-    //         basicAreaDom.text(numeral(areat - 0).format('0,0'));
-    //         basicCountDom.text(numeral(countt - 0).format('0,0'));
-    //     }
+        //     const diffSeconds = moment().diff(moment('09:00:00', 'HH:mm:ss'), 'seconds')
+        //     if (diffSeconds > 0 && diffSeconds <= 32400) {
+        //         const area = areatYesterday - 0 + perSecondArea * diffSeconds;
+        //         const count = counttYesterday - 0 + perSecondCount * diffSeconds;
+        //         const displayArea = numeral(area).format();
+        //         const readyForInputCount = numeral(count - 0).format('0,0');
+        //         const alreadyInputCount = basicCountDom.text();
+        //         if (readyForInputCount !== alreadyInputCount) {
+        //             basicAreaDom.text(displayArea);
+        //             basicCountDom.text(readyForInputCount);
+        //         }
+        //     } else if (diffSeconds > 32400) {
+        //         basicAreaDom.text(numeral(areat - 0).format('0,0'));
+        //         basicCountDom.text(numeral(countt - 0).format('0,0'));
+        //     }
 
     }, 1000)
 }

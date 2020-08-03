@@ -226,92 +226,160 @@ iframe {
     // position: relative;
     // width: 888px;
     // height: 68px;
-
+    .slider-holder{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        padding-left: 20px;
+        top: 18%;
+        box-sizing: border-box;
+        #current-data{
+            visibility: hidden;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    
     .screen-title {
+        width: 100%;
         padding-left: 80px;
         white-space: nowrap;
         overflow: hidden;
         .sub-title {
             font-size: 25px;
             display: block;
-            /* margin-top: -6px; */
-            padding-left: 30px;
             color: #b1b2c7;
         }
+        .red-dot {
+            opacity: 0;
+            display: inline-block;
+            background: #e30613;
+            width: 20px;
+            height: 34px;
+            margin-bottom: 5px;
+            margin-right: 10px;
+        }
 
-        p {
-            &::before {
-                content: '';
-                display: inline-block;
-                background: #e30613;
-                width: 20px;
-                height: 30px;
-                vertical-align: middle;
-                margin-bottom: 5px;
-                margin-right: 10px;
-            }
-
+        .data-title {
             .red-title {
                 // font-weight: 800;
                 color: #fff;
             }
-
+            visibility: hidden;
+            opacity: 0;
             font-size: 45px;
             color: #fff;
-            height: 68px;
             line-height: 38px;
             vertical-align: middle;
+            width: 0%;
+            display: inline-block;
+            overflow: hidden;
         }
     }
 
     .screen-data-holder {
-
+        opacity: 0;
         height: 68%;
         width: 88%;
+        height: 0.3%;
+        width: 3%;
         margin-left: 6%;
         background-size: 100% 100%;
         background-repeat: no-repeat;
         box-sizing: border-box;
         position: relative;
-        margin-top: 30px;
+        margin-top: 26px;
+        overflow: hidden;
 
-        &::after {
-            content: '';
-            width: 100%;
-            height: 100%;
+        .bolder-holder {
             position: absolute;
+            overflow: hidden;
             top: 0;
             left: 0;
-            border-width: 2px;
-            border-style: solid;
-            border-image-source: linear-gradient(180deg, #fff 0%, #fff 6%, rgba(255, 255, 255, 0) 6%, #fff 50%, rgba(255, 255, 255, 0) 94%, #fff 94%, #fff 100%);
-            border-image-slice: 1;
-            border-image-slice: 1 100%;
-            box-sizing: border-box;
-        }
-
-        &::before {
-            content: '';
             width: 100%;
             height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            border-width: 2px;
-            border-style: solid;
-            border-image-source: linear-gradient(90deg, #fff 0%, #fff 3%, rgba(255, 255, 255, 0) 3%, #fff 50%, rgba(255, 255, 255, 0) 97%, #fff 97%, #fff 100%);
-            border-image-slice: 1;
-            border-image-slice: 100% 1;
-            box-sizing: border-box;
+            // width: 3%;
+            // height: 0.5%;
+            .top-left {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 30px;
+                height: 30px;
+                border-top: 2px solid #fff;
+                border-left: 2px solid #fff;
+            }
+            .top-right {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 30px;
+                height: 30px;
+                border-top: 2px solid #fff;
+                border-right: 2px solid #fff;
+            }
+            .bottom-left {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 30px;
+                height: 30px;
+                border-bottom: 2px solid #fff;
+                border-left: 2px solid #fff;
+            }
+            .bottom-right {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 30px;
+                height: 30px;
+                border-bottom: 2px solid #fff;
+                border-right: 2px solid #fff;
+            }
+            &::after {
+                content: '';
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-width: 2px;
+                border-style: solid;
+                border-image-source: linear-gradient(180deg, rgba(255, 255, 255, 0) 6%, #fff 50%, rgba(255, 255, 255, 0) 94%);
+                border-image-slice: 1;
+                border-image-slice: 1 100%;
+                box-sizing: border-box;
+            }
+    
+            &::before {
+                content: '';
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-width: 2px;
+                border-style: solid;
+                border-image-source: linear-gradient(90deg, rgba(255, 255, 255, 0) 3%, #fff 50%, rgba(255, 255, 255, 0) 97%);
+                border-image-slice: 1;
+                border-image-slice: 100% 1;
+                box-sizing: border-box;
+            }
         }
+
+        
 
         .screen-data-holder-in {
             position: relative;
-            height: 100%;
-
-
-
+            // height: 100%;
+            width: 1690px;
+            height: 735px;
             iframe {
+                top: 0;
+                left: 0;
+                opacity: 0;
+                visibility: hidden;
                 height: 100%;
                 width: 100%;
                 position: absolute;

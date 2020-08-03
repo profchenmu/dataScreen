@@ -5,6 +5,7 @@ import socketIOClient from 'socket.io-client';
 import config from './config';
 import numeral from 'numeral';
 import './style/index.scss';
+import { style } from 'd3';
 type Tcount = {
     entity: string
     date: Date
@@ -103,15 +104,10 @@ function testAnimationShow() {
         moveit(timestamp, video, 1, 2000)
     })
 }
-window.onload = () => {
+
     // window.localStorage.setItem('countPertimeNow', 'needInit');
 
-    const wHeight = window.innerHeight;
-    const wWidth = window.innerWidth;
-    // 3840 * 1080
-    const scale = `scale( ${wWidth / 1920}, ${wHeight / 1080})`;
-    const indexHtml = document.getElementById('index-body')
-    indexHtml.style.transform = scale;
+    
     let needFresh = true;
     const socket = socketIOClient(config.url);
 
@@ -193,35 +189,183 @@ window.onload = () => {
         //     }
 
     }, 1000);
-    const title = d3.select('.screen-title');
+
+    const dataArray = ['current','property','transaction', 'matrix', 'spotlights', 'quality', 'innovation', 'growth',];
+
+    function animationAllFrames (ids: Array<string>){
+        
+        ids.forEach((e:string,i:number)=>{
+            const dataId = `#${e}-data`;
+            const titleId = `#${e}-title`;
+            if(!dataId || !titleId){
+                animationAllFrames(ids)
+            }
+            ((dataId:any, titleId:any)=>{
+                setTimeout(()=>{
+                    // debugger
+                    if(i===0){
+                        animationFrames(dataId, titleId, true)
+                    }else {
+                        animationFrames(dataId, titleId, false)
+                    }
+                    
+                }, i* 18000)
+            })(dataId,titleId)
+        })
+        setTimeout(()=>{animationAllFrames(ids)}, 18000*dataArray.length)
+    }
+    function animationFrames(dataId:string, titleId:string, special?:boolean) {
+        const dataContainer = d3.select(dataId)
+        const title = d3.select(titleId)
+        showAll(dataContainer, title, special)
+    }
+
+    function showAll(dataContainer:any, title:any, special?:boolean){
+        redDotShining(dataContainer, title, special)
+    }
+
+    // const title = d3.select('.data-title');
     const dataBox = d3.select('.screen-data-holder');
-    const showDataBox = () => {
+    // const dataInfos = d3.select('.screen-data-holder-in');
+    const redDot = d3.select('.red-dot');
+
+// show all
+    const redDotShining = (dataContainer:any, titleContainer:any, special:boolean) => {
+        dataContainer.style('visibility', 'visible')
+        titleContainer.style('visibility', 'visible')
+        redDot
+            .style('opacity', 0)
+            .transition()
+            .style('opacity', 1)
+            .transition()
+            .style('opacity', 0)
+            .transition()
+            .style('opacity', 1)
+            .on('end', ()=>{showTitle(dataContainer, titleContainer, special)})
+    }
+    const dataFadeIn = (data:any, title:any, special?:boolean) => {
+        data
+            .style('opacity', 0)
+            .transition()
+            .duration(4400)
+            .style('opacity', 1)
+            .on('end', ()=>{
+                if(!special){
+                    hideDataBox(data, title, 8000)
+                }else{
+                    setTimeout(()=>{
+                        data
+                            .style('opacity', 1)
+                            .transition()
+                            .duration(1000)
+                            .style('opacity', 0);
+                        titleFadeOut(data, title, special);
+                    },8000)
+                    
+                }
+            })
+    }
+    const showDataBox = (data:any,title:any) => {
+        dataFadeIn(data,title);
         dataBox
-            .transition()
-            .duration(2000)
             .style('width', '3%')
-            .style('height', '3%')
+            .style('height', '0.3%')
             .transition()
+            .delay(500)
             .duration(1000)
             .style('width', '88%')
+            .transition()
+            .duration(1000)
             .style('height', '68%')
-            .on("end", showDataBox);
     }
-    const repeat = () => {
+    const dataBoxFadeIn = () => {
+        dataBox
+            .style('opacity', 0)
+            .transition()
+            .delay(1500)
+            .duration(1000)
+            .style('opacity', 1);
+    }
+    const showTitle = (data:any,title:any, special?:boolean) => {
+        if(!special){
+            dataBoxFadeIn();
+        }else{
+            
+        }
+        
         title
+            .style('width', '0%')
+            .style('opacity', 0)
+            .transition()
+            .delay(300)
+            .duration(2000)
+            .style('width', '88%')
+            .style('opacity', 1)
+            .on('end', ()=>{
+                if(!special){
+                    showDataBox(data, title)
+                }else{
+                    dataFadeIn(data,title,special);
+                }
+                
+            })
+    }
+
+// hide all
+    const titleFadeOut = (dataContainer:any, title:any, special?:boolean) => {
+        dataContainer.style('visibility', 'invisible')
+        title.style('visibility', 'invisible');
+        if(!special){
+            dataBox
+                .style('opacity', 1)
+                .transition()
+                .delay(500)
+                .duration(1000)
+                .style('opacity', 0);
+        }
+        title
+            .style('width', '88%')
+            .style('opacity', 1)
             .transition()
             .duration(2000)
             .style('width', '0%')
             .style('opacity', 0)
-            .transition()
-            .duration(1000)
-            .style('width', '100%')
-            .style('opacity', 1)
-            .on("end", repeat);
+            // .on('end', ()=>{redDotShining(dataContainer, title)})
     }
-    repeat();
-    showDataBox();
+    
+    function hideDataBox (dataContainer:any, title:any,delayTime: number){
+        setTimeout(()=>{
+            dataContainer
+                .style('opacity', 1)
+                .transition()
+                .duration(1000)
+                .style('opacity', 0);
+            dataBox
+                .style('height', '68%')
+                .style('width', '88%')
+                .transition()
+                .duration(500)
+                .style('height', '0.3%')
+                .transition()
+                .duration(500)
+                .style('width', '3%')
+                .on('end', ()=>{titleFadeOut(dataContainer, title)}) 
+        }, delayTime)
+    }
+
+
+window.onload = () => {
+    const wHeight = window.innerHeight;
+    const wWidth = window.innerWidth;
+    // 3840 * 1080
+    const scale = `scale( ${wWidth / 1920}, ${wHeight / 1080})`;
+    const indexHtml = document.getElementById('index-body')
+    indexHtml.style.transform = scale;
+    animationAllFrames(dataArray);
+    // redDotShining();
+    // setTimeout(hideDataBox, 8000)
 }
+
 
 
 

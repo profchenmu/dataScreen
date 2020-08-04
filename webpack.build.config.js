@@ -13,6 +13,7 @@ module.exports = {
     mode: 'production',
     entry: {
         index: path.resolve(__dirname, './src/index.ts'),
+        sliderInfos: path.resolve(__dirname, './src/sliderInfos/index.ts'),
         qt: path.resolve(__dirname, "./src/qt/index.ts"),
         map: path.resolve(__dirname, "./src/map/index.ts"),
         chart1: path.resolve(__dirname, "./src/chart1/index.ts"),
@@ -92,6 +93,20 @@ module.exports = {
             filename: 'index.html',
             template: './index.html',
             chunks: ['index'],
+            inject: true,
+            minify: {
+                collapseWhitespace: true,
+                removeComments: true,
+                removeRedundantAttributes: true,
+                removeScriptTypeAttributes: true,
+                removeStyleLinkTypeAttributes: true,
+                useShortDoctype: true
+            }
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'sliderInfos.html',
+            template: './sliderInfos.html',
+            chunks: ['sliderInfos'],
             inject: true,
             minify: {
                 collapseWhitespace: true,

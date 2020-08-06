@@ -412,6 +412,10 @@ window.onload = () => {
     const indexHtml = document.getElementById('index-base')
     indexHtml.style.transform = scale;
     animationAllFrames(dataArray);
+
+    // setTimeout(() => {
+    // window.location.reload()
+    // }, 10000)
     // toggleWeather()
 
     // redDotShining();

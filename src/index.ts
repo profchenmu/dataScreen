@@ -169,6 +169,10 @@ let perSecondArea: any;
 setInterval(() => {
     dateNow.text(moment().format('YYYY-MM-DD'));
     timeNow.text(moment().format('HH:mm:ss'))
+    if (moment().format('HH:mm:ss') === '08:00:00' || moment().format('HH:mm:ss') === '20:00:00') {
+        window.location.reload();
+    }
+
     //     const diffSeconds = moment().diff(moment('09:00:00', 'HH:mm:ss'), 'seconds')
     //     if (diffSeconds > 0 && diffSeconds <= 32400) {
     //         const area = areatYesterday - 0 + perSecondArea * diffSeconds;
@@ -404,14 +408,17 @@ function toggleWeather() {
         })
 
 }
+let wHeight = 1920;
+let wWidth = 1080;
 window.onload = () => {
-    const wHeight = window.innerHeight;
-    const wWidth = window.innerWidth;
+    wHeight = window.innerHeight;
+    wWidth = window.innerWidth;
     // 3840 * 1080
     const scale = `scale( ${wWidth / 1920}, ${wHeight / 1080}) translateY(50%)`;
     const indexHtml = document.getElementById('index-base')
     indexHtml.style.transform = scale;
     animationAllFrames(dataArray);
+
 
     // setTimeout(() => {
     // window.location.reload()
@@ -420,6 +427,34 @@ window.onload = () => {
 
     // redDotShining();
     // setTimeout(toggleWeather, 100000)
+}
+
+document.onfullscreenchange = () => {
+    // alert('full')
+    window.location.reload();
+}
+window.onresize = () => {
+
+    let oldwHeight = window.innerHeight;
+    let oldWidth = window.innerWidth;
+    setTimeout(() => {
+        let newHeight = window.innerHeight;
+        let newWidth = window.innerWidth;
+        if (newHeight !== oldwHeight || newWidth !== oldWidth) {
+            // oldwHeight = newHeight;
+            // oldWidth = newWidth;
+            // clearInterval(resizeTimeout);
+
+        } else {
+            // alert('reload')
+            window.location.reload();
+        }
+
+        // if(newwHeight !== wHeight||newWidth!==wWidth){
+        //     window.location.reload();
+
+        // }
+    }, 2000)
 }
 
 
